@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>ilos API Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -222,166 +222,375 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="api-reference">API Reference</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#api-key-types" class="toc-h2 toc-link" data-title="api-key-types">API Key Types</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#recording-api" class="toc-h1 toc-link" data-title="recording-api">Recording API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-record-token" class="toc-h2 toc-link" data-title="get-record-token">Get Record Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#uploading-api" class="toc-h1 toc-link" data-title="uploading-api">Uploading API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-upload-token" class="toc-h2 toc-link" data-title="get-upload-token">Get Upload Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#webhook-response-body" class="toc-h2 toc-link" data-title="webhook-response-body">Webhook Response Body</a>
+                  </li>
+              </ul>
           </li>
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='api-reference'>API Reference</h1>
+<!-- TODO: link record and upload -->
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> api that you can use to record and/or upload videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.</p>
+
+<p>If you&#39;d like to see some examples of how this API can work, take a look at the demos below:</p>
+
+<ul>
+<li><a href="https://ticketingdemo.azurewebsites.net/#/home">Ticketing Demo (Click &quot;Report An Issue&quot;)</a></li>
+<li><a href="https://app.ilosvideos.com/demo/api/record">Recording Demo</a></li>
+<li><a href="https://app.ilosvideos.com/demo/api/upload">Uploading Demo</a></li>
+</ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Authenticating by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> if you try it out.</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.ilosvideos.com/v1/token/record'</span> <span class="se">\</span>
+  -d <span class="s1">'api_key={key}'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"api_key={key}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/record"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={key}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"api_key"</span><span class="p">:</span> <span class="s2">"{key}"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Authentication is done via an API key found in your ilos account&#39;s <a href="https://app.ilosvideos.com/integrations">integration settings</a>.</p>
+
+<p>Under integration settings you can copy your <a href="#api-key-types">User</a>, <a href="#api-key-types">Organization</a>, and <a href="#api-key-types">LTI</a> API keys, or roll new ones if desired.</p>
+
+<p>The API key should be passed as a parameter with all API requests to the server.</p>
+<h2 id='api-key-types'>API Key Types</h2><h3 id='user'>User</h3>
+<p>Videos uploaded with a User API key will be uploaded to that user&#39;s ilos account.</p>
+<h3 id='organization'>Organization</h3>
+<p>Videos uploaded with an Organization API key will be upload to the organization&#39;s ilos account. These videos will not have an owner by default.</p>
+<h3 id='lti'>LTI</h3>
+<p>LTI API keys are used for our LTI integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=lti">information about LTI integrations</a>.</p>
+<h3 id='zoom'>Zoom</h3>
+<p>Zoom API keys are used for our Zoom integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=zoom">information about Zoom integrations</a>.</p>
+<h1 id='recording-api'>Recording API</h1>
+<p>The Recording API allows you to record videos using the ilos Screen Recorder. A basic implementation is as follows:</p>
+
+<ol>
+<li>Request a record token from ilos</li>
+<li>Display a record button to a user using the either <code>recordButtonIframe</code> or <code>recorderLaunchURI</code> returned in Step 1. (We recommend using the iframe since it handles downloading and installing the recorder for first time users)</li>
+<li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
+</ol>
+<h2 id='get-record-token'>Get Record Token</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.ilosvideos.com/v1/token/record <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "video_endpoint" : "https://yoursite.com/endpoint",
+    "video_set_public" : true
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  video_endpoint: "https://yoursite.com/endpoint",
+  video_set_public: true
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/record"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'video_endpoint'</span><span class="p">:</span> <span class="s">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+  <span class="s">'video_set_public'</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">video_endpoint</span><span class="p">:</span> <span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+    <span class="na">video_set_public</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Example Response</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"worked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recorderDownloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recorderLaunchURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilosrecord:record?token=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recordButtonIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<blockquote>
+<p><code>expires</code> is a UNIX Timestamp (UTC) indicating when the temporary token will expire</p>
+</blockquote>
+
+<p>This endpoint returns a one-time record token, ways to display a record button, and some additional data you can see in the sample response to the right.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<p><code>POST https://api.ilosvideos.com/v1/token/record</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><strong>service_name</strong> optional string</td>
+<td>The name of your service. Mostly used for informational purposes.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint</strong> optional string</td>
+<td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been recorded and uploaded.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> optional array</td>
+<td>An array of extra data that will be sent to the <a href="#webhooks">Webook</a> endpoint.</td>
+</tr>
+<tr>
+<td><strong>auto_open_video</strong> optional boolean</td>
+<td>Whether or not to automatically open the video in the user&#39;s browser after recording.</td>
+</tr>
+<tr>
+<td><strong>auto_close_recorder</strong> optional boolean</td>
+<td>Whether or not to close the recorder when it is finished uploading the video. If set to <code>true</code>, the user will only be able to record one video with this token.</td>
+</tr>
+<tr>
+<td><strong>request_video_title</strong> optional boolean</td>
+<td>Whether or not to have the user title the video after recording.</td>
+</tr>
+<tr>
+<td><strong>record_single_video</strong> optional boolean</td>
+<td><strong>deprecated</strong> This option has been deprecated and effectively sets <code>auto_open_video = false</code>, <code>auto_close_recorder = true</code>, and <code>request_video_title = false</code>. These three options should be used in favor of <code>record_single_video</code>.</td>
+</tr>
+<tr>
+<td><strong>video_title</strong> optional string</td>
+<td>Used to give the video a title if <code>request_video_title</code> is set to <code>false</code>.</td>
+</tr>
+<tr>
+<td><strong>video_set_public</strong> optional boolean</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.</td>
+</tr>
+<tr>
+<td><strong>collection</strong> optional string</td>
+<td>Automatically add the uploaded video to a folder. <em>Note that Collections are now called Folders.</em></td>
+</tr>
+<tr>
+<td><strong>auto_download_recorder</strong> optional boolean</td>
+<td>Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.</td>
+</tr>
+<tr>
+<td><strong>auto_authenticate_on_install</strong> optional boolean</td>
+<td>Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to <code>false</code>, the user will need to return to their browser and click record in order to be authenticated.</td>
+</tr>
+<tr>
+<td><strong>auto_launch_fullscreen</strong> optional boolean</td>
+<td>Whether or not the recorder should launch in fullscreen mode by default.</td>
+</tr>
+<tr>
+<td><strong>webcam_only</strong> optional boolean</td>
+<td>Whether or not the recorder should launch in webcam only mode. The user will not be able to turn off webcam only.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<!-- TODO: move this to a stylesheet -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<style>
+  .content table tr strong {
+    display: block;
+  }
+</style>
+<h1 id='uploading-api'>Uploading API</h1>
+<p>The Uploading API allows you to upload videos using a web uploader in an iframe. A basic implementation is as follows:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<ol>
+<li>Request an upload token from ilos</li>
+<li>Display an upload form to a user using the either <code>uploadIframe</code> or <code>uploadIframeBasic</code> returned in Step 1.</li>
+<li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
+</ol>
+<h2 id='get-upload-token'>Get Upload Token</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.ilosvideos.com/v1/token/upload <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "video_endpoint" : "https://yoursite.com/endpoint",
+    "video_set_public" : true
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/upload"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  video_endpoint: "https://yoursite.com/endpoint",
+  video_set_public: true
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/upload"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'video_endpoint'</span><span class="p">:</span> <span class="s">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+  <span class="s">'video_set_public'</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/upload"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">video_endpoint</span><span class="p">:</span> <span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+    <span class="na">video_set_public</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"worked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframeBasic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<blockquote>
+<p><code>expires</code> is a UNIX Timestamp (UTC) indicating when the temporary token will expire</p>
+</blockquote>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>This endpoint returns a one-time upload token, ways to display an upload form, and some additional data you can see in the sample response to the right.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.ilosvideos.com/v1/token/upload</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -389,38 +598,60 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
+</tr>
+<tr>
+<td><strong>service_name</strong> optional string</td>
+<td>The name of your service. Mostly used for informational purposes.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint</strong> optional string</td>
+<td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been uploaded.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> optional array</td>
+<td>An array of extra data that will be sent to the <a href="#webhooks">Webook</a> endpoint.</td>
+</tr>
+<tr>
+<td><strong>video_set_public</strong> optional boolean</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.</td>
+</tr>
+<tr>
+<td><strong>collection</strong> optional string</td>
+<td>Automatically add the uploaded video to a folder. <em>Note that Collections are now called Folders.</em></td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<!-- TODO: move this to a stylesheet -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<style>
+  .content table tr strong {
+    display: block;
+  }
+</style>
+<h1 id='webhooks'>Webhooks</h1>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The incoming webhook response body will look like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"randtag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/view/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"embedURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/embed/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/123456ABCDEF'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"extra1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something I wanted at my endpoint"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extra2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another thing I wanted at my endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to ilos.</p>
+
+<p>You can set the webhook URL endpoint with the <code>video_endpoint</code> parameter in both the <a href="#recording">Recording API</a> and <a href="#uploading">Uploading API</a>.</p>
+
+<p>You can view logs for calls to your endpoint under <a href="https://app.ilosvideos.com/integrations">integration settings</a> in your ilos account.</p>
+<h3 id='webhook-response-body'>Webhook Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -428,66 +659,38 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td><strong>token</strong> string</td>
+<td>Token that the video was used to record or upload the video.</td>
+</tr>
+<tr>
+<td><strong>randtag</strong> string</td>
+<td>The unique ID for your video.</td>
+</tr>
+<tr>
+<td><strong>videoURL</strong> string</td>
+<td>URL to view your video.</td>
+</tr>
+<tr>
+<td><strong>embedURL</strong> string</td>
+<td>URL you can use as the source of an iframe.</td>
+</tr>
+<tr>
+<td><strong>iframe</strong> string</td>
+<td>An iframe containing the video.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> array or null</td>
+<td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording">Recording API</a> or <a href="#uploading">Uploading API</a>.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<!-- TODO: move this to a stylesheet -->
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request sucks.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<style>
+  .content table tr strong {
+    display: block;
+  }
+</style>
 
       </div>
       <div class="dark-box">
