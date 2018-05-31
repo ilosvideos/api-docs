@@ -277,7 +277,7 @@
 </ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>Authenticating by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> if you try it out.</p>
+<p>Authentication by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> with your API key.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://api.ilosvideos.com/v1/token/record'</span> <span class="se">\</span>
@@ -318,7 +318,7 @@
 </code></pre>
 <p>Authentication is done via an API key found in your ilos account&#39;s <a href="https://app.ilosvideos.com/integrations">integration settings</a>.</p>
 
-<p>Under integration settings you can copy your <a href="#api-key-types">User</a>, <a href="#api-key-types">Organization</a>, and <a href="#api-key-types">LTI</a> API keys, or roll new ones if desired.</p>
+<p>Under integration settings you can copy your <a href="#api-key-types">API keys</a> or roll new ones if desired.</p>
 
 <p>The API key should be passed as a parameter with all API requests to the server.</p>
 <h2 id='api-key-types'>API Key Types</h2><h3 id='user'>User</h3>
@@ -459,7 +459,7 @@
 </tr>
 <tr>
 <td><strong>record_single_video</strong> optional boolean</td>
-<td><strong>deprecated</strong> This option has been deprecated and effectively sets <code>auto_open_video = false</code>, <code>auto_close_recorder = true</code>, and <code>request_video_title = false</code>. These three options should be used in favor of <code>record_single_video</code>.</td>
+<td><strong>deprecated</strong> This option has been deprecated and effectively sets <code>auto_open_video = false</code>, <code>auto_close_recorder = true</code>, and <code>request_video_title = false</code>. These three options should be used explicitly in favor of <code>record_single_video</code>.</td>
 </tr>
 <tr>
 <td><strong>video_title</strong> optional string</td>
@@ -648,7 +648,7 @@
 </span></code></pre>
 <p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to ilos.</p>
 
-<p>You can set the webhook URL endpoint with the <code>video_endpoint</code> parameter in both the <a href="#recording">Recording API</a> and <a href="#uploading">Uploading API</a>.</p>
+<p>You can set the webhook URL endpoint with the <code>video_endpoint</code> parameter in both the <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>.</p>
 
 <p>You can view logs for calls to your endpoint under <a href="https://app.ilosvideos.com/integrations">integration settings</a> in your ilos account.</p>
 <h3 id='webhook-response-body'>Webhook Response Body</h3>
@@ -680,7 +680,7 @@
 </tr>
 <tr>
 <td><strong>video_endpoint_extras</strong> array or null</td>
-<td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording">Recording API</a> or <a href="#uploading">Uploading API</a>.</td>
+<td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording-api">Recording API</a> or <a href="#uploading-api">Uploading API</a>.</td>
 </tr>
 </tbody></table>
 
