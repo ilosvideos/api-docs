@@ -24,7 +24,7 @@ You can view logs for calls to your endpoint under [integration settings](https:
 
 ### Webhook Response Body
 
-Parameter | Description |
+          |             |
 --------- | ----------- |
 **token** string | Token that the video was used to record or upload the video.
 **randtag** string | The unique ID for your video.

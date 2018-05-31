@@ -12,7 +12,7 @@ The Recording API allows you to record videos using the ilos Screen Recorder. A 
 
 ```shell
 curl -X POST \
-  https://api.ilosvideos.com/v1/token/record \
+  'https://api.ilosvideos.com/v1/token/record' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -104,9 +104,9 @@ This endpoint returns a one-time record token, ways to display a record button, 
 
 `POST https://api.ilosvideos.com/v1/token/record`
 
-### Query Parameters
+### Options
 
-Parameter | Description |
+          |             |
 --------- | ----------- |
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your ilos account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.

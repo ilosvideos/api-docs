@@ -12,7 +12,7 @@ The Uploading API allows you to upload videos using a web uploader in an iframe.
 
 ```shell
 curl -X POST \
-  https://api.ilosvideos.com/v1/token/upload \
+  'https://api.ilosvideos.com/v1/token/upload' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -103,9 +103,9 @@ This endpoint returns a one-time upload token, ways to display an upload form, a
 
 `POST https://api.ilosvideos.com/v1/token/upload`
 
-### Query Parameters
+### Options
 
-Parameter | Description |
+          |             |
 --------- | ----------- |
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your ilos account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.

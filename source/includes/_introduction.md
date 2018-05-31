@@ -10,3 +10,5 @@ You can view code examples in the area to the right, and you can switch the lang
  * [Ticketing Demo (Click "Report An Issue")](https://ticketingdemo.azurewebsites.net/#/home)
  * [Recording Demo](https://app.ilosvideos.com/demo/api/record)
  * [Uploading Demo](https://app.ilosvideos.com/demo/api/upload)
+
+If you need further assistance or have any other questions, please visit our [Help Center](https://help.ilosvideos.com).
