@@ -115,7 +115,7 @@ Parameter | Description |
 **auto_open_video** optional boolean | Whether or not to automatically open the video in the user's browser after recording.
 **auto_close_recorder** optional boolean | Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token.
 **request_video_title** optional boolean | Whether or not to have the user title the video after recording.
-**record_single_video** optional boolean | **deprecated** This option has been deprecated and effectively sets `auto_open_video = false`, `auto_close_recorder = true`, and `request_video_title = false`. These three options should be used in favor of `record_single_video`.
+**record_single_video** optional boolean | **deprecated** This option has been deprecated and effectively sets `auto_open_video = false`, `auto_close_recorder = true`, and `request_video_title = false`. These three options should be used explicitly in favor of `record_single_video`.
 **video_title** optional string | Used to give the video a title if `request_video_title` is set to `false`.
 **video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.
 **collection** optional string | Automatically add the uploaded video to a folder. *Note that Collections are now called Folders.*

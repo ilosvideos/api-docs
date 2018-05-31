@@ -1,6 +1,6 @@
 # Authentication
 
-> Authenticating by passing `api_key` as a parameter. Be sure to replace `{key}` if you try it out.
+> Authentication by passing `api_key` as a parameter. Be sure to replace `{key}` with your API key.
 
 ```shell
 curl -X POST \
@@ -52,7 +52,7 @@ $.ajax(settings).done(function (response) {
 
 Authentication is done via an API key found in your ilos account's [integration settings](https://app.ilosvideos.com/integrations).
 
-Under integration settings you can copy your [User](#api-key-types), [Organization](#api-key-types), and [LTI](#api-key-types) API keys, or roll new ones if desired.
+Under integration settings you can copy your [API keys](#api-key-types) or roll new ones if desired.
 
 The API key should be passed as a parameter with all API requests to the server.
 
