@@ -6,6 +6,8 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>ilos API Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -211,10 +213,10 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">Shell</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -275,6 +277,8 @@
 <li><a href="https://app.ilosvideos.com/demo/api/record">Recording Demo</a></li>
 <li><a href="https://app.ilosvideos.com/demo/api/upload">Uploading Demo</a></li>
 </ul>
+
+<p>If you need further assistance or have any other questions, please visit our <a href="https://help.ilosvideos.com">Help Center</a>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> with your API key.</p>
@@ -342,7 +346,7 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://api.ilosvideos.com/v1/token/record <span class="se">\</span>
+  <span class="s1">'https://api.ilosvideos.com/v1/token/record'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -422,11 +426,11 @@
 <p>This endpoint returns a one-time record token, ways to display a record button, and some additional data you can see in the sample response to the right.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.ilosvideos.com/v1/token/record</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='options'>Options</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th></th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
@@ -511,7 +515,7 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://api.ilosvideos.com/v1/token/upload <span class="se">\</span>
+  <span class="s1">'https://api.ilosvideos.com/v1/token/upload'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -590,11 +594,11 @@
 <p>This endpoint returns a one-time upload token, ways to display an upload form, and some additional data you can see in the sample response to the right.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.ilosvideos.com/v1/token/upload</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='options'>Options</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th></th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
@@ -654,8 +658,8 @@
 <h3 id='webhook-response-body'>Webhook Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th></th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
@@ -695,10 +699,10 @@
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">Shell</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
           </div>
       </div>
     </div>
