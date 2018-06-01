@@ -32,10 +32,3 @@ You can view logs for calls to your endpoint under [integration settings](https:
 **embedURL** string | URL you can use as the source of an iframe.
 **iframe** string | An iframe containing the video.
 **video_endpoint_extras** array or null | Any `video_endpoint_extras` sent through the [Recording API](#recording-api) or [Uploading API](#uploading-api).
-
-<!-- TODO: move this to a stylesheet -->
-<style>
-  .content table tr strong {
-    display: block;
-  }
-</style>

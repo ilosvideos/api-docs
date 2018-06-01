@@ -123,10 +123,3 @@ This endpoint returns a one-time record token, ways to display a record button, 
 **auto_authenticate_on_install** optional boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated.
 **auto_launch_fullscreen** optional boolean | Whether or not the recorder should launch in fullscreen mode by default.
 **webcam_only** optional boolean | Whether or not the recorder should launch in webcam only mode. The user will not be able to turn off webcam only.
-
-<!-- TODO: move this to a stylesheet -->
-<style>
-  .content table tr strong {
-    display: block;
-  }
-</style>
