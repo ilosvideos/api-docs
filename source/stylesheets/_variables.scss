@@ -52,6 +52,7 @@ $lang-select-active-text: #fff !default; // color of selected language tab text
 $lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
 $link-text: #0099e5 !default;
 $link-text-hover: #000 !default;
+$code-color: #f94e4e !default;
 
 
 // SIZES
@@ -64,7 +65,9 @@ $nav-v-padding-text: 6px !default; // padding on the top and bottom of navbar it
 $nav-v-padding: 16px !default; // padding used vertically around search boxes and results
 $nav-indent: 16px !default; // extra padding for ToC subitems
 $code-annotation-padding: 16px !default; // padding inside code annotations
-$h1-margin-bottom: 16px !default; // padding under the largest header tags
+$h1-margin-bottom: 0px !default; // padding under the largest header tags
+$h2-padding: 1.2em; // padding above and below h2
+$h3-margin-top: 2.5em; // margin top for h3, h4, h5, h6
 $tablet-width: 930px !default; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width !default; // min width before reverting to mobile size
 

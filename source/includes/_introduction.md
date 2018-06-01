@@ -5,10 +5,16 @@ Welcome to the ilos API! This is a simple [REST](https://en.wikipedia.org/wiki/R
 
 You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.
 
+## Live Demos
+
  If you'd like to see some examples of how this API can work, take a look at the demos below:
 
  * [Ticketing Demo (Click "Report An Issue")](https://ticketingdemo.azurewebsites.net/#/home)
  * [Recording Demo](https://app.ilosvideos.com/demo/api/record)
  * [Uploading Demo](https://app.ilosvideos.com/demo/api/upload)
+
+## Help and Support
+
+If you discover a mistake in the documentation, please [report an issue](mailto:webmaster@ilosvideos.com?subject=API Documentation Issue) and we'll take a look.
 
 If you need further assistance or have any other questions, please visit our [Help Center](https://help.ilosvideos.com).

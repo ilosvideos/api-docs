@@ -112,7 +112,7 @@ This endpoint returns a one-time upload token, ways to display an upload form, a
 **video_endpoint** optional string | The [Webook](#webhooks) URL endpoint where a POST will be made after a video has been uploaded.
 **video_endpoint_extras** optional array | An array of extra data that will be sent to the [Webook](#webhooks) endpoint.
 **video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.
-**collection** optional string | Automatically add the uploaded video to a folder. *Note that Collections are now called Folders.*
+**collection** optional string | Automatically add the uploaded video to a folder. <br> *Note: Collections are now called Folders in app.*
 
 <!-- TODO: move this to a stylesheet -->
 <style>

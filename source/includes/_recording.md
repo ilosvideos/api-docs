@@ -118,7 +118,7 @@ This endpoint returns a one-time record token, ways to display a record button, 
 **record_single_video** optional boolean | **deprecated** This option has been deprecated and effectively sets `auto_open_video = false`, `auto_close_recorder = true`, and `request_video_title = false`. These three options should be used explicitly in favor of `record_single_video`.
 **video_title** optional string | Used to give the video a title if `request_video_title` is set to `false`.
 **video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.
-**collection** optional string | Automatically add the uploaded video to a folder. *Note that Collections are now called Folders.*
+**collection** optional string | Automatically add the uploaded video to a folder. <br> *Note: Collections are now called Folders in app.*
 **auto_download_recorder** optional boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.
 **auto_authenticate_on_install** optional boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated.
 **auto_launch_fullscreen** optional boolean | Whether or not the recorder should launch in fullscreen mode by default.
