@@ -272,7 +272,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='api-reference'>API Reference</h1>
-<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> api that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
+<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
 
 <p>You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.</p>
 <h2 id='live-demos'>Live Demos</h2>
@@ -333,14 +333,30 @@
 <p>Under integration settings you can copy your <a href="#api-key-types">API keys</a> or roll new ones if desired.</p>
 
 <p>The API key should be passed as a parameter with all API requests to the server.</p>
-<h2 id='api-key-types'>API Key Types</h2><h3 id='user'>User</h3>
-<p>Videos uploaded with a User API key will be uploaded to that user&#39;s ilos account.</p>
-<h3 id='organization'>Organization</h3>
-<p>Videos uploaded with an Organization API key will be upload to the organization&#39;s ilos account. These videos will not have an owner by default.</p>
-<h3 id='lti'>LTI</h3>
-<p>LTI API keys are used for our LTI integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=lti">information about LTI integrations</a>.</p>
-<h3 id='zoom'>Zoom</h3>
-<p>Zoom API keys are used for our Zoom integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=zoom">information about Zoom integrations</a>.</p>
+<h3 id='api-key-types'>API Key Types</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>User</strong></td>
+<td>Use for the our <a href="#recording-api">Recording Api</a> and <a href="#uploading-api">Uploading Api</a>. Videos uploaded with a User API key will be uploaded to that user&#39;s ilos account.</td>
+</tr>
+<tr>
+<td><strong>Organization</strong></td>
+<td>Use for the our <a href="#recording-api">Recording Api</a> and <a href="#uploading-api">Uploading Api</a>. Videos uploaded with an Organization API key will be upload to the organization&#39;s ilos account. These videos will not have an owner by default.</td>
+</tr>
+<tr>
+<td><strong>LTI</strong></td>
+<td>Used for our LTI integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=lti">information about LTI integrations</a>.</td>
+</tr>
+<tr>
+<td><strong>Zoom</strong></td>
+<td>Used for our Zoom integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=zoom">information about Zoom integrations</a>.</td>
+</tr>
+</tbody></table>
 <h1 id='recording-api'>Recording API</h1>
 <p>The Recording API allows you to record videos using the ilos Screen Recorder. A basic implementation is as follows:</p>
 
