@@ -207,7 +207,6 @@
   <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
-        NAV
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
@@ -273,9 +272,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='api-reference'>API Reference</h1>
-<!-- TODO: link record and upload -->
-
-<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> api that you can use to record and/or upload videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
+<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> api that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
 
 <p>You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.</p>
 <h2 id='live-demos'>Live Demos</h2>
@@ -505,14 +502,6 @@
 <td>Whether or not the recorder should launch in webcam only mode. The user will not be able to turn off webcam only.</td>
 </tr>
 </tbody></table>
-
-<!-- TODO: move this to a stylesheet -->
-
-<style>
-  .content table tr strong {
-    display: block;
-  }
-</style>
 <h1 id='uploading-api'>Uploading API</h1>
 <p>The Uploading API allows you to upload videos using a web uploader in an iframe. A basic implementation is as follows:</p>
 
@@ -637,14 +626,6 @@
 <td>Automatically add the uploaded video to a folder. <br> <em>Note: Collections are now called Folders in app.</em></td>
 </tr>
 </tbody></table>
-
-<!-- TODO: move this to a stylesheet -->
-
-<style>
-  .content table tr strong {
-    display: block;
-  }
-</style>
 <h1 id='webhooks'>Webhooks</h1>
 <blockquote>
 <p>The incoming webhook response body will look like this:</p>
@@ -698,14 +679,6 @@
 <td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording-api">Recording API</a> or <a href="#uploading-api">Uploading API</a>.</td>
 </tr>
 </tbody></table>
-
-<!-- TODO: move this to a stylesheet -->
-
-<style>
-  .content table tr strong {
-    display: block;
-  }
-</style>
 
       </div>
       <div class="dark-box">
