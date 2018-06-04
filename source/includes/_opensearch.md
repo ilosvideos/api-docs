@@ -50,7 +50,7 @@ $.ajax(settings).done(function (response) {
 });
 ```
 
-This endpoint returns a list of ilos video items.
+This endpoint returns a list of video items from ilos.
 
 ### HTTP Request
 
@@ -62,6 +62,12 @@ This endpoint returns a list of ilos video items.
 --------- | ----------- |
 **q** string | Your search query.
 **api_key** string | An [Organization](#api-key-types) API key from your ilos account.
-**ptilos** optional boolean | Whether or not to prefix returned video titles with **ilos:**
+**ptilos** optional boolean | Whether or not to prefix returned video titles with *ilos:*
 
 Please visit the [OpenSearch Documentation](http://www.opensearch.org/Home) for more options and examples.
+
+## Office365 SharePoint
+
+Here is a short demo of how to use OpenSearch in Office365 SharePoint.
+
+<iframe title="Sharepoint OpenSearch ilos" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/kqxqAfbhDtlp"></iframe>

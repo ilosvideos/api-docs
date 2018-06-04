@@ -17,4 +17,6 @@ includes:
   - opensearch
 
 search: true
+
+intercom: true
 ---
