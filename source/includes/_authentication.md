@@ -60,7 +60,7 @@ The API key should be passed as a parameter with all API requests to the server.
 
 |      |             |
 |------|-------------|
-| **User** | Use for the our [Recording Api](#recording-api) and [Uploading Api](#uploading-api). Videos uploaded with a User API key will be uploaded to that user's ilos account. |
-| **Organization** | Use for the our [Recording Api](#recording-api) and [Uploading Api](#uploading-api). Videos uploaded with an Organization API key will be upload to the organization's ilos account. These videos will not have an owner by default. |
+| **User** | Use for the our [Recording API](#recording-api) and [Uploading API](#uploading-api). Videos uploaded with a User API key will be uploaded to that user's ilos account. |
+| **Organization** | Use for the our [Recording API](#recording-api) and [Uploading API](#uploading-api). Videos uploaded with an Organization API key will be upload to the organization's ilos account. These videos will not have an owner by default. |
 | **LTI** | Used for our LTI integrations. Check our help articles for more [information about LTI integrations](https://help.ilosvideos.com/?q=lti). |
 | **Zoom** | Used for our Zoom integrations. Check our help articles for more [information about Zoom integrations](https://help.ilosvideos.com/?q=zoom).

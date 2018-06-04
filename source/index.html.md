@@ -12,7 +12,13 @@ includes:
   - authentication
   - recording
   - uploading
+  - video
   - webhooks
+  - opensearch
 
 search: true
+
+segment: true
+segment_dev: "mhSQC7VUYDCwpSFXtINbp2jOZLpn5tTR"
+segment_prod: "aAtzfcjUDlgNu2VP9XhcNXZkcLZlH5Fl"
 ---

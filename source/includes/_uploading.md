@@ -103,7 +103,7 @@ This endpoint returns a one-time upload token, ways to display an upload form, a
 
 `POST https://api.ilosvideos.com/v1/token/upload`
 
-### Options
+### Parameters
 
           |             |
 --------- | ----------- |
