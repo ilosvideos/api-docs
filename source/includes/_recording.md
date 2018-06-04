@@ -104,7 +104,7 @@ This endpoint returns a one-time record token, ways to display a record button, 
 
 `POST https://api.ilosvideos.com/v1/token/record`
 
-### Options
+### Parameters
 
           |             |
 --------- | ----------- |

@@ -12,7 +12,9 @@ includes:
   - authentication
   - recording
   - uploading
+  - video
   - webhooks
+  - opensearch
 
 search: true
 ---
