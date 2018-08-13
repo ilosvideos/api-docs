@@ -1,6 +1,6 @@
 # Video API
 
-The Video API allows you to retrieve information about your videos on ilos.
+The Video API allows you to retrieve information about your videos on VidGrid.
 
 ## Get Video Duration
 
@@ -8,7 +8,7 @@ The Video API allows you to retrieve information about your videos on ilos.
 
 ```shell
 curl -X POST \
-  'https://api.ilosvideos.com/video/metadata' \
+  'https://api.vidgrid.com/video/metadata' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -20,7 +20,7 @@ curl -X POST \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.ilosvideos.com/video/metadata")
+url = URI("https://api.vidgrid.com/video/metadata")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -38,7 +38,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.ilosvideos.com/video/metadata"
+url = "https://api.vidgrid.com/video/metadata"
 
 payload = {
   'api_key': "{key}",
@@ -56,7 +56,7 @@ print(response.text)
 
 ```javascript
 var settings = {
-  "url": "https://api.ilosvideos.com/video/metadata",
+  "url": "https://api.vidgrid.com/video/metadata",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
@@ -92,11 +92,11 @@ This endpoint returns duration information for a specified video.
 
 ### HTTP Request
 
-`POST https://api.ilosvideos.com/video/metadata`
+`POST https://api.vidgrid.com/video/metadata`
 
 ### Parameters
 
           |             |
 --------- | ----------- |
-**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your ilos account.
+**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
 **randtag** string | The unique ID of your video.

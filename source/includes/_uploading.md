@@ -2,7 +2,7 @@
 
 The Uploading API allows you to upload videos using a web uploader in an iframe. A basic implementation is as follows:
 
-1. Request an upload token from ilos
+1. Request an upload token from VidGrid
 2. Display an upload form to a user using the either `uploadIframe` or `uploadIframeBasic` returned in Step 1.
 3. Wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
 
@@ -12,7 +12,7 @@ The Uploading API allows you to upload videos using a web uploader in an iframe.
 
 ```shell
 curl -X POST \
-  'https://api.ilosvideos.com/v1/token/upload' \
+  'https://api.vidgrid.com/v1/token/upload' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -25,7 +25,7 @@ curl -X POST \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.ilosvideos.com/v1/token/upload")
+url = URI("https://api.vidgrid.com/v1/token/upload")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -44,7 +44,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.ilosvideos.com/v1/token/upload"
+url = "https://api.vidgrid.com/v1/token/upload"
 
 payload = {
   'api_key': "{key}",
@@ -63,7 +63,7 @@ print(response.text)
 
 ```javascript
 var settings = {
-  "url": "https://api.ilosvideos.com/v1/token/upload",
+  "url": "https://api.vidgrid.com/v1/token/upload",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
@@ -89,8 +89,8 @@ $.ajax(settings).done(function (response) {
   "video_endpoint_extras": null,
   "video_set_public": true,
   "token": "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "uploadIframe": "<iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'></iframe>",
-  "uploadIframeBasic": "<iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic></iframe>",
+  "uploadIframe": "<iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'></iframe>",
+  "uploadIframeBasic": "<iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic></iframe>",
   "expires": 1527729792
 }
 ```
@@ -101,15 +101,15 @@ This endpoint returns a one-time upload token, ways to display an upload form, a
 
 ### HTTP Request
 
-`POST https://api.ilosvideos.com/v1/token/upload`
+`POST https://api.vidgrid.com/v1/token/upload`
 
 ### Parameters
 
           |             |
 --------- | ----------- |
-**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your ilos account.
+**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.
 **video_endpoint** optional string | The [Webook](#webhooks) URL endpoint where a POST will be made after a video has been uploaded.
 **video_endpoint_extras** optional array | An array of extra data that will be sent to the [Webook](#webhooks) endpoint.
-**video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.
+**video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.
 **collection** optional string | Automatically add the uploaded video to a folder. <br> *Note: Collections are now called Folders in app.*

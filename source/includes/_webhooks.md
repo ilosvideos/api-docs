@@ -6,9 +6,9 @@
 {
   "token": "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
   "randtag": "123456ABCDEF",
-  "videoURL": "https://app.ilosvideos.com/view/123456ABCDEF",
-  "embedURL": "https://app.ilosvideos.com/embed/123456ABCDEF",
-  "iframe": "<iframe src='https://app.ilosvideos.com/embed/123456ABCDEF'></iframe>",
+  "videoURL": "https://app.vidgrid.com/view/123456ABCDEF",
+  "embedURL": "https://app.vidgrid.com/embed/123456ABCDEF",
+  "iframe": "<iframe src='https://app.vidgrid.com/embed/123456ABCDEF'></iframe>",
   "video_endpoint_extras": {
     "extra1": "Something I wanted at my endpoint",
     "extra2": "Another thing I wanted at my endpoint",
@@ -16,11 +16,11 @@
 }
 ```
 
-Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to ilos.
+Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to VidGrid.
 
 You can set the webhook URL endpoint with the `video_endpoint` parameter in both the [Recording API](#recording-api) and [Uploading API](#uploading-api).
 
-You can view logs for calls to your endpoint under [integration settings](https://app.ilosvideos.com/integrations) in your ilos account.
+You can view logs for calls to your endpoint under [integration settings](https://app.vidgrid.com/integrations) in your VidGrid account.
 
 ### Webhook Response Body
 
