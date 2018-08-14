@@ -1,5 +1,5 @@
 ---
-title: ilos API Documentation
+title: VidGrid API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: Shell

@@ -1,8 +1,8 @@
 # Recording API
 
-The Recording API allows you to record videos using the ilos Screen Recorder. A basic implementation is as follows:
+The Recording API allows you to record videos using the VidGrid Screen Recorder. A basic implementation is as follows:
 
-1. Request a record token from ilos
+1. Request a record token from VidGrid
 2. Display a record button to a user using the either `recordButtonIframe` or `recorderLaunchURI` returned in Step 1. (We recommend using the iframe since it handles downloading and installing the recorder for first time users)
 3. Wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
 
@@ -12,7 +12,7 @@ The Recording API allows you to record videos using the ilos Screen Recorder. A 
 
 ```shell
 curl -X POST \
-  'https://api.ilosvideos.com/v1/token/record' \
+  'https://api.vidgrid.com/v1/token/record' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -25,7 +25,7 @@ curl -X POST \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.ilosvideos.com/v1/token/record")
+url = URI("https://api.vidgrid.com/v1/token/record")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -44,7 +44,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.ilosvideos.com/v1/token/record"
+url = "https://api.vidgrid.com/v1/token/record"
 
 payload = {
   'api_key': "{key}",
@@ -63,7 +63,7 @@ print(response.text)
 
 ```javascript
 var settings = {
-  "url": "https://api.ilosvideos.com/v1/token/record",
+  "url": "https://api.vidgrid.com/v1/token/record",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
@@ -89,9 +89,9 @@ $.ajax(settings).done(function (response) {
   "video_endpoint_extras": null,
   "video_set_public": true,
   "token": "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "recorderDownloadUrl": "https://app.ilosvideos.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
+  "recorderDownloadUrl": "https://app.vidgrid.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
   "recorderLaunchURI": "ilosrecord:record?token=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "recordButtonIframe": "<iframe src='https://app.ilosvideos.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'></iframe>",
+  "recordButtonIframe": "<iframe src='https://app.vidgrid.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'></iframe>",
   "expires": 1527729792
 }
 ```
@@ -102,13 +102,13 @@ This endpoint returns a one-time record token, ways to display a record button, 
 
 ### HTTP Request
 
-`POST https://api.ilosvideos.com/v1/token/record`
+`POST https://api.vidgrid.com/v1/token/record`
 
 ### Parameters
 
           |             |
 --------- | ----------- |
-**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your ilos account.
+**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.
 **video_endpoint** optional string | The [Webook](#webhooks) URL endpoint where a POST will be made after a video has been recorded and uploaded.
 **video_endpoint_extras** optional array | An array of extra data that will be sent to the [Webook](#webhooks) endpoint.
@@ -117,7 +117,7 @@ This endpoint returns a one-time record token, ways to display a record button, 
 **request_video_title** optional boolean | Whether or not to have the user title the video after recording.
 **record_single_video** optional boolean | **deprecated** This option has been deprecated and effectively sets `auto_open_video = false`, `auto_close_recorder = true`, and `request_video_title = false`. These three options should be used explicitly in favor of `record_single_video`.
 **video_title** optional string | Used to give the video a title if `request_video_title` is set to `false`.
-**video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.
+**video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.
 **collection** optional string | Automatically add the uploaded video to a folder. <br> *Note: Collections are now called Folders in app.*
 **auto_download_recorder** optional boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.
 **auto_authenticate_on_install** optional boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated.
