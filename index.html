@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ilos API Documentation</title>
+    <title>VidGrid API Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
@@ -211,7 +211,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo.svg" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">Shell</a>
               <a href="#" data-language-name="ruby">Ruby</a>
@@ -291,7 +291,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='api-reference'>API Reference</h1>
-<p>Welcome to the ilos API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your ilos account. All requests should be made over SSL and all responses are JSON encoded.</p>
+<p>Welcome to the VidGrid API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.</p>
 
 <p>You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.</p>
 <h2 id='live-demos'>Live Demos</h2>
@@ -299,24 +299,24 @@
 
 <ul>
 <li><a href="https://ticketingdemo.azurewebsites.net/#/home">Ticketing Demo (Click &quot;Report An Issue&quot;)</a></li>
-<li><a href="https://app.ilosvideos.com/demo/api/record">Recording Demo</a></li>
-<li><a href="https://app.ilosvideos.com/demo/api/upload">Uploading Demo</a></li>
+<li><a href="https://app.vidgrid.com/demo/api/record">Recording Demo</a></li>
+<li><a href="https://app.vidgrid.com/demo/api/upload">Uploading Demo</a></li>
 </ul>
 <h2 id='help-and-support'>Help and Support</h2>
-<p>If you discover a mistake in the documentation, please <a href="mailto:webmaster@ilosvideos.com?subject=API%20Documentation%20Issue">report an issue</a> and we&#39;ll take a look.</p>
+<p>If you discover a mistake in the documentation, please <a href="mailto:webmaster@vidgrid.com?subject=API%20Documentation%20Issue">report an issue</a> and we&#39;ll take a look.</p>
 
-<p>If you need further assistance or have any other questions, please visit our <a href="https://help.ilosvideos.com">Help Center</a>.</p>
+<p>If you need further assistance or have any other questions, please visit our <a href="https://help.vidgrid.com">Help Center</a>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> with your API key.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://api.ilosvideos.com/v1/token/record'</span> <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/record'</span> <span class="se">\</span>
   -d <span class="s1">'api_key={key}'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -327,7 +327,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/record"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/record"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={key}"</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
@@ -336,7 +336,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"api_key"</span><span class="p">:</span> <span class="s2">"{key}"</span>
@@ -347,7 +347,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
-<p>Authentication is done via an API key found in your ilos account&#39;s <a href="https://app.ilosvideos.com/integrations">integration settings</a>.</p>
+<p>Authentication is done via an API key found in your VidGrid account&#39;s <a href="https://app.vidgrid.com/integrations">integration settings</a>.</p>
 
 <p>Under integration settings you can copy your <a href="#api-key-types">API keys</a> or roll new ones if desired.</p>
 
@@ -361,26 +361,26 @@
 </thead><tbody>
 <tr>
 <td><strong>User</strong></td>
-<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with a User API key will be uploaded to that user&#39;s ilos account.</td>
+<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with a User API key will be uploaded to that user&#39;s VidGrid account.</td>
 </tr>
 <tr>
 <td><strong>Organization</strong></td>
-<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with an Organization API key will be upload to the organization&#39;s ilos account. These videos will not have an owner by default.</td>
+<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with an Organization API key will be upload to the organization&#39;s VidGrid account. These videos will not have an owner by default.</td>
 </tr>
 <tr>
 <td><strong>LTI</strong></td>
-<td>Used for our LTI integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=lti">information about LTI integrations</a>.</td>
+<td>Used for our LTI integrations. Check our help articles for more <a href="https://help.vidgrid.com/?q=lti">information about LTI integrations</a>.</td>
 </tr>
 <tr>
 <td><strong>Zoom</strong></td>
-<td>Used for our Zoom integrations. Check our help articles for more <a href="https://help.ilosvideos.com/?q=zoom">information about Zoom integrations</a>.</td>
+<td>Used for our Zoom integrations. Check our help articles for more <a href="https://help.vidgrid.com/?q=zoom">information about Zoom integrations</a>.</td>
 </tr>
 </tbody></table>
 <h1 id='recording-api'>Recording API</h1>
-<p>The Recording API allows you to record videos using the ilos Screen Recorder. A basic implementation is as follows:</p>
+<p>The Recording API allows you to record videos using the VidGrid Screen Recorder. A basic implementation is as follows:</p>
 
 <ol>
-<li>Request a record token from ilos</li>
+<li>Request a record token from VidGrid</li>
 <li>Display a record button to a user using the either <code>recordButtonIframe</code> or <code>recorderLaunchURI</code> returned in Step 1. (We recommend using the iframe since it handles downloading and installing the recorder for first time users)</li>
 <li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
 </ol>
@@ -389,7 +389,7 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://api.ilosvideos.com/v1/token/record'</span> <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/record'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -399,7 +399,7 @@
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -415,7 +415,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/record"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/record"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
@@ -431,7 +431,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
@@ -456,9 +456,9 @@
   </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"recorderDownloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recorderDownloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"recorderLaunchURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilosrecord:record?token=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"recordButtonIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recordButtonIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -468,7 +468,7 @@
 
 <p>This endpoint returns a one-time record token, ways to display a record button, and some additional data you can see in the sample response to the right.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.ilosvideos.com/v1/token/record</code></p>
+<p><code>POST https://api.vidgrid.com/v1/token/record</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -478,7 +478,7 @@
 </thead><tbody>
 <tr>
 <td><strong>api_key</strong> string</td>
-<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
 </tr>
 <tr>
 <td><strong>service_name</strong> optional string</td>
@@ -514,7 +514,7 @@
 </tr>
 <tr>
 <td><strong>video_set_public</strong> optional boolean</td>
-<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.</td>
 </tr>
 <tr>
 <td><strong>collection</strong> optional string</td>
@@ -541,7 +541,7 @@
 <p>The Uploading API allows you to upload videos using a web uploader in an iframe. A basic implementation is as follows:</p>
 
 <ol>
-<li>Request an upload token from ilos</li>
+<li>Request an upload token from VidGrid</li>
 <li>Display an upload form to a user using the either <code>uploadIframe</code> or <code>uploadIframeBasic</code> returned in Step 1.</li>
 <li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
 </ol>
@@ -550,7 +550,7 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://api.ilosvideos.com/v1/token/upload'</span> <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/upload'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -560,7 +560,7 @@
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/v1/token/upload"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/upload"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -576,7 +576,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/v1/token/upload"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/upload"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
@@ -592,7 +592,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/v1/token/upload"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/upload"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
@@ -617,8 +617,8 @@
   </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"uploadIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"uploadIframeBasic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframeBasic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -628,7 +628,7 @@
 
 <p>This endpoint returns a one-time upload token, ways to display an upload form, and some additional data you can see in the sample response to the right.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.ilosvideos.com/v1/token/upload</code></p>
+<p><code>POST https://api.vidgrid.com/v1/token/upload</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -638,7 +638,7 @@
 </thead><tbody>
 <tr>
 <td><strong>api_key</strong> string</td>
-<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
 </tr>
 <tr>
 <td><strong>service_name</strong> optional string</td>
@@ -654,7 +654,7 @@
 </tr>
 <tr>
 <td><strong>video_set_public</strong> optional boolean</td>
-<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your ilos account to view the video. If not set, your user or organization defaults will be used.</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.</td>
 </tr>
 <tr>
 <td><strong>collection</strong> optional string</td>
@@ -662,13 +662,13 @@
 </tr>
 </tbody></table>
 <h1 id='video-api'>Video API</h1>
-<p>The Video API allows you to retrieve information about your videos on ilos.</p>
+<p>The Video API allows you to retrieve information about your videos on VidGrid.</p>
 <h2 id='get-video-duration'>Get Video Duration</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://api.ilosvideos.com/video/metadata'</span> <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/video/metadata'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -677,7 +677,7 @@
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/video/metadata"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/video/metadata"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -692,7 +692,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/video/metadata"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/video/metadata"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
@@ -707,7 +707,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/video/metadata"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/video/metadata"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
@@ -739,7 +739,7 @@
 </span></code></pre>
 <p>This endpoint returns duration information for a specified video.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.ilosvideos.com/video/metadata</code></p>
+<p><code>POST https://api.vidgrid.com/video/metadata</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -749,7 +749,7 @@
 </thead><tbody>
 <tr>
 <td><strong>api_key</strong> string</td>
-<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
 </tr>
 <tr>
 <td><strong>randtag</strong> string</td>
@@ -763,20 +763,20 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"randtag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456ABCDEF"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/view/123456ABCDEF"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"embedURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.ilosvideos.com/embed/123456ABCDEF"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.ilosvideos.com/embed/123456ABCDEF'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/view/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"embedURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/embed/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/123456ABCDEF'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"extra1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something I wanted at my endpoint"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"extra2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another thing I wanted at my endpoint"</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to ilos.</p>
+<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to VidGrid.</p>
 
 <p>You can set the webhook URL endpoint with the <code>video_endpoint</code> parameter in both the <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>.</p>
 
-<p>You can view logs for calls to your endpoint under <a href="https://app.ilosvideos.com/integrations">integration settings</a> in your ilos account.</p>
+<p>You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations">integration settings</a> in your VidGrid account.</p>
 <h3 id='webhook-response-body'>Webhook Response Body</h3>
 <table><thead>
 <tr>
@@ -816,11 +816,11 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-  <span class="s1">'https://api.ilosvideos.com/opensearch/?q=testing&amp;api_key={key}'</span>
+  <span class="s1">'https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.ilosvideos.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -830,7 +830,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ilosvideos.com/opensearch/"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/opensearch/"</span>
 
 <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"q"</span><span class="p">:</span><span class="s">"example</span><span class="si">%20</span><span class="s">search"</span><span class="p">,</span><span class="s">"api_key"</span><span class="p">:</span><span class="s">"{key}"</span><span class="p">}</span>
 
@@ -840,7 +840,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.ilosvideos.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span>
 <span class="p">}</span>
 
@@ -848,9 +848,9 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
-<p>This endpoint returns a list of video items from ilos.</p>
+<p>This endpoint returns a list of video items from VidGrid.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.ilosvideos.com/opensearch</code></p>
+<p><code>GET https://api.vidgrid.com/opensearch</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -864,11 +864,11 @@
 </tr>
 <tr>
 <td><strong>api_key</strong> string</td>
-<td>An <a href="#api-key-types">Organization</a> API key from your ilos account.</td>
+<td>An <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
 </tr>
 <tr>
 <td><strong>ptilos</strong> optional boolean</td>
-<td>Whether or not to prefix returned video titles with <em>ilos:</em></td>
+<td>Whether or not to prefix returned video titles with <em>VidGrid:</em></td>
 </tr>
 </tbody></table>
 
@@ -876,7 +876,7 @@
 <h2 id='office365-sharepoint'>Office365 SharePoint</h2>
 <p>Here is a short demo of how to use OpenSearch in Office365 SharePoint.</p>
 
-<iframe title="Sharepoint OpenSearch ilos" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/kqxqAfbhDtlp"></iframe>
+<iframe title="Sharepoint OpenSearch VidGrid" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.vidgrid.com/embed/kqxqAfbhDtlp"></iframe>
 
       </div>
       <div class="dark-box">
