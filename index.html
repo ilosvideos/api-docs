@@ -668,7 +668,7 @@
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://api.vidgrid.com/video/metadata'</span> <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/video/metadata'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "api_key" : "{key}",
@@ -677,7 +677,7 @@
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/video/metadata"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/video/metadata"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 
@@ -692,7 +692,7 @@
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/video/metadata"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/video/metadata"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
@@ -707,7 +707,7 @@
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/video/metadata"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/video/metadata"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
@@ -739,7 +739,7 @@
 </span></code></pre>
 <p>This endpoint returns duration information for a specified video.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.vidgrid.com/video/metadata</code></p>
+<p><code>POST https://api.vidgrid.com/v1/video/metadata</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
