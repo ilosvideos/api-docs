@@ -8,7 +8,7 @@ The Video API allows you to retrieve information about your videos on VidGrid.
 
 ```shell
 curl -X POST \
-  'https://api.vidgrid.com/video/metadata' \
+  'https://api.vidgrid.com/v1/video/metadata' \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
@@ -20,7 +20,7 @@ curl -X POST \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.vidgrid.com/video/metadata")
+url = URI("https://api.vidgrid.com/v1/video/metadata")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -38,7 +38,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.vidgrid.com/video/metadata"
+url = "https://api.vidgrid.com/v1/video/metadata"
 
 payload = {
   'api_key': "{key}",
@@ -56,7 +56,7 @@ print(response.text)
 
 ```javascript
 var settings = {
-  "url": "https://api.vidgrid.com/video/metadata",
+  "url": "https://api.vidgrid.com/v1/video/metadata",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
@@ -92,7 +92,7 @@ This endpoint returns duration information for a specified video.
 
 ### HTTP Request
 
-`POST https://api.vidgrid.com/video/metadata`
+`POST https://api.vidgrid.com/v1/video/metadata`
 
 ### Parameters
 
