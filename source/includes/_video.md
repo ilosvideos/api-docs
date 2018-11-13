@@ -79,11 +79,15 @@ $.ajax(settings).done(function (response) {
   "message": "",
   "level": "success",
   "data": {
+    "title": "This is my video title",
     "hours": "00",
     "mins": "15",
     "secs": "10",
     "ms": "380",
-    "totalMs": 910380
+    "totalMs": 910380,
+    "videoSignedUrl": "https://www.signed-url-i-can-use-to-view-my-video.com",
+    "thumbnailSignedUrl": "https://www.signed-url-i-can-use-to-view-my-video-thumbnail.com",
+    "thumbnailSmallSignedUrl": "https://www.signed-url-i-can-use-to-view-my-small-video-thumbnail.com"
   }
 }
 ```
