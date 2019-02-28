@@ -14,6 +14,7 @@ includes:
   - uploading
   - video
   - webhooks
+  - cookies
   - opensearch
 
 search: true
