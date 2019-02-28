@@ -278,6 +278,17 @@
               </ul>
           </li>
           <li>
+            <a href="#cookies" class="toc-h1 toc-link" data-title="cookies">Cookies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#solution-1-dialog" class="toc-h2 toc-link" data-title="solution-1-dialog">Solution 1 (Dialog)</a>
+                  </li>
+                  <li>
+                    <a href="#solution-2-redirect" class="toc-h2 toc-link" data-title="solution-2-redirect">Solution 2 (Redirect)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#opensearch" class="toc-h1 toc-link" data-title="opensearch">OpenSearch</a>
               <ul class="toc-list-h2">
                   <li>
@@ -903,6 +914,52 @@
 <tr>
 <td><strong>video_endpoint_extras</strong> array or null</td>
 <td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording-api">Recording API</a> or <a href="#uploading-api">Uploading API</a>.</td>
+</tr>
+</tbody></table>
+<h1 id='cookies'>Cookies</h1>
+<p>With certain VidGrid integrations (such as LTI integrations using SSO) you may run into a problem with saving cookies in Safari &amp; iOS.</p>
+
+<p>The problem occurs when a user has &quot;Prevent cross-site tracking&quot; selected under Privacy in Safari (the default option) and is loading content within an iframe. Safari will prevent cookies saved from the host within the iframe unless the user has previously visited that host as the root document and had a cookie saved at that point.</p>
+
+<p>For instance, <strong>foo.com</strong> has an iframe which contains <strong>bar.com</strong>. If the user has not visited <strong>bar.com</strong> outside of an iframe, the <strong>bar.com</strong> iframe will not be able to save a cookie.</p>
+<h2 id='solution-1-dialog'>Solution 1 (Dialog)</h2><pre class="highlight shell tab-shell"><code><span class="c"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="c"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">openDialog</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'https://app.vidgrid.com/cookie/dialog'</span><span class="p">,</span> <span class="s1">'Cookie dialog'</span><span class="p">,</span> <span class="s1">'height=200,width=150'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">trigger</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".open-dialog"</span><span class="p">);</span>
+
+<span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="nx">openDialog</span><span class="p">);</span>
+</code></pre>
+<p>This will open a dialog window to app.vidgrid.com, save a cookie, and immediately close the dialog. The user MUST initiate this action (ie. through a button click) so the popup does not get blocked by the browser.</p>
+
+<p>In most cases <strong>we have already implemented this solution</strong> inside of our iframes as a fallback. However, you may still wish to use it and/or <a href="#solution-2-redirect">Solution 2</a> for a different workflow.</p>
+<h3 id='client-side-http-request'>Client-Side HTTP Request</h3>
+<p><code>GET https://app.vidgrid.com/cookie/dialog</code></p>
+
+<p><em>Note that we are using <code>app.vidgrid.com</code> as opposed to <code>api.vidgrid.com</code></em></p>
+<h2 id='solution-2-redirect'>Solution 2 (Redirect)</h2><pre class="highlight shell tab-shell"><code><span class="c"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="c"># See JavaScript tab as this is a client-side solution only.</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">"https://app.vidgrid.com/cookie/redirect?url=https%3A%2F%2Fwww.foo.com"</span><span class="p">;</span>
+</code></pre>
+<p>This will visit app.vidgrid.com, save a cookie, and immediately redirect to the desired url.</p>
+<h3 id='client-side-http-request-2'>Client-Side HTTP Request</h3>
+<p><code>GET https://app.vidgrid.com/cookie/redirect</code></p>
+
+<p><em>Note that we are using <code>app.vidgrid.com</code> as opposed to <code>api.vidgrid.com</code></em></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>url</strong> string</td>
+<td>Url for VidGrid to redirect to after saving the cookie. This should be url encoded.</td>
 </tr>
 </tbody></table>
 <h1 id='opensearch'>OpenSearch</h1>
