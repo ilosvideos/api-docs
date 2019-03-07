@@ -16,6 +16,7 @@ includes:
   - webhooks
   - cookies
   - opensearch
+  - playerjs
 
 search: true
 
