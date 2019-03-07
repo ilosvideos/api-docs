@@ -299,6 +299,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#player-js" class="toc-h1 toc-link" data-title="player-js">Player.js</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#example-auto-play-videos" class="toc-h2 toc-link" data-title="example-auto-play-videos">Example: Auto play videos</a>
+                  </li>
+              </ul>
+          </li>
       </div>
     </div>
     <div class="page-wrapper">
@@ -1030,6 +1041,31 @@
 <p>Here is a short demo of how to use OpenSearch in Office365 SharePoint.</p>
 
 <iframe title="Sharepoint OpenSearch VidGrid" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.vidgrid.com/embed/kqxqAfbhDtlp"></iframe>
+<h1 id='player-js'>Player.js</h1>
+<p><a href="http://playerjs.io/">Player.js</a> is a JavaScript library that allows developers to programmatically control video and audio within an iframe. It can be used with VidGrid embedded videos.</p>
+
+<p>For complete documentation on the capabilities of <a href="http://playerjs.io/">Player.js</a>, please visit <a href="http://playerjs.io/">http://playerjs.io/</a>.</p>
+<h2 id='installation'>Installation</h2>
+<p>Player.js is hosted on Embedly&#39;s CDN:</p>
+
+<p><code>&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.embed.ly/player-0.1.0.min.js&quot;&gt;&lt;/script&gt;</code></p>
+
+<p>You can also install it via npm:</p>
+
+<p><code>npm install player.js</code></p>
+<h2 id='example-auto-play-videos'>Example: Auto play videos</h2><pre class="highlight shell tab-shell"><code><span class="c"># See JavaScript tab as this is a client-side implementation only.</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># See JavaScript tab as this is a client-side implementation only.</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="c"># See JavaScript tab as this is a client-side implementation only.</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'iframe'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">playerjs</span><span class="p">.</span><span class="nx">Player</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
+
+<span class="nx">player</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre>
+<p>VidGrid supports auto playing videos when the <code>autoplay</code> query parameter is set to <code>true</code> on the video url. However, some browsers now block auto playing videos from starting. To get around this, we can use <a href="http://playerjs.io/">Player.js</a>.</p>
+
+<p>Simply follow the <a href="#installation">Installation</a> instructions and then follow the code example to the right.</p>
 
       </div>
       <div class="dark-box">
