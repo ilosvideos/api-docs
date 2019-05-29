@@ -514,6 +514,10 @@
 <td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been recorded and uploaded.</td>
 </tr>
 <tr>
+<td><strong>video_endpoint_trigger</strong> optional string</td>
+<td>Determines when to trigger the <a href="#webhooks">Webook</a>. The default is <code>ON_UPLOAD_COMPLETE</code> which happens as soon as a video has been uploaded to VidGrid. The other option is <code>ON_PROCESSING_COMPLETE</code> which happens when a video has completed processing and is watchable on VidGrid.</td>
+</tr>
+<tr>
 <td><strong>video_endpoint_extras</strong> optional array</td>
 <td>An array of extra data that will be sent to the <a href="#webhooks">Webook</a> endpoint.</td>
 </tr>
@@ -672,6 +676,10 @@
 <tr>
 <td><strong>video_endpoint</strong> optional string</td>
 <td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been uploaded.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_trigger</strong> optional string</td>
+<td>Determines when to trigger the <a href="#webhooks">Webook</a>. The default is <code>ON_UPLOAD_COMPLETE</code> which happens as soon as a video has been uploaded to VidGrid. The other option is <code>ON_PROCESSING_COMPLETE</code> which happens when a video has completed processing and is watchable on VidGrid.</td>
 </tr>
 <tr>
 <td><strong>video_endpoint_extras</strong> optional array</td>
@@ -890,9 +898,9 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will call once a video is uploaded to VidGrid.</p>
+<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will post to once a video is ready on VidGrid.</p>
 
-<p>You can set the webhook URL endpoint with the <code>video_endpoint</code> parameter in both the <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>.</p>
+<p>You can set the webhook options (<code>video_endpoint</code>, <code>video_endpoint_trigger</code>, and <code>video_endpoint_extras</code>) in both the <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>.</p>
 
 <p>You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations">integration settings</a> in your VidGrid account.</p>
 <h3 id='webhook-response-body'>Webhook Response Body</h3>
