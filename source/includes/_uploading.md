@@ -110,6 +110,7 @@ This endpoint returns a one-time upload token, ways to display an upload form, a
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.
 **video_endpoint** optional string | The [Webook](#webhooks) URL endpoint where a POST will be made after a video has been uploaded.
+**video_endpoint_trigger** optional string | Determines when to trigger the [Webook](#webhooks). The default is `ON_UPLOAD_COMPLETE` which happens as soon as a video has been uploaded to VidGrid. The other option is `ON_PROCESSING_COMPLETE` which happens when a video has completed processing and is watchable on VidGrid.
 **video_endpoint_extras** optional array | An array of extra data that will be sent to the [Webook](#webhooks) endpoint.
 **video_set_public** optional boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.
 **collection** optional string | Automatically add the uploaded video to a folder. <br> *Note: Collections are now called Folders in app.*

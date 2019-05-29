@@ -111,6 +111,7 @@ This endpoint returns a one-time record token, ways to display a record button, 
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
 **service_name** optional string | The name of your service. Mostly used for informational purposes.
 **video_endpoint** optional string | The [Webook](#webhooks) URL endpoint where a POST will be made after a video has been recorded and uploaded.
+**video_endpoint_trigger** optional string | Determines when to trigger the [Webook](#webhooks). The default is `ON_UPLOAD_COMPLETE` which happens as soon as a video has been uploaded to VidGrid. The other option is `ON_PROCESSING_COMPLETE` which happens when a video has completed processing and is watchable on VidGrid.
 **video_endpoint_extras** optional array | An array of extra data that will be sent to the [Webook](#webhooks) endpoint.
 **auto_open_video** optional boolean | Whether or not to automatically open the video in the user's browser after recording.
 **auto_close_recorder** optional boolean | Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token.
