@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell: Shell
   - ruby: Ruby
   - python: Python
-  - javascript: JavaScript
+  - javascript: NodeJS
 
 includes:
   - v2/introduction
@@ -17,7 +17,7 @@ includes:
   # - v2/cookies
   # - v2/opensearch
   # - v2/playerjs
-  # - v
+  # - v2/errors
 
 search: true
 
