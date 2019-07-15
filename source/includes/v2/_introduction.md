@@ -1,8 +1,8 @@
 # API Reference
 
-Welcome to the VidGrid API! This is a simple [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API that you can use to [record](#recording-api) and/or [upload](#uploading-api) videos into your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.
+Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API! You can use it to create and manage resources on your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.
 
-You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.
+Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
 
 ## Live Demos
 
