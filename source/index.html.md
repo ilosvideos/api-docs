@@ -8,15 +8,15 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript: JavaScript
 
 includes:
-  - introduction
-  - authentication
-  - recording
-  - uploading
-  - video
-  - webhooks
-  - cookies
-  - opensearch
-  - playerjs
+  - v2/introduction
+  # - v2/authentication
+  # - v2/recording
+  # - v2/uploading
+  # - v2/video
+  # - v2/webhooks
+  # - v2/cookies
+  # - v2/opensearch
+  # - v2/playerjs
 
 search: true
 
