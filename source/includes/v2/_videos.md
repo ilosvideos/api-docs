@@ -12,7 +12,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
-    "randtag" : "123456ABCDEF"
+    "identifier" : "123456ABCDEF"
   }'
 ```
 
@@ -28,7 +28,7 @@ request = Net::HTTP::Post.new(url)
 request["Content-Type"] = 'application/json'
 request.body = '{
   api_key: "{key}",
-  randtag : "123456ABCDEF"
+  identifier : "123456ABCDEF"
 }'
 
 response = http.request(request)
@@ -42,7 +42,7 @@ url = "https://api.vidgrid.com/v2/video/metadata"
 
 payload = {
   'api_key': "{key}",
-  'randtag' : "123456ABCDEF"
+  'identifier' : "123456ABCDEF"
 }
 
 headers = {
@@ -63,7 +63,7 @@ var settings = {
   },
   "data": {
     api_key: "{key}",
-    randtag : "123456ABCDEF"
+    identifier : "123456ABCDEF"
   }
 }
 
@@ -103,7 +103,7 @@ This endpoint returns metadata for a specified video.
           |             |
 --------- | ----------- |
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
-**randtag** string | The unique ID of your video.
+**identifier** string | The unique ID of your video.
 
 ## Get Video File
 
@@ -115,7 +115,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{
     "api_key" : "{key}",
-    "randtag" : "123456ABCDEF"
+    "identifier" : "123456ABCDEF"
   }'
 ```
 
@@ -131,7 +131,7 @@ request = Net::HTTP::Post.new(url)
 request["Content-Type"] = 'application/json'
 request.body = '{
   api_key: "{key}",
-  randtag : "123456ABCDEF"
+  identifier : "123456ABCDEF"
 }'
 
 response = http.request(request)
@@ -145,7 +145,7 @@ url = "https://api.vidgrid.com/v2/video/file"
 
 payload = {
   'api_key': "{key}",
-  'randtag' : "123456ABCDEF"
+  'identifier' : "123456ABCDEF"
 }
 
 headers = {
@@ -166,7 +166,7 @@ var settings = {
   },
   "data": {
     api_key: "{key}",
-    randtag : "123456ABCDEF"
+    identifier : "123456ABCDEF"
   }
 }
 
@@ -198,4 +198,4 @@ This endpoint returns a signed url for the video file.
           |             |
 --------- | ----------- |
 **api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
-**randtag** string | The unique ID of your video.
+**identifier** string | The unique ID of your video.

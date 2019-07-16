@@ -5,7 +5,7 @@
 ```json
 {
   "token": "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "randtag": "123456ABCDEF",
+  "identifier": "123456ABCDEF",
   "videoURL": "https://app.vidgrid.com/view/123456ABCDEF",
   "embedURL": "https://app.vidgrid.com/embed/123456ABCDEF",
   "iframe": "<iframe src='https://app.vidgrid.com/embed/123456ABCDEF'></iframe>",
@@ -27,7 +27,7 @@ You can view logs for calls to your endpoint under [integration settings](https:
           |             |
 --------- | ----------- |
 **token** string | Token that the video was used to record or upload the video.
-**randtag** string | The unique ID for your video.
+**identifier** string | The unique ID for your video.
 **videoURL** string | URL to view your video.
 **embedURL** string | URL you can use as the source of an iframe.
 **iframe** string | An iframe containing the video.

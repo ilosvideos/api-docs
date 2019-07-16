@@ -3,7 +3,7 @@
 > Authentication using HTTP basic auth.
 
 ```shell
-curl 'https://api.vidgrid.com/v2/videos/randtag' \
+curl 'https://api.vidgrid.com/v2/videos/identifier' \
   -u {key}:
 ```
 
@@ -22,7 +22,7 @@ curl 'https://api.vidgrid.com/v2/videos/randtag' \
 > Authentication using a Bearer token in an Authorization header.
 
 ```shell
-curl 'https://api.vidgrid.com/v2/videos/randtag' \
+curl 'https://api.vidgrid.com/v2/videos/identifier' \
   -H 'Authorization: Basic {key}'
 ```
 
@@ -30,7 +30,7 @@ curl 'https://api.vidgrid.com/v2/videos/randtag' \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.vidgrid.com/v2/videos/randtag")
+url = URI("https://api.vidgrid.com/v2/videos/identifier")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -44,7 +44,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.vidgrid.com/v2/videos/randtag"
+url = "https://api.vidgrid.com/v2/videos/identifier"
 
 headers = {
   'Authorization': "Bearer {key}",
@@ -60,7 +60,7 @@ var request = require("request");
 
 var options = {
   method: 'GET',
-  url: 'https://api.vidgrid.com/v2/videos/randtag',
+  url: 'https://api.vidgrid.com/v2/videos/identifier',
   headers: {
     Authorization: 'Bearer {key}'
   }
