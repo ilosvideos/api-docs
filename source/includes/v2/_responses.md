@@ -6,20 +6,36 @@ You can see examples of successful and failed responses as well as different HTT
 
 ## Success Responses
 
-All of our successful responses will have the structure shown to the right.
+All successful `GET` responses will return a data array while all other success responses will return a data **object**.
 
-> Example of a success response.
+> Example of a success response with a data object.
 
 ```json
-// TODO
+{
+  "data": {
+    ...
+  }
+}
+```
+
+> Example of a success response with a data array.
+
+```json
+{
+  "data": [{
+    ...
+  }, {
+    ...
+  }]
+}
 ```
 
 ### HTTP Status Codes
 
-Code | Title | Description |
---------- | ----------- | ----------- |
-**200** | OK | The request was successfull.
-**204** | No Content | The server has successfully fulfilled the request and there is no additional content to send in the response.
+| Code | Title | Description |
+| --------- | ----------- | ----------- |
+| **200** | OK | The request was successfull. |
+| **204** | No Content | The server has successfully fulfilled the request and there is no additional content to send in the response. |
 
 ## Error Responses
 
@@ -35,10 +51,10 @@ All of our error responses will return a message describing what went wrong.
 
 ### HTTP Status Codes
 
-Code | Title | Description |
---------- | ----------- | ----------- |
-**401** | Unauthorized | The request has not been applied because it lacks valid authentication credentials for the target resource.
-**403** | Forbidden | The server understood the request but refuses to authorize it.
-**404** | Not found	| The resource does not exist.
-**422** | Validation error | A validation error occurred.
-**50X** | Internal Server Error | An error occurred with our API.
+| Code | Title | Description |
+| --------- | ----------- | ----------- |
+| **401** | Unauthorized | The request has not been applied because it lacks valid authentication credentials for the target resource. |
+| **403** | Forbidden | The server understood the request but refuses to authorize it. |
+| **404** | Not found	| The resource does not exist. |
+| **422** | Validation error | A validation error occurred. |
+| **50X** | Internal Server Error | An error occurred with our API. |

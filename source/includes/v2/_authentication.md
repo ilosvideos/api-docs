@@ -75,12 +75,14 @@ request(options, function (error, response, body) {
 
 Authentication is done via [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) using an API key. Each request requires an API key as the username and no password is required.
 
-Alternatively, you can pass your base64 encoded API key as a bearer token in an `Authorization` header.
+Alternatively, you can pass your **base64 encoded** API key as a bearer token in an `Authorization` header.
 
-You can find your [API keys](#api-key-types) under [integration settings](https://app.vidgrid.com/integrations) and roll new ones if desired.
+You can find your API keys under [integration settings](https://app.vidgrid.com/integrations) and roll new ones if desired.
 
-## API Key Types
+### API Key Types
 
-|      |             |
+| Type | Description |
 |------|-------------|
-| **TODO** | TODO |
+| **User** | Used to make general API requests on behalf of a user in your VidGrid account. |
+| **LTI** | Used for our LTI integrations. Check our help articles for more [information about LTI integrations](https://help.vidgrid.com/?q=lti). |
+| **Zoom** | Used for our Zoom integrations. Check our help articles for more [information about Zoom integrations](https://help.vidgrid.com/?q=zoom). |
