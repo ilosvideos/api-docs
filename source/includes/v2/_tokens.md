@@ -168,6 +168,8 @@ request(options, function (error, response, body) {
 }
 ```
 
+Record tokens use the VidGrid Screen Recorder to record and upload videos to your VidGrid account.
+
 ### Returned Data Object
 
 | Key | Type | Value |
@@ -266,6 +268,8 @@ request(options, function (error, response, body) {
   }
 }
 ```
+
+Upload tokens use an upload iframe to upload pre-existing videos to VidGrid.
 
 ### Returned Data Object
 
