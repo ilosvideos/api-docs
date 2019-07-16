@@ -10,6 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - v2/introduction
   - v2/authentication
+  - v2/errors
   # - v2/recording
   # - v2/uploading
   # - v2/video
@@ -17,7 +18,6 @@ includes:
   # - v2/cookies
   # - v2/opensearch
   # - v2/playerjs
-  # - v2/errors
 
 search: true
 

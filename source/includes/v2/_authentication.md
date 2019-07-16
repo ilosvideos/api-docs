@@ -8,15 +8,15 @@ curl 'https://api.vidgrid.com/v2/videos/randtag' \
 ```
 
 ```ruby
-  # TODO
+# TODO
 ```
 
 ```python
-  # TODO
+# TODO
 ```
 
 ```javascript
-  // TODO
+// TODO
 ```
 
 > Authentication using a Bearer token in an Authorization header.
