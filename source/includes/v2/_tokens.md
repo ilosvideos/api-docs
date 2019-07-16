@@ -105,15 +105,19 @@ $.ajax(settings).done(function (response) {
 
 ### Base Parameters
 
+The base parameters for a generate token request.
+
 Parameter | Type | Description | Default
 --------- | ---- | ----------- | -------
 **type** | string | **(Required)** Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | -
-**video** | [Video Settings Array](#video-settings-array) | An array that sets properties on the created video. | [Video Settings Array](#video-settings-array)
-**webhook** | [Webhook Settings Array](#webhook-settings-array) | An array that sets the desired Webhook behavior. | [Webhook Settings Array](#webhook-settings-array)
-**recorder** | [Recorder Settings Array](#recorder-settings-array) | A that sets the desired recorder behavior.<br>*Only applies to tokens with a `type` of `record`.* | [Recorder Settings Array](#recorder-settings-array)
+**video** | [Video Settings Array](#video-settings-array) | See [Video Settings Array](#video-settings-array). | -
+**webhook** | [Webhook Settings Array](#webhook-settings-array) | See [Webhook Settings Array](#webhook-settings-array). | -
+**recorder** | [Recorder Settings Array](#recorder-settings-array) | See [Recorder Settings Array](#recorder-settings-array). | -
 
 
 ### Video Settings Array
+
+Used to set properties on a newly created video.
 
 Parameter | Type | Description | Default
 --------- | ---- | ----------- | -------
@@ -124,6 +128,8 @@ Parameter | Type | Description | Default
 
 ### Webhook Settings Array
 
+Used to configure webhook behavior.
+
 Parameter | Type | Description | Default
 --------- | ---- | ----------- | -------
 **video_endpoint** | string | TODO | TODO
@@ -132,6 +138,8 @@ Parameter | Type | Description | Default
 
 
 ### Recorder Settings Array
+
+Used to configure recorder behavior. 
 
 *Only applies to tokens with a `type` of `record`.*
 
@@ -142,10 +150,12 @@ Parameter | Type | Description | Default
 **hide_video_title_input** | boolean | Whether or not to allow the user title the video after recording. | false
 **default_fullscreen** | boolean | Whether or not the recorder should launch in fullscreen mode. | false
 **force_webcam_only** | boolean | Whether or not the recorder should be restricted to webcam only mode. | false
-**on_install** | [Recorder Install Settings Array](#recorder-install-settings-array) | An array used to set recorder behavior during installation. | [Recorder Install Settings Array](#recorder-install-settings-array)
+**on_install** | [Recorder Install Settings Array](#recorder-install-settings-array) | See [Recorder Install Settings Array](#recorder-install-settings-array). | -
 
 
 ### Recorder Install Settings Array
+
+Used to configure recorder behavior during first time installation.
 
 *Only applies to tokens with a `type` of `record`.*
 
