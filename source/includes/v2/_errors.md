@@ -2,7 +2,7 @@
 
 Our API returns standard HTTP success and error status codes. You can see the different HTTP status codes that we may return below.
 
-### HTTP Status Codes
+## HTTP Status Codes
 
 Code | Title | Description |
 --------- | ----------- | ----------- |
@@ -14,7 +14,7 @@ Code | Title | Description |
 **422** | Validation error | A validation error occurred.
 **50X** | Internal Server Error | An error occurred with our API.
 
-### Error Responses
+## Error Responses
 
 All of our error responses will also return a message describing what went wrong.
 

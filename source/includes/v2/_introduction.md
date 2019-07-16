@@ -17,3 +17,5 @@ Code examples can be viewed in the area to the right, and you can switch the lan
 If you discover a mistake in the documentation, please [report an issue](mailto:webmaster@vidgrid.com?subject=API Documentation Issue) and we'll take a look.
 
 If you need further assistance or have any other questions, please visit our [Help Center](https://help.vidgrid.com).
+
+<!-- TODO update hash on scroll -->

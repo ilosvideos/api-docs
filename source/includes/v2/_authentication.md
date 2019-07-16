@@ -79,7 +79,7 @@ Alternatively, you can pass your base64 encoded API key as a bearer token in an 
 
 You can find your [API keys](#api-key-types) under [integration settings](https://app.vidgrid.com/integrations) and roll new ones if desired.
 
-### API Key Types
+## API Key Types
 
 |      |             |
 |------|-------------|
