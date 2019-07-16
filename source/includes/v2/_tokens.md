@@ -109,7 +109,7 @@ The base parameters for a generate token request.
 
 Parameter | Type | Description | Default
 --------- | ---- | ----------- | -------
-**type** | string | **(Required)** Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | -
+**type** | string | Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | *Required*
 **video** | [Video Settings Array](#video-settings-array) | See [Video Settings Array](#video-settings-array). | -
 **webhook** | [Webhook Settings Array](#webhook-settings-array) | See [Webhook Settings Array](#webhook-settings-array). | -
 **recorder** | [Recorder Settings Array](#recorder-settings-array) | See [Recorder Settings Array](#recorder-settings-array). | -
@@ -165,7 +165,7 @@ Parameter | Type | Description | Default
 **show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false
 
 
-## Record Token Example
+## Recording Example
 
 A basic implementation is as follows:
 
@@ -174,7 +174,7 @@ A basic implementation is as follows:
 3. Wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
 
 
-## Upload Token Example
+## Uploading Example
 
 A basic implementation is as follows:
 

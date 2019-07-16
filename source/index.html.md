@@ -10,7 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - v2/introduction
   - v2/authentication
-  - v2/errors
+  - v2/responses
   - v2/tokens
   # - v2/recording
   # - v2/uploading

@@ -426,6 +426,7 @@ html, body {
     td {
       border-right: 1px solid $table-border-color;
       padding: 10px;
+      vertical-align: middle;
     }
 
     tr:nth-child(odd)>td {
@@ -442,7 +443,6 @@ html, body {
 
       td:first-child {
         color: lighten($main-text, 20%);
-        text-align: right;
         strong {
           display: block;
           color: $main-text;

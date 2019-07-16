@@ -1,3 +1,5 @@
+@import 'fonts';
+
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
 
@@ -76,7 +78,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 // FONTS
 ////////////////////
 %default-font {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-family: 'LatticeCircular', 'Helvetica', 'Arial', sans-serif;
   font-size: 14px;
 }
 
