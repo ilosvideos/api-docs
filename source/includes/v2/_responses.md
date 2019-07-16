@@ -6,8 +6,6 @@ You can see examples of successful and failed responses as well as different HTT
 
 ## Success Responses
 
-All successful `GET` responses will return a data array while all other success responses will return a data **object**.
-
 > Example of a success response with a data object.
 
 ```json
@@ -30,6 +28,8 @@ All successful `GET` responses will return a data array while all other success 
 }
 ```
 
+All successful `GET` responses will return a data array while all other success responses will return a data **object**.
+
 ### HTTP Status Codes
 
 | Code | Title | Description |
@@ -39,8 +39,6 @@ All successful `GET` responses will return a data array while all other success 
 
 ## Error Responses
 
-All of our error responses will return a message describing what went wrong.
-
 > Example of an error response.
 
 ```json
@@ -48,6 +46,8 @@ All of our error responses will return a message describing what went wrong.
   "message": "A message explaining what went wrong."
 }
 ```
+
+All of our error responses will return a message describing what went wrong.
 
 ### HTTP Status Codes
 

@@ -23,7 +23,7 @@ curl 'https://api.vidgrid.com/v2/videos/identifier' \
 
 ```shell
 curl 'https://api.vidgrid.com/v2/videos/identifier' \
-  -H 'Authorization: Basic {key}'
+  -H 'Authorization: Basic {encoded_key}'
 ```
 
 ```ruby
@@ -35,7 +35,7 @@ url = URI("https://api.vidgrid.com/v2/videos/identifier")
 http = Net::HTTP.new(url.host, url.port)
 
 request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer {key}'
+request["Authorization"] = 'Bearer {encoded_key}'
 
 response = http.request(request)
 puts response.read_body
@@ -47,7 +47,7 @@ import requests
 url = "https://api.vidgrid.com/v2/videos/identifier"
 
 headers = {
-  'Authorization': "Bearer {key}",
+  'Authorization': "Bearer {encoded_key}",
 }
 
 response = requests.request("GET", url, headers=headers)
@@ -62,7 +62,7 @@ var options = {
   method: 'GET',
   url: 'https://api.vidgrid.com/v2/videos/identifier',
   headers: {
-    Authorization: 'Bearer {key}'
+    Authorization: 'Bearer {encoded_key}'
   }
 };
 

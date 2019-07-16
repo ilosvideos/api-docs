@@ -2,106 +2,21 @@
 
 The Token API allows you to requests tokens that can be used to record or upload videos into your VidGrid account.
 
+A basic implementation of the Recording/Uploading API could look as follows:
+
+1. Request a token from VidGrid and save the returned data.
+2. Display a recording/uploading iframe to the user using the either `recorder.iframe_button` or `uploader.iframe` (we recommend using our iframes since they handle downloading and installing the recorder for first time users).
+3. TODO: Once a user has used the recorder/uploader to upload a video, wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
 
 ## Generate Token
 
+> See [Record Tokens](#record-tokens) and [Upload Tokens](#upload-tokens) for example requests and responses.
+
 This endpoint generates and returns a one-time token as well as iframes and URI's that can be provided to a user for recording or uploading videos.
-
-> Example Request
-
-```shell
-curl -X POST \
-  'https://api.vidgrid.com/v2/token/record' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "api_key" : "{key}",
-    "video_endpoint" : "https://yoursite.com/endpoint",
-    "video_set_public" : true
-  }'
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.vidgrid.com/v2/token/record")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request["Content-Type"] = 'application/json'
-request.body = '{
-  api_key: "{key}",
-  video_endpoint: "https://yoursite.com/endpoint",
-  video_set_public: true
-}'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.vidgrid.com/v2/token/record"
-
-payload = {
-  'api_key': "{key}",
-  'video_endpoint': "https://yoursite.com/endpoint",
-  'video_set_public': true
-}
-
-headers = {
-  'Content-Type': "application/json",
-}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var settings = {
-  "url": "https://api.vidgrid.com/v2/token/record",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-  },
-  "data": {
-    api_key: "{key}",
-    video_endpoint: "https://yoursite.com/endpoint",
-    video_set_public: true
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-```
-
-> Example Response
-
-```json
-{
-  "worked": true,
-  "video_endpoint": "https://yoursite.com/endpoint",
-  "video_endpoint_extras": null,
-  "video_set_public": true,
-  "token": "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "recorderDownloadUrl": "https://app.vidgrid.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "recorderLaunchURI": "ilosrecord:record?token=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
-  "recordButtonIframe": "<iframe src='https://app.vidgrid.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'></iframe>",
-  "expires": 1527729792
-}
-```
-
-> `expires` is a UNIX Timestamp (UTC) indicating when the temporary token will expire
-
 
 ### HTTP Request
 
 `POST https://api.vidgrid.com/v2/tokens`
-
 
 ### Base Parameters
 
@@ -110,12 +25,11 @@ The base parameters for a generate token request.
 | Parameter | Type | Description | Default |
 | --------- | ---- | ----------- | ------- |
 | **type** | string | Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | *Required* |
-| **video** | [Video Settings Array](#video-settings-array) | See [Video Settings Array](#video-settings-array). | - |
-| **webhook** | [Webhook Settings Array](#webhook-settings-array) | See [Webhook Settings Array](#webhook-settings-array). | - |
-| **recorder** | [Recorder Settings Array](#recorder-settings-array) | See [Recorder Settings Array](#recorder-settings-array). | - |
+| **video** | [Video Settings Object](#video-settings-object) | See [Video Settings Object](#video-settings-object). | - |
+| **webhook** | [Webhook Settings Object](#webhook-settings-object) | See [Webhook Settings Object](#webhook-settings-object). | - |
+| **recorder** | [Recorder Settings Object](#recorder-settings-object) | See [Recorder Settings Object](#recorder-settings-object). | - |
 
-
-### Video Settings Array
+### Video Settings Object
 
 Used to set properties on a newly created video.
 
@@ -125,10 +39,11 @@ Used to set properties on a newly created video.
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
 | **folder** | string | Automatically add the uploaded video to a folder.<br>*Possible values: `my_grid`, `org_library`, `any valid folder identifier`.* | my_grid |
 
+### Webhook Settings Object
 
-### Webhook Settings Array
+Used to configure webhook behavior. 
 
-Used to configure webhook behavior.
+TODO may move to a different webhook section.
 
 | Parameter | Type | Description | Default |
 | --------- | ---- | ----------- | ------- |
@@ -137,7 +52,7 @@ Used to configure webhook behavior.
 | **video_endpoint_extras** | array | TODO | TODO |
 
 
-### Recorder Settings Array
+### Recorder Settings Object
 
 Used to configure recorder behavior. 
 
@@ -150,10 +65,9 @@ Used to configure recorder behavior.
 | **hide_video_title_input** | boolean | Whether or not to allow the user title the video after recording. | false |
 | **default_fullscreen** | boolean | Whether or not the recorder should launch in fullscreen mode. | false |
 | **force_webcam_only** | boolean | Whether or not the recorder should be restricted to webcam only mode. | false |
-| **on_install** | [Recorder Install Settings Array](#recorder-install-settings-array) | See [Recorder Install Settings Array](#recorder-install-settings-array). | - |
+| **on_install** | [Recorder Install Settings Object](#recorder-install-settings-object) | See [Recorder Install Settings Object](#recorder-install-settings-object). | - |
 
-
-### Recorder Install Settings Array
+### Recorder Install Settings Object
 
 Used to configure recorder behavior during first time installation.
 
@@ -164,20 +78,200 @@ Used to configure recorder behavior during first time installation.
 | **auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
 | **show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false |
 
+## Record Tokens
 
-## Recording Example
+> Example record token request.
 
-A basic implementation is as follows:
+```shell
+curl -X POST \
+  'https://api.vidgrid.com/v2/tokens' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic {encoded_key}' \
+  -d '{
+    "type": "record"
+  }'
+```
 
-1. Request a record token from VidGrid
-2. Display a record button to a user using the either `recordButtonIframe` or `recorderLaunchURI` returned in Step 1. (We recommend using the iframe since it handles downloading and installing the recorder for first time users)
-3. Wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
+```ruby
+require 'uri'
+require 'net/http'
 
+url = URI("https://api.vidgrid.com/v2/tokens")
 
-## Uploading Example
+http = Net::HTTP.new(url.host, url.port)
 
-A basic implementation is as follows:
+request = Net::HTTP::Post.new(url)
+request["Content-Type"] = 'application/json'
+request["Authorization"] = 'Basic {encoded_key}'
+request.body = '{
+  "type": "record"
+}'
 
-1. Request an upload token from VidGrid
-2. Display an upload form to a user using the either `uploadIframe` or `uploadIframeBasic` returned in Step 1.
-3. Wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+import requests
+
+url = "https://api.vidgrid.com/v2/tokens"
+
+payload = {
+  "type": "record"
+}
+headers = {
+  'Content-Type': "application/json",
+  'Authorization': "Basic {encoded_key}",
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```javascript
+var request = require("request");
+
+var options = {
+  method: 'POST',
+  url: 'https://api.vidgrid.com/v2/tokens',
+  headers: { 
+    Authorization: 'Basic {encoded_key}',
+    'Content-Type': 'application/json' 
+  },
+  body: { 
+    type: 'record' 
+  },
+  json: true 
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> Example record token response.
+
+```json
+{
+  "data": {
+    "token": "...",
+    "expires": 1563328704,
+    "recorder": {
+      "download_url": "...",
+      "launch_uri": "...",
+      "iframe_button": "..."
+    }
+  }
+}
+```
+
+### Returned Data Object
+
+| Key | Type | Value |
+| --- | ---- | ----- |
+| **token** | string | One-time token that is used for validation when recording and uploading a video. |
+| **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
+| **recorder.download_url** | string | URL that can be used to download the recorder. |
+| **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
+| **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. |
+
+## Upload Tokens
+
+> Example record token request.
+
+```shell
+curl -X POST \
+  'https://api.vidgrid.com/v2/tokens' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic {encoded_key}' \
+  -d '{
+    "type": "upload"
+  }'
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://api.vidgrid.com/v2/tokens")
+
+http = Net::HTTP.new(url.host, url.port)
+
+request = Net::HTTP::Post.new(url)
+request["Content-Type"] = 'application/json'
+request["Authorization"] = 'Basic {encoded_key}'
+request.body = '{
+  "type": "upload"
+}'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+import requests
+
+url = "https://api.vidgrid.com/v2/tokens"
+
+payload = {
+  "type": "upload"
+}
+headers = {
+  'Content-Type': "application/json",
+  'Authorization': "Basic {encoded_key}",
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```javascript
+var request = require("request");
+
+var options = {
+  method: 'POST',
+  url: 'https://api.vidgrid.com/v2/tokens',
+  headers: { 
+    Authorization: 'Basic {encoded_key}',
+    'Content-Type': 'application/json' 
+  },
+  body: { 
+    type: 'upload' 
+  },
+  json: true 
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> Example record token response.
+
+```json
+{
+  "data": {
+    "token": "...",
+    "expires": 1563328704,
+    "uploader": {
+      "iframe": "...",
+      "iframe_basic": "..."
+    }
+  }
+}
+```
+
+### Returned Data Object
+
+| Key | Type | Value |
+| --- | ---- | ----- |
+| **token** | string | One-time token that is used for validation when uploading a video. |
+| **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
+| **uploader.iframe** | string | Iframe containing a simple upload dropzone. |
+| **recorder.iframe_basic** | string | Iframe containing a simple upload button. |
