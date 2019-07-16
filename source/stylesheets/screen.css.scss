@@ -89,6 +89,8 @@ html, body {
       border-color: $search-box-border-color;
       padding: $nav-v-padding $nav-padding;
       box-sizing: border-box;
+      // margin: $nav-v-padding $nav-padding;
+      // width: $nav-width - ($nav-padding*2);
       width: 100%;
       outline: none;
       color: $nav-text;
