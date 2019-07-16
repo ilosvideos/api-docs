@@ -12,8 +12,6 @@ includes:
   - v2/authentication
   - v2/responses
   - v2/tokens
-  # - v2/recording
-  # - v2/uploading
   # - v2/videos
   # - v2/webhooks
   # - v2/cookies
