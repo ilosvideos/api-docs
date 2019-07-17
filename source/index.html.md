@@ -15,7 +15,7 @@ includes:
   # - v2/videos
   # - v2/webhooks
   - v2/cookies
-  # - v2/opensearch
+  - v2/opensearch
   # - v2/playerjs
   # - v2/identifiers
 
