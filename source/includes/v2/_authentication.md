@@ -5,11 +5,13 @@
 ```shell
 # HTTP Basic Auth
 curl 'https://api.vidgrid.com/v2/videos/identifier' \
+  -H 'Content-Type: application/json' \
   -u {key}:{secret}
 
 # Using a Basic token in an Authorization header
 curl 'https://api.vidgrid.com/v2/videos/identifier' \
-  -H 'Authorization: Basic {token}'
+  -H 'Authorization: Basic {token}' \
+  -H 'Content-Type: application/json'
 ```
 
 ```ruby
@@ -21,6 +23,7 @@ url = URI("https://api.vidgrid.com/v2/videos/identifier")
 http = Net::HTTP.new(url.host, url.port)
 
 request = Net::HTTP::Get.new(url)
+request["Content-Type"] = 'application/json'
 request["Authorization"] = 'Basic {token}'
 
 response = http.request(request)
@@ -33,7 +36,8 @@ import requests
 url = "https://api.vidgrid.com/v2/videos/identifier"
 
 headers = {
-  'Authorization': "Basic {token}",
+  'Content-Type': "application/json",
+  'Authorization': "Basic {token}"
 }
 
 response = requests.request("GET", url, headers=headers)
@@ -50,7 +54,8 @@ var options = {
   method: 'GET',
   url: 'https://api.vidgrid.com/v2/videos/identifier',
   headers: {
-    Authorization: 'Basic {token}'
+    Authorization: 'Basic {token}',
+    'Content-Type': 'application/json'
   }
 };
 
