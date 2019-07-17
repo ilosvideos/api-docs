@@ -18,9 +18,9 @@ This endpoint generates and returns a one-time token as well as iframes and URI'
 
 `POST https://api.vidgrid.com/v2/tokens`
 
-### Base Parameters
+### Base Options
 
-The base parameters for a generate token request.
+The base options for a generate token request.
 
 | Parameter | Type | Description | Default |
 | --------- | ---- | ----------- | ------- |
@@ -130,6 +130,8 @@ print(response.text)
 ```
 
 ```javascript
+// NodeJS
+
 var request = require("request");
 
 var options = {
@@ -232,6 +234,8 @@ print(response.text)
 ```
 
 ```javascript
+// NodeJS
+
 var request = require("request");
 
 var options = {

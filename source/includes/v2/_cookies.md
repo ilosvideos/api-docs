@@ -6,6 +6,8 @@ The problem occurs when a user has "Prevent cross-site tracking" selected under 
 
 For instance, **foo.com** has an iframe which contains **bar.com**. If the user has not visited **bar.com** outside of an iframe, the **bar.com** iframe will not be able to save a cookie.
 
+**TODO: there may be issues with other browsers now so we need to see if we should extend this functionality**
+
 ## Solution 1 (Dialog)
 
 ```shell
@@ -66,8 +68,8 @@ This will visit app.vidgrid.com, save a cookie, and immediately redirect to the 
 
 *Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
 
-### Parameters
+### Base Options
 
-          |             |
---------- | ----------- |
-**url** string | Url for VidGrid to redirect to after saving the cookie. This should be url encoded.
+| Parameter | Type | Description | Default |
+| --------- | ---- | ----------- | ------- |
+| **url** | string | URL encoded string for VidGrid to redirect to after saving the cookie. | *Required* |
