@@ -76,7 +76,7 @@ Used to configure recorder behavior during first time installation.
 curl -X POST \
   'https://api.vidgrid.com/v2/tokens' \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer {token}' \
+  -H 'Authorization: Basic {token}' \
   -d '{
     "type": "record"
   }'
@@ -92,7 +92,7 @@ http = Net::HTTP.new(url.host, url.port)
 
 request = Net::HTTP::Post.new(url)
 request["Content-Type"] = 'application/json'
-request["Authorization"] = 'Bearer {token}'
+request["Authorization"] = 'Basic {token}'
 request.body = '{
   "type": "record"
 }'
@@ -111,7 +111,7 @@ payload = {
 }
 headers = {
   'Content-Type': "application/json",
-  'Authorization': "Bearer {token}",
+  'Authorization': "Basic {token}",
 }
 
 response = requests.request("POST", url, data=payload, headers=headers)
@@ -128,7 +128,7 @@ var options = {
   method: 'POST',
   url: 'https://api.vidgrid.com/v2/tokens',
   headers: { 
-    Authorization: 'Bearer {token}',
+    Authorization: 'Basic {token}',
     'Content-Type': 'application/json' 
   },
   body: { 
@@ -180,7 +180,7 @@ Record tokens use the VidGrid Screen Recorder to record and upload videos to you
 curl -X POST \
   'https://api.vidgrid.com/v2/tokens' \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer {token}' \
+  -H 'Authorization: Basic {token}' \
   -d '{
     "type": "upload"
   }'
@@ -196,7 +196,7 @@ http = Net::HTTP.new(url.host, url.port)
 
 request = Net::HTTP::Post.new(url)
 request["Content-Type"] = 'application/json'
-request["Authorization"] = 'Bearer {token}'
+request["Authorization"] = 'Basic {token}'
 request.body = '{
   "type": "upload"
 }'
@@ -215,7 +215,7 @@ payload = {
 }
 headers = {
   'Content-Type': "application/json",
-  'Authorization': "Bearer {token}",
+  'Authorization': "Basic {token}",
 }
 
 response = requests.request("POST", url, data=payload, headers=headers)
@@ -232,7 +232,7 @@ var options = {
   method: 'POST',
   url: 'https://api.vidgrid.com/v2/tokens',
   headers: { 
-    Authorization: 'Bearer {token}',
+    Authorization: 'Basic {token}',
     'Content-Type': 'application/json' 
   },
   body: { 
