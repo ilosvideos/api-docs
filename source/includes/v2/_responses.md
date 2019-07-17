@@ -28,7 +28,7 @@ You can see examples of successful and failed responses as well as different HTT
 }
 ```
 
-All successful `GET` responses will return a data array while all other success responses will return a data **object**.
+All successful `GET` responses will return a data **array** while all other success responses will return a data **object**.
 
 ### HTTP Status Codes
 
