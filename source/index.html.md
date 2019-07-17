@@ -13,7 +13,7 @@ includes:
   - v2/responses
   - v2/tokens
   # - v2/videos
-  # - v2/webhooks
+  - v2/webhooks
   - v2/cookies
   - v2/opensearch
   - v2/playerjs

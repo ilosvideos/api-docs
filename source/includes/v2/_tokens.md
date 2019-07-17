@@ -1,5 +1,7 @@
 # Token API
 
+**TODO: should this be called Token API? Do we want separate Recording API and Uploading API sections?**
+
 The Token API allows you to requests tokens that can be used to record or upload videos into your VidGrid account.
 
 A basic implementation of the Recording/Uploading API could look as follows:
@@ -38,18 +40,6 @@ Used to set properties on a newly created video.
 | **title** | string | Sets the title for the created video. Note that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder. | - |
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
 | **folder** | string | Automatically add the uploaded video to a folder.<br>*Possible values: `my_grid`, `org_library`, `any valid folder identifier`.* | my_grid |
-
-### Webhook Settings Object
-
-Used to configure webhook behavior. 
-
-TODO may move to a different webhook section.
-
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
-| **video_endpoint** | string | TODO | TODO |
-| **video_endpoint_trigger** | string | TODO | TODO |
-| **video_endpoint_extras** | array | TODO | TODO |
 
 
 ### Recorder Settings Object
