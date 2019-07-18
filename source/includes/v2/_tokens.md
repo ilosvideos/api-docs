@@ -237,31 +237,31 @@ request(options, function (error, response, body) {
 ### HTTP Parameters
 
 | Param | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| ----- | ---- | ----------- | ------- |
 | **type** | string | Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | *Required* |
-| **video** | [Video Settings Object](#video-settings-object) | See [Video Settings Object](#video-settings-object). | - |
-| **recorder** | [Recorder Settings Object](#recorder-settings-object) | See [Recorder Settings Object](#recorder-settings-object).<br>*Only applies to tokens with a `type` of `record`.* | - |
-| **webhook** | [Webhook Settings Object](#webhook-settings-object) | See [Webhook Settings Object](#webhook-settings-object). | - |
+| **video** | [Video Params Object](#video-params-object) | Sets properties on videos created with this token. | - |
+| **recorder** | [Recorder Params Object](#recorder-params-object) | Configures recorder behavior when launched with this token.<br>*Only applies to tokens with a `type` of `record`.* | - |
+| **webhook** | [Webhook Params Object](#webhook-params-object) | Configures webhook behavior for videos recorded with this token. | - |
 
-### Video Settings Object
+### Video Params Object
 
-Used to set properties on a newly created video.
+Sets properties on videos created with a specific token.
 
 | Param | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| ----- | ---- | ----------- | ------- |
 | **title** | string | Sets the title for the created video. Note that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder. | - |
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
 | **folder** | string | Automatically add the uploaded video to a folder.<br>*Possible values: `my_grid`, `org_library`, `any valid folder identifier`.* | my_grid |
 
 
-### Recorder Settings Object
+### Recorder Params Object
 
-Used to configure recorder behavior. 
+Configures recorder behavior when launched via a specific token.
 
 *Only applies to tokens with a `type` of `record`.*
 
 | Param | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| ----- | ---- | ----------- | ------- |
 | **auto_show_video_page** | boolean | Whether or not to automatically open the video in the user's browser after recording. | false |
 | **auto_close_recorder** | boolean | Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token. | false |
 | **hide_video_title_input** | boolean | Whether or not to allow the user title the video after recording. | false |
@@ -270,9 +270,19 @@ Used to configure recorder behavior.
 | **on_install.auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
 | **on_install.show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false |
 
+### Webhook Params Object
+
+Configures webhook behavior for videos recorded with a specific token.
+
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
+| **video_endpoint** | string | TODO | TODO |
+| **video_endpoint_trigger** | string | TODO | TODO |
+| **video_endpoint_extras** | array | TODO | TODO |
+
 ## Record Token Object
 
-> Example Create Record Token Response
+> Example create record token response.
 
 ```json
 {
@@ -300,7 +310,7 @@ The Record Token Object returned in a successful response.
 
 ## Upload Token Object
 
-> Example Create Upload Token Response
+> Example create upload token response.
 
 ```json
 {

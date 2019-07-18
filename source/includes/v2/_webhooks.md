@@ -8,18 +8,6 @@ You can set the webhook options (`video_endpoint`, `video_endpoint_trigger`, and
 
 You can view logs for calls to your endpoint under [integration settings](https://app.vidgrid.com/integrations) in your VidGrid account.
 
-### Webhook Settings Object
-
-Used to configure webhook behavior. 
-
-**TODO: not sure where this belongs yet**
-
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
-| **video_endpoint** | string | TODO | TODO |
-| **video_endpoint_trigger** | string | TODO | TODO |
-| **video_endpoint_extras** | array | TODO | TODO |
-
 ### Webhook Response Object
 
 > The incoming webhook response body will look like this:
