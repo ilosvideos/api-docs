@@ -41,7 +41,7 @@ Used to configure webhook behavior.
 | Key | Type | Value |
 | --- | ---- | ----- |
 | **token** | string | One-time token that was used to upload the video. |
-| **identifier** | string | The unique ID for your video. |
+| **identifier** | string | The unique identifier for your video. |
 | **videoURL** | string | URL to view your video. |
 | **embedURL** | string | URL you can use as the source of an iframe. |
 | **iframe** | string | An iframe containing the video. |

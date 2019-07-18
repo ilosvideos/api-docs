@@ -1,18 +1,26 @@
 # Video API
 
-The Video API allows you to retrieve information about your videos on VidGrid.
+The Video API allows you to interact with videos on your VidGrid account.
 
-## Get Video Metadata
+## Get Video
 
-> Example Request
+This endpoint returns an array of [Video Objects](#video-object).
+
+### HTTP Request
+
+> Example Get Video Request
 
 ```shell
-curl -X POST \
-  'https://api.vidgrid.com/v2/video/metadata' \
+curl -X GET \
+  'https://api.vidgrid.com/v2/videos/identifier' \
+  -H 'Authorization: Basic {token}' \
   -H 'Content-Type: application/json' \
   -d '{
-    "api_key" : "{key}",
-    "identifier" : "123456ABCDEF"
+    "include": [
+        "signed_url",
+        "metadata",
+        "thumbnail"
+    ]
   }'
 ```
 
@@ -20,15 +28,19 @@ curl -X POST \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.vidgrid.com/v2/video/metadata")
+url = URI("https://api.vidgrid.com/v2/videos/identifier")
 
 http = Net::HTTP.new(url.host, url.port)
 
-request = Net::HTTP::Post.new(url)
+request = Net::HTTP::Get.new(url)
 request["Content-Type"] = 'application/json'
+request["Authorization"] = 'Basic {token}'
 request.body = '{
-  api_key: "{key}",
-  identifier : "123456ABCDEF"
+  "include": [
+    "signed_url",
+    "metadata",
+    "thumbnail"
+  ]
 }'
 
 response = http.request(request)
@@ -38,164 +50,113 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.vidgrid.com/v2/video/metadata"
+url = "https://api.vidgrid.com/v2/videos/identifier"
 
-payload = {
-  'api_key': "{key}",
-  'identifier' : "123456ABCDEF"
-}
-
-headers = {
-  'Content-Type': "application/json",
-}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var settings = {
-  "url": "https://api.vidgrid.com/v2/video/metadata",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-  },
-  "data": {
-    api_key: "{key}",
-    identifier : "123456ABCDEF"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-```
-
-> Example Response
-
-```json
-{
-  "message": "",
-  "level": "success",
-  "data": {
-    "title": "This is my video title",
-    "hours": "00",
-    "mins": "15",
-    "secs": "10",
-    "ms": "380",
-    "totalMs": 910380,
-    "videoSignedUrl": "https://www.signed-url-i-can-use-to-download-my-video.com",
-    "thumbnailSignedUrl": "https://www.signed-url-i-can-use-to-view-my-video-thumbnail.com",
-    "thumbnailSmallSignedUrl": "https://www.signed-url-i-can-use-to-view-my-small-video-thumbnail.com"
-  }
-}
-```
-
-This endpoint returns metadata for a specified video.
-
-### HTTP Request
-
-`POST https://api.vidgrid.com/v2/video/metadata`
-
-### Parameters
-
-          |             |
---------- | ----------- |
-**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
-**identifier** string | The unique ID of your video.
-
-## Get Video File
-
-> Example Request
-
-```shell
-curl -X POST \
-  'https://api.vidgrid.com/v2/video/file' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "api_key" : "{key}",
-    "identifier" : "123456ABCDEF"
-  }'
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.vidgrid.com/v2/video/file")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request["Content-Type"] = 'application/json'
-request.body = '{
-  api_key: "{key}",
-  identifier : "123456ABCDEF"
+payload = '{
+  "include": [
+    "signed_url",
+    "metadata",
+    "thumbnail"
+  ]
 }'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.vidgrid.com/v2/video/file"
-
-payload = {
-  'api_key': "{key}",
-  'identifier' : "123456ABCDEF"
-}
-
 headers = {
   'Content-Type': "application/json",
+  'Authorization': "Basic {token}",
 }
 
-response = requests.request("POST", url, data=payload, headers=headers)
+response = requests.request("GET", url, data=payload, headers=headers)
 
 print(response.text)
 ```
 
 ```javascript
-var settings = {
-  "url": "https://api.vidgrid.com/v2/video/file",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-  },
-  "data": {
-    api_key: "{key}",
-    identifier : "123456ABCDEF"
-  }
-}
+// NodeJS
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
+var request = require("request");
+
+var options = {
+  method: 'GET',
+  url: 'https://api.vidgrid.com/v2/videos/identifier',
+  headers: { 
+    Authorization: 'Basic {token}',
+    'Content-Type': 'application/json' 
+  },
+  body: { 
+    include: [ 
+      'signed_url', 
+      'metadata', 
+      'thumbnail' 
+    ] 
+  },
+  json: true 
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
 });
 ```
 
-> Example Response
+`GET https://api.vidgrid.com/v2/videos`
+
+### Base Options
+
+| Parameter | Type | Description | Default |
+| --------- | ---- | ----------- | ------- |
+| **identifiers** | string&#124;array | The unique identifiers(s) of the desired videos.<br>*You may also pass a single identifier on the URL: `/v2/videos/identifier`* | *Required* |
+| **include** | [Video Includes Array](#video-includes-array) | See [Video Includes Array](#video-includes-array). | - |
+
+### Video Includes Array
+
+An array of properties to be included when requesting a [Video Object](#video-object).
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| **signed_url** | string | Request a signed url that can be used to view the video.<br>*Expires after 6 hours.* |
+| **metadata** | string | Request metadata about the video. |
+| **thumbnail** | string | Request signed urls that can be used to view video thumbnails. |
+
+## Video Object
+
+> Example Get Video Response
 
 ```json
 {
-  "message": "",
-  "level": "success",
-  "data": {
-      "signedUrl": "https://www.signed-url-i-can-use-to-download-my-video.com"
-  }
+  "data": [
+    {
+      "identifier": "...",
+      "title": "Video Title",
+      "metadata": {
+          "width": 1920,
+          "height": 1280,
+          "duration": "404.260000",
+          "filesize": "130184650"
+      },
+      "signed_url": "...",
+      "thumbnail": {
+        "signed_url": "...",
+        "signed_url_small": "..."
+      },
+      "view_url": "https://app.vidgrid.com/view/identifier",
+      "embed_url": "https://app.vidgrid.com/embed/identifier"
+    }
+  ]
 }
 ```
 
-This endpoint returns a signed url for the video file.
+*Property types with a <strong>?</strong> are only returned if they are requested using a [Video Includes Array](#video-includes-array).*
 
-### HTTP Request
-
-`POST https://api.vidgrid.com/v2/video/file`
-
-### Parameters
-
-          |             |
---------- | ----------- |
-**api_key** string | A [User](#api-key-types) or [Organization](#api-key-types) API key from your VidGrid account.
-**identifier** string | The unique ID of your video.
+| Key | Type | Value |
+| --- | ---- | ----- |
+| **identifier** | string | The unique identifier for the video. |
+| **title** | string | Title of the video. |
+| **view_url** | string | URL to view the video. |
+| **embed_url** | string | URL to embed the video. |
+| **signed_url** | string<strong>?</strong> | Signed url that can be used to view the video. |
+| **metadata.width** | TODO: int<strong>?</strong> | Width of the video. |
+| **metadata.height** | TODO: int<strong>?</strong> | Height of the video. |
+| **metadata.duration** | TODO: string<strong>?</strong> | Duration of the video in seconds. |
+| **metadata.filesize** | TODO: string<strong>?</strong> | Size of the video in bytes. |
+| **thumbnail.signed_url** | string<strong>?</strong> | Signed URL for the video thumbnail. |
+| **thumbnail.signed_url_small** | string<strong>?</strong> | Signed URL for as smaller version of the video thumbnail. |
