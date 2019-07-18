@@ -6,7 +6,7 @@ You can see examples of successful and failed responses as well as different HTT
 
 ## Success Responses
 
-> Example of a success response with a data object.
+> Example success response with a data object.
 
 ```json
 {
@@ -16,7 +16,7 @@ You can see examples of successful and failed responses as well as different HTT
 }
 ```
 
-> Example of a success response with a data array.
+> Example success response with a data array.
 
 ```json
 {
@@ -33,13 +33,13 @@ All successful `GET` responses will return a data **array** while all other succ
 ### HTTP Status Codes
 
 | Code | Title | Description |
-| --------- | ----------- | ----------- |
+| ---- | ----- | ----------- |
 | **200** | OK | The request was successfull. |
 | **204** | No Content | The server has successfully fulfilled the request and there is no additional content to send in the response. |
 
 ## Error Responses
 
-> Example of an error response.
+> Example error response.
 
 ```json
 {
@@ -52,7 +52,7 @@ All of our error responses will return a message describing what went wrong.
 ### HTTP Status Codes
 
 | Code | Title | Description |
-| --------- | ----------- | ----------- |
+| ---- | ----- | ----------- |
 | **401** | Unauthorized | The request has not been applied because it lacks valid authentication credentials for the target resource. |
 | **403** | Forbidden | The server understood the request but refuses to authorize it. |
 | **404** | Not found	| The resource does not exist. |

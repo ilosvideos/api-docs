@@ -20,6 +20,8 @@ Used to configure webhook behavior.
 | **video_endpoint_trigger** | string | TODO | TODO |
 | **video_endpoint_extras** | array | TODO | TODO |
 
+### Webhook Response Object
+
 > The incoming webhook response body will look like this:
 
 ```json
@@ -36,10 +38,8 @@ Used to configure webhook behavior.
 }
 ```
 
-### Webhook Response Object
-
-| Key | Type | Value |
-| --- | ---- | ----- |
+| Attribute | Type | Value |
+| --------- | ---- | ----- |
 | **token** | string | One-time token that was used to upload the video. |
 | **identifier** | string | The unique identifier for your video. |
 | **videoURL** | string | URL to view your video. |

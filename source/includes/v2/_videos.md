@@ -145,10 +145,12 @@ An array of properties to be included when requesting a [Video Object](#video-ob
 }
 ```
 
+The video object returned in a successful response.
+
 *Property types with a <strong>?</strong> are only returned if they are requested by a [Video Includes Array](#video-includes-array).*
 
-| Key | Type | Value |
-| --- | ---- | ----- |
+| Attribute | Type | Value |
+| --------- | ---- | ----- |
 | **identifier** | string | The unique identifier for the video. |
 | **title** | string | Title of the video. |
 | **view_url** | string | URL to view the video. |

@@ -1,6 +1,6 @@
 # Authentication
 
-> Authentication using HTTP basic auth.
+> Example request using HTTP basic auth.
 
 ```shell
 # HTTP Basic Auth
