@@ -1,6 +1,6 @@
-# Cookies
+# Third-Party Cookies
 
-With certain VidGrid integrations (such as LTI integrations using SSO) you may run into a problem with saving cookies in Safari & iOS.
+With certain integrations that utilize embedding VidGrid videos/pages (such as LTI integrations using SSO) you may run into a problem with saving cookies in Safari & iOS.
 
 The problem occurs when a user has "Prevent cross-site tracking" selected under Privacy in Safari (the default option) and is loading content within an iframe. Safari will prevent cookies saved from the host within the iframe unless the user has previously visited that host as the root document and had a cookie saved at that point.
 

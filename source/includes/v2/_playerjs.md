@@ -1,4 +1,6 @@
-# Player.js
+# Controlling the Player
+
+## Player.js
 
 [Player.js](http://playerjs.io/) is a JavaScript library that allows developers to programmatically control video and audio within an iframe. It can be used with VidGrid embedded videos.
 
@@ -14,7 +16,7 @@ You can also install it via npm:
 
 `npm install player.js`
 
-## Example: Auto play videos
+## Example Usage
 
 ```shell
 # See JavaScript tab as this is a client-side implementation only.

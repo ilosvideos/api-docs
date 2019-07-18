@@ -11,12 +11,14 @@ includes:
   - v2/introduction
   - v2/authentication
   - v2/responses
+  - v2/webhooks
   - v2/tokens
   - v2/videos
-  - v2/webhooks
   - v2/cookies
-  - v2/opensearch
   - v2/playerjs
+  - v2/opensearch
+  - v2/lti
+  - v2/zoom
 
 search: true
 
