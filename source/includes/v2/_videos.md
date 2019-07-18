@@ -8,7 +8,7 @@ This endpoint returns an array of [Video Objects](#video-object).
 
 ### HTTP Request
 
-> Example Get Video Request
+> Example get video request.
 
 ```shell
 curl -X GET \
@@ -100,26 +100,26 @@ request(options, function (error, response, body) {
 
 `GET https://api.vidgrid.com/v2/videos`
 
-### Base Options
+### HTTP Parameters
 
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
 | **identifiers** | string&#124;array | The unique identifiers(s) of the desired videos.<br>*You may also pass a single identifier on the URL: `/v2/videos/identifier`* | *Required* |
-| **include** | [Video Includes Array](#video-includes-array) | See [Video Includes Array](#video-includes-array). | - |
+| **include** | [Video Props Array](#video-props-array) | An array of properties to be included with the returned [Video Objects](#video-object). | - |
 
-### Video Includes Array
+### Video Props Array
 
-An array of properties to be included when requesting a [Video Object](#video-object).
+An array of properties to be included with a returned video [Video Object](#video-object).
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| **signed_url** | string | Request a signed url that can be used to view the video.<br>*Expires after 6 hours.* |
-| **metadata** | string | Request metadata about the video. |
-| **thumbnail** | string | Request signed urls that can be used to view video thumbnails. |
+| Prop | Description |
+| ---- | ----------- |
+| **signed_url** | Request a signed URL that can be used to view the video.<br>*Expires after 6 hours.* |
+| **metadata** | Request metadata about the video. |
+| **thumbnail** | Request signed URLs that can be used to view video thumbnails.<br>*TODO: expiration?* |
 
 ## Video Object
 
-> Example Get Video Response
+> Example get video response.
 
 ```json
 {
@@ -147,7 +147,7 @@ An array of properties to be included when requesting a [Video Object](#video-ob
 
 The video object returned in a successful response.
 
-*Property types with a <strong>?</strong> are only returned if they are requested by a [Video Includes Array](#video-includes-array).*
+*Attribute types with a <strong>?</strong> are only returned if they are requested with a [Video Props Array](#video-props-array).*
 
 | Attribute | Type | Value |
 | --------- | ---- | ----- |

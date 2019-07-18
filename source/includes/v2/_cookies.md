@@ -68,8 +68,8 @@ This will visit app.vidgrid.com, save a cookie, and immediately redirect to the 
 
 *Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
 
-### Base Options
+### HTTP Parameters
 
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
 | **url** | string | URL encoded string for VidGrid to redirect to after saving the cookie. | *Required* |

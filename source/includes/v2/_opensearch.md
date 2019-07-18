@@ -4,7 +4,7 @@
 
 **TODO: does this need to be udner v2? How will this work with the new api keys and no more organization keys?**
 
-## Searching Videos
+## Search Videos
 
 > Example Request
 
@@ -68,10 +68,10 @@ This endpoint returns a list of video items from VidGrid.
 
 `GET https://api.vidgrid.com/opensearch`
 
-### Base Options
+### HTTP Parameters
 
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
 | **q** | string | Your search query. | *Required* |
 | **api_key** | string | TODO: An [Organization](#api-key-types) API key from your VidGrid account. | *Required* |
 | **ptilos** | boolean | Whether or not to prefix returned video titles with *VidGrid:* | TODO |
