@@ -6,7 +6,7 @@ Since video recording and uploading is an asynchronous task, you can give us a w
 
 You can set the webhook options (`video_endpoint`, `video_endpoint_trigger`, and `video_endpoint_extras`) in both the [Recording API](#recording-api) and [Uploading API](#uploading-api).
 
-You can view logs for calls to your endpoint under [integration settings](https://app.vidgrid.com/integrations) in your VidGrid account.
+You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations" target="_blank">integration settings</a> in your VidGrid account.
 
 ## Webhook Response Object
 

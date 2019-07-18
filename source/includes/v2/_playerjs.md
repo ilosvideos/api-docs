@@ -2,9 +2,9 @@
 
 ## Player.js
 
-[Player.js](http://playerjs.io/) is a JavaScript library that allows developers to programmatically control video and audio within an iframe. It can be used with VidGrid embedded videos.
+<a href="http://playerjs.io/" target="_blank">Player.js</a> is a JavaScript library that allows developers to programmatically control video and audio within an iframe. It can be used with VidGrid embedded videos.
 
-For complete documentation on the capabilities of [Player.js](http://playerjs.io/), please visit [http://playerjs.io/](http://playerjs.io/).
+For complete documentation on the capabilities of Player.js, please visit <a href="http://playerjs.io/" target="_blank">http://playerjs.io</a>.
 
 ## Installation
 
@@ -39,6 +39,6 @@ player.on('ready', () => {
 });
 ```
 
-VidGrid supports auto playing videos when the `autoplay` query parameter is set to `true` on the video url. However, some browsers now block auto playing videos from starting. To get around this, we can use [Player.js](http://playerjs.io/).
+VidGrid supports auto playing videos when the `autoplay` query parameter is set to `true` on the video url. However, some browsers now block auto playing videos from starting. To get around this, we can use Player.js.
 
 Simply follow the [Installation](#installation) instructions and then follow the code example to the right.

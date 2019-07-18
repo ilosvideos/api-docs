@@ -1,6 +1,6 @@
 # OpenSearch
 
-[OpenSearch](http://www.opensearch.org/Home) is a collection of technologies that allow publishing of search results in a format suitable for syndication and aggregation. It is a way for websites and search engines to publish search results in a standard and accessible format.
+<a href="http://www.opensearch.org/Home" target="_blank">OpenSearch</a> is a collection of technologies that allow publishing of search results in a format suitable for syndication and aggregation. It is a way for websites and search engines to publish search results in a standard and accessible format.
 
 **TODO: does this need to be under v2? How will this work with the new api keys and no more organization keys?**
 
@@ -76,7 +76,7 @@ This endpoint returns a list of video items from VidGrid.
 | **api_key** | string | TODO: An [Organization](#api-keys) API key from your VidGrid account. | *Required* |
 | **ptilos** | boolean | Whether or not to prefix returned video titles with *VidGrid:* | TODO |
 
-Please visit the [OpenSearch Documentation](http://www.opensearch.org/Home) for more options and examples.
+Please visit the <a href="http://www.opensearch.org/Home" target="_blank">OpenSearch Documentation</a> for more options and examples.
 
 ## Office365 SharePoint
 

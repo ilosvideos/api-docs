@@ -1,6 +1,6 @@
 # API Reference
 
-Welcome to the VidGrid [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API! You can use it to create and manage resources on your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.
+Welcome to the VidGrid <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a> API! You can use it to create and manage resources on your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.
 
 Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
 
@@ -8,12 +8,12 @@ Code examples can be viewed in the area to the right, and you can switch the lan
 
  If you'd like to see some examples of how this API can work, take a look at the demos below:
 
- * [Ticketing Demo (Click "Report An Issue")](https://ticketingdemo.azurewebsites.net/#/home)
- * [Recording Demo](https://app.vidgrid.com/demo/api/record)
- * [Uploading Demo](https://app.vidgrid.com/demo/api/upload)
+ * <a href="https://ticketingdemo.azurewebsites.net/#/home" target="_blank">Ticketing Demo (Click "Report An Issue")</a>
+ * <a href="https://app.vidgrid.com/demo/api/record" target="_blank">Recording Demo</a>
+ * <a href="https://app.vidgrid.com/demo/api/upload" target="_blank">Uploading Demo</a>
 
 ## Help and Support
 
-If you discover a mistake in the documentation, please [report an issue](mailto:webmaster@vidgrid.com?subject=API Documentation Issue) and we'll take a look.
+If you discover a mistake in the documentation, please <a href="mailto:webmaster@vidgrid.com?subject=API Documentation Issue" target="_blank">report an issue</a> and we'll take a look.
 
-If you need further assistance or have any other questions, please visit our [Help Center](https://help.vidgrid.com).
+If you need further assistance or have any other questions, please visit our <a href="https://help.vidgrid.com" target="_blank">Help Center</a>.
