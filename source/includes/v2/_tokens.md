@@ -121,18 +121,8 @@ Used to configure recorder behavior.
 | **hide_video_title_input** | boolean | Whether or not to allow the user title the video after recording. | false |
 | **default_fullscreen** | boolean | Whether or not the recorder should launch in fullscreen mode. | false |
 | **force_webcam_only** | boolean | Whether or not the recorder should be restricted to webcam only mode. | false |
-| **on_install** | [Recorder Install Settings Object](#recorder-install-settings-object) | See [Recorder Install Settings Object](#recorder-install-settings-object). | - |
-
-### Recorder Install Settings Object
-
-Used to configure recorder behavior during first time installation.
-
-*Only applies to tokens with a `type` of `record`.*
-
-| Parameter | Type | Description | Default |
-| --------- | ---- | ----------- | ------- |
-| **auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
-| **show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false |
+| **on_install.auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
+| **on_install.show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false |
 
 ## Record Token Object
 
