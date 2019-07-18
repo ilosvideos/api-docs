@@ -145,7 +145,7 @@ An array of properties to be included when requesting a [Video Object](#video-ob
 }
 ```
 
-*Property types with a <strong>?</strong> are only returned if they are requested using a [Video Includes Array](#video-includes-array).*
+*Property types with a <strong>?</strong> are only returned if they are requested by a [Video Includes Array](#video-includes-array).*
 
 | Key | Type | Value |
 | --- | ---- | ----- |
