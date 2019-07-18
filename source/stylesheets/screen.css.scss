@@ -381,7 +381,7 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: $h3-margin-top;
     margin-bottom: 0.8em;
   }
