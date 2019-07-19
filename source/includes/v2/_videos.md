@@ -104,7 +104,7 @@ request(options, function (error, response, body) {
 
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
-| **identifiers** | string&#124;array | The unique identifiers(s) of the desired videos.<br>*You may also pass a single identifier on the URL: `/v2/videos/identifier`* | *Required* |
+| **identifiers** | array | The unique identifiers(s) of the desired videos.<br>*You may also pass a single identifier on the URL: `/v2/videos/identifier`* | *Required* |
 | **include** | [Video Props Array](#video-props-array) | An array of properties to be included with the returned [Video Objects](#video-object). | - |
 
 ### Video Props Array
