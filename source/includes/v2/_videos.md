@@ -4,7 +4,7 @@ The Video API allows you to interact with videos on your VidGrid account.
 
 ## Get Video
 
-This endpoint returns an array of [Video Objects](#video-object).
+This endpoint returns an array of [Video Resources](#video-resource).
 
 ### HTTP Request
 
@@ -104,20 +104,21 @@ request(options, function (error, response, body) {
 
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
-| **identifiers** | array | The unique identifiers(s) of the desired videos.<br>*You may also pass a single identifier on the URL: `/v2/videos/identifier`* | *Required* |
-| **include** | [Video Props Array](#video-props-array) | An array of properties to be included with the returned [Video Objects](#video-object). | - |
+| **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required unless <strong>identifiers</strong> is set* |
+| **identifiers** | array | The unique identifiers of the desired videos. When set, this takes priority over **identifier** | - |
+| **include** | [Video Params Array](#video-params-array) | An array of properties to be included with the returned [Video Resources](#video-resource). | - |
 
-### Video Props Array
+### Video Params Array
 
-An array of properties to be included with a returned video [Video Object](#video-object).
+An array of properties to be included with a returned video [Video Resource](#video-resource).
 
-| Prop | Description |
-| ---- | ----------- |
+| Param | Description |
+| ----- | ----------- |
 | **signed_url** | Request a signed URL that can be used to view the video.<br>*Expires after 6 hours.* |
 | **metadata** | Request metadata about the video. |
 | **thumbnail** | Request signed URLs that can be used to view video thumbnails.<br>*TODO: expiration?* |
 
-## Video Object
+## Video Resource
 
 > Example get video response.
 
@@ -145,12 +146,12 @@ An array of properties to be included with a returned video [Video Object](#vide
 }
 ```
 
-The video object returned in a successful response.
+The Video Resource(s) returned in a successful response.
 
-*Attribute types with a <strong>?</strong> are only returned if they are requested with a [Video Props Array](#video-props-array).*
+*Property types with a <strong>?</strong> are only returned if they are requested with a [Video Params Array](#video-params-array).*
 
-| Attribute | Type | Value |
-| --------- | ---- | ----- |
+| Prop | Type | Value |
+| ---- | ---- | ----- |
 | **identifier** | string | The unique identifier for the video. |
 | **title** | string | Title of the video. |
 | **view_url** | string | URL to view the video. |

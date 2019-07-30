@@ -8,7 +8,7 @@ You can set the webhook options (`video_endpoint`, `video_endpoint_trigger`, and
 
 You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations" target="_blank">integration settings</a> in your VidGrid account.
 
-## Webhook Response Object
+## Webhook Response
 
 > Example webhook response.
 
@@ -23,8 +23,8 @@ You can view logs for calls to your endpoint under <a href="https://app.vidgrid.
 }
 ```
 
-| Attribute | Type | Value |
-| --------- | ---- | ----- |
+| Prop | Type | Value |
+| ---- | ---- | ----- |
 | **token** | string | One-time token that was used to record or upload a video. |
-| **video** | [Video Object](#video-object) | The video that was created before firing the webhook. TODO: what includes would be on the video object at this point? |
+| **video** | [Video Resource](#video-resource) | The video that was created before firing the webhook. TODO: what includes would be on the Video Resource at this point? |
 | **video_endpoint_extras** | array? | Any `video_endpoint_extras` sent through the [Recording API](#recording-api) or [Uploading API](#uploading-api). |

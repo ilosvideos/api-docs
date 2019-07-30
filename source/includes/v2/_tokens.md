@@ -16,7 +16,7 @@ You may also take a look at the [Live Demos](#live-demos) for more examples.
 
 ## Create Token
 
-This endpoint generates and returns a [Record Token Object](#record-token-object) or an [Upload Token Object](#upload-token-object) that can be used for creating videos.
+This endpoint generates and returns a [Record Token Resource](#record-token-resource) or an [Upload Token Resource](#upload-token-resource) that can be used for creating videos.
 
 ### HTTP Request
 
@@ -280,7 +280,7 @@ Configures webhook behavior for videos recorded with a specific token.
 | **video_endpoint_trigger** | string | TODO | TODO |
 | **video_endpoint_extras** | array | TODO | TODO |
 
-## Record Token Object
+## Record Token Resource
 
 > Example create record token response.
 
@@ -298,17 +298,17 @@ Configures webhook behavior for videos recorded with a specific token.
 }
 ```
 
-The Record Token Object returned in a successful response.
+The Record Token Resource returned in a successful response.
 
-| Attribute | Type | Value |
-| --------- | ---- | ----- |
+| Prop | Type | Value |
+| ---- | ---- | ----- |
 | **token** | string | One-time token that is used for validation when recording and uploading a video. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **recorder.download_url** | string | URL that can be used to download the recorder. |
 | **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
 | **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. |
 
-## Upload Token Object
+## Upload Token Resource
 
 > Example create upload token response.
 
@@ -325,10 +325,10 @@ The Record Token Object returned in a successful response.
 }
 ```
 
-The Upload Token Object returned in a successful response.
+The Upload Token Resource returned in a successful response.
 
-| Attribute | Type | Value |
-| --------- | ---- | ----- |
+| Prop | Type | Value |
+| ---- | ---- | ----- |
 | **token** | string | One-time token that is used for validation when uploading a video. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **uploader.iframe** | string | Iframe containing a simple upload dropzone. |

@@ -2,7 +2,7 @@
 
 ## Embed URLs
 
-[Video Objects](#video-object) will contain an `embed_url` that can be used to embed your video in an iframe.
+[Video Resources](#video-resource) will contain an `embed_url` that can be used to embed your video in an iframe.
 
 ## Iframes
 
