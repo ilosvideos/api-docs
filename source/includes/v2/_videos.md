@@ -105,7 +105,7 @@ request(options, function (error, response, body) {
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
 | **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required unless <strong>identifiers</strong> is set* |
-| **identifiers** | array | The unique identifiers of the desired videos. When set, this takes priority over **identifier** | - |
+| **identifiers** | array | The unique identifiers of the desired videos. When set, this takes priority over **identifier**. | - |
 | **include** | [Video Params Array](#video-params-array) | An array of properties to be included with the returned [Video Resources](#video-resource). | - |
 
 ### Video Params Array
