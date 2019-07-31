@@ -14,12 +14,13 @@ includes:
   - v2/webhooks
   - v2/tokens
   - v2/videos
+  - v2/logging
   - v2/embedding
+  - v2/tracking
   - v2/playerjs
   - v2/cookies
   - v2/opensearch
-  - v2/lti
-  - v2/zoom
+  - v2/_third_parties
 
 search: true
 
