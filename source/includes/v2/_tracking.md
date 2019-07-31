@@ -7,7 +7,7 @@ If this is the case, you have the option to pass certain tracking data on a vide
 > Example of tracking name and email of a user through a view URL.
 
 ```html
-https://app.vidgrid.com/view/identifier?vgname={name}&?vgemail={email}
+https://app.vidgrid.com/view/identifier?vgname={name}&vgemail={email}
 ```
 
 ### Query Parameters
