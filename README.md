@@ -1,4 +1,4 @@
-# VidGrid API Version 1
+# VidGrid API Version 2
 
 This repo is the source code for our API documentation. You can view the documentation [here](https://developer.vidgrid.com/docs).
 
