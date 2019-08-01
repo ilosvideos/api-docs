@@ -14,6 +14,7 @@ includes:
   - v2/webhooks
   - v2/tokens
   - v2/videos
+  - v2/folders
   - v2/logging
   - v2/embedding
   - v2/tracking
