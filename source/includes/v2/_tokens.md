@@ -251,8 +251,7 @@ Sets properties on videos created with a specific token.
 | ----- | ---- | ----------- | ------- |
 | **title** | string | Sets the title for the created video. Note that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder. | - |
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
-| **folder** | string | Automatically add the uploaded video to a folder.<br>*Possible values: `my_grid`, `org_library`, `any valid folder identifier`.* | my_grid |
-
+| **folder** | string | Automatically add uploaded videos to a folder. This should be set to a folder **identifier**. | - |
 
 ### Recorder Params Object
 
