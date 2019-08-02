@@ -12,7 +12,7 @@ https://app.vidgrid.com/view/identifier?vgname={name}&vgemail={email}
 
 ### Query Parameters
 
-| Param | Type | Description | Default |
-| ----- | ---- | ----------- | ------- |
-| **vgname** | string | The name of a user. | - |
-| **vgemail** | string | The email of a user. | - |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| **vgname** | string | The name of a user. |
+| **vgemail** | string | The email of a user. |
