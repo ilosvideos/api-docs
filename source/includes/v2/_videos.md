@@ -110,7 +110,7 @@ request(options, function (error, response, body) {
 
 ### Video Params Array
 
-An array of properties to be included with a returned video [Video Resource](#video-resource).
+An array of properties to be included with a returned [Video Resource](#video-resource).
 
 | Param | Description |
 | ----- | ----------- |
