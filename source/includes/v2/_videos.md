@@ -2,6 +2,10 @@
 
 The Video API allows you to interact with videos on your VidGrid account.
 
+## Create Video
+
+To create videos you will need to make use of the [Video Creation Token Api](#video-creation-token-api).
+
 ## Get Video
 
 This endpoint returns an array of [Video Resources](#video-resource).
@@ -19,7 +23,8 @@ curl -X GET \
     "include": [
         "signed_url",
         "metadata",
-        "thumbnail"
+        "thumbnail",
+        "jwts"
     ]
   }'
 ```
@@ -39,7 +44,8 @@ request.body = '{
   "include": [
     "signed_url",
     "metadata",
-    "thumbnail"
+    "thumbnail",
+    "jwts"
   ]
 }'
 
@@ -56,7 +62,8 @@ payload = '{
   "include": [
     "signed_url",
     "metadata",
-    "thumbnail"
+    "thumbnail",
+    "jwts"
   ]
 }'
 headers = {
@@ -85,7 +92,8 @@ var options = {
     include: [ 
       'signed_url', 
       'metadata', 
-      'thumbnail' 
+      'thumbnail',
+      'jwts'
     ] 
   },
   json: true 
@@ -117,6 +125,15 @@ An array of properties to be included with a returned [Video Resource](#video-re
 | **signed_url** | Request a signed URL that can be used to view the video.<br>*Expires after 6 hours.* |
 | **metadata** | Request metadata about the video. |
 | **thumbnail** | Request signed URLs that can be used to view video thumbnails.<br>*TODO: expiration?* |
+| **jwts** | Request JWT tokens that can be used to view or edit a video. |
+
+## Update Video
+
+TODO: update videos
+
+## Delete Video
+
+TODO: delete videos
 
 ## Video Resource
 
@@ -140,7 +157,11 @@ An array of properties to be included with a returned [Video Resource](#video-re
         "signed_url_small": "..."
       },
       "view_url": "https://app.vidgrid.com/view/identifier",
-      "embed_url": "https://app.vidgrid.com/embed/identifier"
+      "embed_url": "https://app.vidgrid.com/embed/identifier",
+      "jwts": {
+        "view": "...",
+        "edit": "..."
+      }
     }
   ]
 }
@@ -163,3 +184,5 @@ The Video Resource(s) returned in a successful response.
 | **metadata.filesize** | TODO: string<strong>?</strong> | Size of the video in bytes. |
 | **thumbnail.signed_url** | string<strong>?</strong> | Signed URL for the video thumbnail. |
 | **thumbnail.signed_url_small** | string<strong>?</strong> | Signed URL for as smaller version of the video thumbnail. |
+| **jwt.view** | string<strong>?</strong> | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new JWT will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?jwt={jwts.view}`* |
+| **jwt.edit** | string<strong>?</strong> | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new JWT will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?jwt={jwts.edit}`* |

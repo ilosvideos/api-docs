@@ -53,8 +53,8 @@ All of our error responses will return a message describing what went wrong.
 
 | Code | Title | Description |
 | ---- | ----- | ----------- |
-| **401** | Unauthorized | The request has not been applied because it lacks valid authentication credentials for the target resource. |
-| **403** | Forbidden | The server understood the request but refuses to authorize it. |
+| **401** | Unauthorized | The request lacks valid authentication credentials. |
+| **403** | Forbidden | The user is not authorized to interact with the resource in this way. |
 | **404** | Not found	| The resource does not exist. |
 | **422** | Validation error | A validation error occurred. |
 | **50X** | Internal Server Error | An error occurred with our API. |

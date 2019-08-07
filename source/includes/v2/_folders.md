@@ -2,6 +2,10 @@
 
 The Folder API allows you to interact with folders on your VidGrid account.
 
+## Create Folder
+
+TODO: create folders
+
 ## Get Folder
 
 This endpoint returns an array of [Folder Resources](#folder-resource).
@@ -107,6 +111,14 @@ An array of properties to be included with a returned [Folder Resource](#folder-
 | Param | Description |
 | ----- | ----------- |
 | **playlist** | Request playlist data for the folder. |
+
+## Update Folder
+
+TODO: update folders
+
+## Delete Folder
+
+TODO: delete folders
 
 ## Folder Resource
 
