@@ -181,9 +181,9 @@ request(options, function (error, response, body) {
 | ----- | ---- | ----------- | ------- |
 | **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required unless <strong>identifiers</strong> is set* |
 | **identifiers** | array | The unique identifiers of the desired videos. When set, this takes priority over **identifier**. | - |
-| **include** | [Video Params Array](#video-params-array) | An array of properties to be included with the returned [Video Resources](#video-resource). | - |
+| **include** | [Get Video Params Array](#get-video-params-array) | An array of properties to be included with the returned [Video Resources](#video-resource). | - |
 
-### Video Params Array
+### Get Video Params Array
 
 An array of properties to be included with a returned [Video Resource](#video-resource).
 
@@ -196,7 +196,121 @@ An array of properties to be included with a returned [Video Resource](#video-re
 
 ## Update Video
 
-TODO: update videos
+This endpoint updates a video and then returns it as a [Video Resource](#video-resource).
+
+### HTTP Request
+
+> Example update video request.
+
+```shell
+curl -X GET \
+  'https://api.vidgrid.com/v2/videos/identifier' \
+  -H 'Authorization: Basic {token}' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "properties": [
+        "title": "New Video Title"
+    ]
+  }'
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://api.vidgrid.com/v2/videos/identifier")
+
+http = Net::HTTP.new(url.host, url.port)
+
+request = Net::HTTP::Get.new(url)
+request["Content-Type"] = 'application/json'
+request["Authorization"] = 'Basic {token}'
+request.body = '{
+  "properties": [
+      "title": "New Video Title"
+  ]
+}'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+import requests
+
+url = "https://api.vidgrid.com/v2/videos/identifier"
+
+payload = '{
+  "properties": [
+      "title": "New Video Title"
+  ]
+}'
+headers = {
+  'Content-Type': "application/json",
+  'Authorization': "Basic {token}",
+}
+
+response = requests.request("GET", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```javascript
+// NodeJS
+
+var request = require("request");
+
+var options = {
+  method: 'GET',
+  url: 'https://api.vidgrid.com/v2/videos/identifier',
+  headers: { 
+    Authorization: 'Basic {token}',
+    'Content-Type': 'application/json' 
+  },
+  body: { 
+    properties: [
+      title: "New Video Title"
+    ]
+  },
+  json: true 
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> Example get video response. See [Video Resource](#video-resource) for more details.
+
+```json
+{
+  "data": {
+    "identifier": "...",
+    "title": "Video Title 1",
+    "view_url": "https://app.vidgrid.com/view/identifier",
+    "embed_url": "https://app.vidgrid.com/embed/identifier",
+  }
+}
+```
+
+`PATCH https://api.vidgrid.com/v2/videos`
+
+### HTTP Parameters
+
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
+| **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required* |
+| **properties** | [Update Video Props Object](#update-video-props-object) | An object used to update properties on a video. | - |
+
+### Update Video Props Object
+
+An array of properties used to update a video.
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| **title** | string | Updates the video title |
 
 ## Delete Video
 
@@ -206,7 +320,7 @@ TODO: delete videos
 
 The Video Resource(s) returned in a successful response.
 
-*Property types with a <strong>?</strong> are only returned if they are requested with a [Video Params Array](#video-params-array).*
+*Property types with a <strong>?</strong> are only returned if they are requested with a [Get Video Params Array](#get-video-params-array).*
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
