@@ -16,10 +16,14 @@ This endpoint returns an array of [Video Resources](#video-resource).
 
 ```shell
 curl -X GET \
-  'https://api.vidgrid.com/v2/videos/identifier' \
+  'https://api.vidgrid.com/v2/videos' \
   -H 'Authorization: Basic {token}' \
   -H 'Content-Type: application/json' \
   -d '{
+    "identifiers": [
+      "...",
+      "..."
+    ],
     "include": [
         "signed_url",
         "metadata",
@@ -33,7 +37,7 @@ curl -X GET \
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.vidgrid.com/v2/videos/identifier")
+url = URI("https://api.vidgrid.com/v2/videos")
 
 http = Net::HTTP.new(url.host, url.port)
 
@@ -41,6 +45,10 @@ request = Net::HTTP::Get.new(url)
 request["Content-Type"] = 'application/json'
 request["Authorization"] = 'Basic {token}'
 request.body = '{
+  "identifiers": [
+    "...",
+    "..."
+  ],
   "include": [
     "signed_url",
     "metadata",
@@ -56,9 +64,13 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://api.vidgrid.com/v2/videos/identifier"
+url = "https://api.vidgrid.com/v2/videos"
 
 payload = '{
+  "identifiers": [
+    "...",
+    "..."
+  ],
   "include": [
     "signed_url",
     "metadata",
@@ -83,12 +95,16 @@ var request = require("request");
 
 var options = {
   method: 'GET',
-  url: 'https://api.vidgrid.com/v2/videos/identifier',
+  url: 'https://api.vidgrid.com/v2/videos',
   headers: { 
     Authorization: 'Basic {token}',
     'Content-Type': 'application/json' 
   },
   body: { 
+    identifiers: [
+      '...',
+      '...'
+    ],
     include: [ 
       'signed_url', 
       'metadata', 
@@ -104,6 +120,57 @@ request(options, function (error, response, body) {
 
   console.log(body);
 });
+```
+
+> Example get video response. See [Video Resource](#video-resource) for more details.
+
+```json
+{
+  "data": [
+    {
+      "identifier": "...",
+      "title": "Video Title 1",
+      "metadata": {
+          "width": 1920,
+          "height": 1280,
+          "duration": "224.654892",
+          "filesize": "100124640"
+      },
+      "signed_url": "...",
+      "thumbnail": {
+        "signed_url": "...",
+        "signed_url_small": "..."
+      },
+      "view_url": "https://app.vidgrid.com/view/identifier",
+      "embed_url": "https://app.vidgrid.com/embed/identifier",
+      "jwts": {
+        "view": "...",
+        "edit": "..."
+      }
+    },
+    {
+      "identifier": "...",
+      "title": "Video Title",
+      "metadata": {
+          "width": 1920,
+          "height": 1280,
+          "duration": "404.260000",
+          "filesize": "130184650"
+      },
+      "signed_url": "...",
+      "thumbnail": {
+        "signed_url": "...",
+        "signed_url_small": "..."
+      },
+      "view_url": "https://app.vidgrid.com/view/identifier",
+      "embed_url": "https://app.vidgrid.com/embed/identifier",
+      "jwts": {
+        "view": "...",
+        "edit": "..."
+      }
+    }
+  ]
+}
 ```
 
 `GET https://api.vidgrid.com/v2/videos`
@@ -137,36 +204,6 @@ TODO: delete videos
 
 ## Video Resource
 
-> Example get video response.
-
-```json
-{
-  "data": [
-    {
-      "identifier": "...",
-      "title": "Video Title",
-      "metadata": {
-          "width": 1920,
-          "height": 1280,
-          "duration": "404.260000",
-          "filesize": "130184650"
-      },
-      "signed_url": "...",
-      "thumbnail": {
-        "signed_url": "...",
-        "signed_url_small": "..."
-      },
-      "view_url": "https://app.vidgrid.com/view/identifier",
-      "embed_url": "https://app.vidgrid.com/embed/identifier",
-      "jwts": {
-        "view": "...",
-        "edit": "..."
-      }
-    }
-  ]
-}
-```
-
 The Video Resource(s) returned in a successful response.
 
 *Property types with a <strong>?</strong> are only returned if they are requested with a [Video Params Array](#video-params-array).*
@@ -184,5 +221,5 @@ The Video Resource(s) returned in a successful response.
 | **metadata.filesize** | TODO: string<strong>?</strong> | Size of the video in bytes. |
 | **thumbnail.signed_url** | string<strong>?</strong> | Signed URL for the video thumbnail. |
 | **thumbnail.signed_url_small** | string<strong>?</strong> | Signed URL for as smaller version of the video thumbnail. |
-| **jwt.view** | string<strong>?</strong> | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new JWT will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?jwt={jwts.view}`* |
-| **jwt.edit** | string<strong>?</strong> | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new JWT will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?jwt={jwts.edit}`* |
+| **jwt.view** | string<strong>?</strong> | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.view}`* |
+| **jwt.edit** | string<strong>?</strong> | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.edit}`* |
