@@ -1,5 +1,6 @@
 ---
 title: VidGrid API Documentation
+version: 1.0
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: Shell

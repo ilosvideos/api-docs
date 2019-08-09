@@ -58,3 +58,7 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+# Custom Configuration
+set :latest_version, 2.0
+set :versions, [2.0, 1.0]

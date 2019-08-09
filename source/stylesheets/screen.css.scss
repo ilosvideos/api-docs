@@ -539,10 +539,19 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-top: 1.5em;
+    :not(.aside-top-banner) {
+      margin-top: 1.5em;
+    }
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    color: $aside-color;
+    font-weight: 500;
+
+    a {
+      color: $aside-color;
+      text-decoration: underline;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -553,23 +562,23 @@ html, body {
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
+  // aside:before {
+  //   vertical-align: middle;
+  //   padding-right: 0.5em;
+  //   font-size: 14px;
+  // }
 
-  aside.notice:before {
-    @extend %icon-info-sign;
-  }
+  // aside.notice:before {
+  //   @extend %icon-info-sign;
+  // }
 
-  aside.warning:before {
-    @extend %icon-exclamation-sign;
-  }
+  // aside.warning:before {
+  //   @extend %icon-exclamation-sign;
+  // }
 
-  aside.success:before {
-    @extend %icon-ok-sign;
-  }
+  // aside.success:before {
+  //   @extend %icon-ok-sign;
+  // }
 
   .search-highlight {
     padding: 2px;
