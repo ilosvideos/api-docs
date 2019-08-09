@@ -73,6 +73,10 @@ html, body {
     }
   }
 
+  .version-selector {
+    margin: $nav-v-padding $nav-padding;
+  }
+
   // This is the logo at the top of the ToC
   .logo {
     display: block;
