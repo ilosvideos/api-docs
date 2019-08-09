@@ -1,1 +1,2 @@
-Disallow: /v1/
+User-agent: *
+Disallow:

@@ -8,20 +8,20 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript: JavaScript
 
 includes:
-  - v2/introduction
-  - v2/authentication
-  - v2/responses
-  - v2/webhooks
-  - v2/tokens
-  - v2/videos
-  - v2/folders
-  - v2/logging
-  - v2/embedding
-  - v2/tracking
-  - v2/playerjs
-  - v2/cookies
-  - v2/opensearch
-  - v2/_third_parties
+  - 2.0/introduction
+  - 2.0/authentication
+  - 2.0/responses
+  - 2.0/webhooks
+  - 2.0/tokens
+  - 2.0/videos
+  - 2.0/folders
+  - 2.0/logging
+  - 2.0/embedding
+  - 2.0/tracking
+  - 2.0/playerjs
+  - 2.0/cookies
+  - 2.0/opensearch
+  - 2.0/_third_parties
 
 search: true
 
