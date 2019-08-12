@@ -127,48 +127,8 @@ request(options, function (error, response, body) {
 ```json
 {
   "data": [
-    {
-      "identifier": "...",
-      "title": "Video Title 1",
-      "metadata": {
-        "width": 1920,
-        "height": 1280,
-        "duration": "224.654892",
-        "filesize": "100124640"
-      },
-      "signed_url": "...",
-      "thumbnail": {
-        "signed_url": "...",
-        "signed_url_small": "..."
-      },
-      "view_url": "https://app.vidgrid.com/view/identifier",
-      "embed_url": "https://app.vidgrid.com/embed/identifier",
-      "jwts": {
-        "view": "...",
-        "edit": "..."
-      }
-    },
-    {
-      "identifier": "...",
-      "title": "Video Title",
-      "metadata": {
-        "width": 1920,
-        "height": 1280,
-        "duration": "404.260000",
-        "filesize": "130184650"
-      },
-      "signed_url": "...",
-      "thumbnail": {
-        "signed_url": "...",
-        "signed_url_small": "..."
-      },
-      "view_url": "https://app.vidgrid.com/view/identifier",
-      "embed_url": "https://app.vidgrid.com/embed/identifier",
-      "jwts": {
-        "view": "...",
-        "edit": "..."
-      }
-    }
+    Video Resource Object,
+    Video Resource Object
   ]
 }
 ```
@@ -286,12 +246,7 @@ request(options, function (error, response, body) {
 
 ```json
 {
-  "data": {
-    "identifier": "...",
-    "title": "Video Title 1",
-    "view_url": "https://app.vidgrid.com/view/identifier",
-    "embed_url": "https://app.vidgrid.com/embed/identifier",
-  }
+  "data": Video Resource Object
 }
 ```
 
@@ -408,6 +363,32 @@ request(options, function (error, response, body) {
 The Video Resource(s) returned in a successful response.
 
 *Property types with a <strong>?</strong> are only returned if they are requested with a [Get Video Params Array](#get-video-params-array).*
+
+> Example Video Resource Object.
+
+```json
+{
+  "identifier": "...",
+  "title": "Video Title",
+  "view_url": "https://app.vidgrid.com/view/identifier",
+  "embed_url": "https://app.vidgrid.com/embed/identifier",
+  "signed_url": "...",
+  "metadata": {
+    "width": 1920,
+    "height": 1280,
+    "duration": "404.260000",
+    "filesize": "130184650"
+  },
+  "thumbnail": {
+    "signed_url": "...",
+    "signed_url_small": "..."
+  },
+  "jwts": {
+    "view": "...",
+    "edit": "..."
+  }
+}
+```
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |

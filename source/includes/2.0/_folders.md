@@ -90,12 +90,7 @@ request(options, function (error, response, body) {
 
 ```json
 {
-  "data": {
-    "identifier": "...",
-    "title": "New Folder Title",
-    "view_url": "https://app.vidgrid.com/content/identifier",
-    "is_in_org_library": false
-  }
+  "data": Folder Resource Object
 }
 ```
 
@@ -219,28 +214,8 @@ request(options, function (error, response, body) {
 ```json
 {
   "data": [
-    {
-      "identifier": "...",
-      "title": "Folder Title 1",
-      "is_in_org_library": false,
-      "view_url": "https://app.vidgrid.com/content/identifier",
-      "playlist": {
-        "enabled": false,
-        "view_url": "https://app.vidgrid.com/playlist/identifier",
-        "embed_url": "https://app.vidgrid.com/playlist/identifier?embedded=1"
-      }
-    },
-    {
-      "identifier": "...",
-      "title": "Folder Title 2",
-      "is_in_org_library": true,
-      "view_url": "https://app.vidgrid.com/content/identifier",
-      "playlist": {
-        "enabled": true,
-        "view_url": "https://app.vidgrid.com/playlist/identifier",
-        "embed_url": "https://app.vidgrid.com/playlist/identifier?embedded=1"
-      }
-    }
+    Folder Resource Object,
+    Folder Resource Object
   ]
 }
 ```
@@ -349,15 +324,11 @@ request(options, function (error, response, body) {
 });
 ```
 
-> Example get folder response. See [Folder Resource](#folder-resource) for more details.
+> Example update folder response. See [Folder Resource](#folder-resource) for more details.
 
 ```json
 {
-  "data": {
-    "identifier": "...",
-    "title": "Updated Folder Title",
-    "view_url": "https://app.vidgrid.com/content/identifier",
-  }
+  "data": Folder Resource Object
 }
 ```
 
@@ -462,6 +433,22 @@ request(options, function (error, response, body) {
 The Folder Resource(s) returned in a successful response.
 
 *Property types with a <strong>?</strong> are only returned if they are requested with a [Folder Params Array](#folder-params-array).*
+
+> Example Folder Resource Object.
+
+```json
+{
+  "identifier": "...",
+  "title": "Folder Title",
+  "is_in_org_library": false,
+  "view_url": "https://app.vidgrid.com/content/identifier",
+  "playlist": {
+    "enabled": false,
+    "view_url": "https://app.vidgrid.com/playlist/identifier",
+    "embed_url": "https://app.vidgrid.com/playlist/identifier?embedded=1"
+  }
+}
+```
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
