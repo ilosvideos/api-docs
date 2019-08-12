@@ -396,12 +396,12 @@ The Video Resource(s) returned in a successful response.
 | **title** | string | Title of the video. |
 | **view_url** | string | URL to view the video. |
 | **embed_url** | string | URL to embed the video. |
-| **signed_url** | string<strong>?</strong> | Signed url that can be used to view the video. |
-| **metadata.width** | TODO: int<strong>?</strong> | Width of the video. |
-| **metadata.height** | TODO: int<strong>?</strong> | Height of the video. |
-| **metadata.duration** | TODO: string<strong>?</strong> | Duration of the video in seconds. |
-| **metadata.filesize** | TODO: string<strong>?</strong> | Size of the video in bytes. |
-| **thumbnail.signed_url** | string<strong>?</strong> | Signed URL for the video thumbnail. |
-| **thumbnail.signed_url_small** | string<strong>?</strong> | Signed URL for as smaller version of the video thumbnail. |
-| **jwt.view** | string<strong>?</strong> | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.view}`* |
-| **jwt.edit** | string<strong>?</strong> | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.edit}`* |
+| **signed_url** | **?**string | Signed url that can be used to view the video. |
+| **metadata.width** | TODO: **?**int | Width of the video. |
+| **metadata.height** | TODO: **?**int | Height of the video. |
+| **metadata.duration** | TODO: **?**string | Duration of the video in seconds. |
+| **metadata.filesize** | TODO: **?**string | Size of the video in bytes. |
+| **thumbnail.signed_url** | **?**string | Signed URL for the video thumbnail. |
+| **thumbnail.signed_url_small** | **?**string | Signed URL for as smaller version of the video thumbnail. |
+| **jwt.view** | **?**string | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.view}`* |
+| **jwt.edit** | **?**string | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.edit}`* |

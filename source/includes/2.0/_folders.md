@@ -456,6 +456,6 @@ The Folder Resource(s) returned in a successful response.
 | **title** | string | Title of the folder. |
 | **view_url** | string | URL to view the folder. |
 | **is_in_org_library** | bool | Whether or not this folder is in the Organization Library. |
-| **playlist.enabled** | string<strong>?</strong> | Whether this folder can be used as a playlist. |
-| **playlist.view_url** | string<strong>?</strong> | URL to view the playlist for this folder. |
-| **playlist.embed_url** | string<strong>?</strong> | URL to embed the playlist for this folder. |
+| **playlist.enabled** | **?**string | Whether this folder can be used as a playlist. |
+| **playlist.view_url** | **?**string | URL to view the playlist for this folder. |
+| **playlist.embed_url** | **?**string | URL to embed the playlist for this folder. |
