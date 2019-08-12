@@ -74,7 +74,11 @@ html, body {
   }
 
   .version-selector {
-    margin: $nav-v-padding $nav-padding;
+    color: $nav-text;
+    padding: $nav-v-padding $nav-padding 0 $nav-padding;
+    span {
+      margin-right: 5px;
+    }
   }
 
   // This is the logo at the top of the ToC

@@ -57,15 +57,18 @@ under the License.
     <div class="toc-wrapper">
       <%= image_tag "logo.svg", class: 'logo' %>
       <% if versions.any? %>
-        <select class="version-selector">
-          <% versions.each do |ver| %>
-            <% if version == ver %>
-              <option selected="selected"><%= ver %></option>
-            <% else %>
-              <option><%= ver %></option>
+        <div class="version-selector">
+          <span>Version</span>
+          <select>
+            <% versions.each do |ver| %>
+              <% if version == ver %>
+                <option selected="selected"><%= ver %></option>
+              <% else %>
+                <option><%= ver %></option>
+              <% end %>
             <% end %>
-          <% end %>
-        </select>
+          </select>
+        </div>
       <% end %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
