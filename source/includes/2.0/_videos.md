@@ -25,10 +25,10 @@ curl -X GET \
       "..."
     ],
     "include": [
-        "signed_url",
-        "metadata",
-        "thumbnail",
-        "jwts"
+      "signed_url",
+      "metadata",
+      "thumbnail",
+      "jwts"
     ]
   }'
 ```
@@ -131,10 +131,10 @@ request(options, function (error, response, body) {
       "identifier": "...",
       "title": "Video Title 1",
       "metadata": {
-          "width": 1920,
-          "height": 1280,
-          "duration": "224.654892",
-          "filesize": "100124640"
+        "width": 1920,
+        "height": 1280,
+        "duration": "224.654892",
+        "filesize": "100124640"
       },
       "signed_url": "...",
       "thumbnail": {
@@ -152,10 +152,10 @@ request(options, function (error, response, body) {
       "identifier": "...",
       "title": "Video Title",
       "metadata": {
-          "width": 1920,
-          "height": 1280,
-          "duration": "404.260000",
-          "filesize": "130184650"
+        "width": 1920,
+        "height": 1280,
+        "duration": "404.260000",
+        "filesize": "130184650"
       },
       "signed_url": "...",
       "thumbnail": {
@@ -203,13 +203,13 @@ This endpoint updates a video and then returns it as a [Video Resource](#video-r
 > Example update video request.
 
 ```shell
-curl -X GET \
+curl -X PATCH \
   'https://api.vidgrid.com/v2/videos/identifier' \
   -H 'Authorization: Basic {token}' \
   -H 'Content-Type: application/json' \
   -d '{
     "properties": [
-        "title": "New Video Title"
+      "title": "Updated Video Title"
     ]
   }'
 ```
@@ -222,12 +222,12 @@ url = URI("https://api.vidgrid.com/v2/videos/identifier")
 
 http = Net::HTTP.new(url.host, url.port)
 
-request = Net::HTTP::Get.new(url)
+request = Net::HTTP::Patch.new(url)
 request["Content-Type"] = 'application/json'
 request["Authorization"] = 'Basic {token}'
 request.body = '{
   "properties": [
-      "title": "New Video Title"
+    "title": "Updated Video Title"
   ]
 }'
 
@@ -242,7 +242,7 @@ url = "https://api.vidgrid.com/v2/videos/identifier"
 
 payload = '{
   "properties": [
-      "title": "New Video Title"
+    "title": "Updated Video Title"
   ]
 }'
 headers = {
@@ -250,7 +250,7 @@ headers = {
   'Authorization': "Basic {token}",
 }
 
-response = requests.request("GET", url, data=payload, headers=headers)
+response = requests.request("PATCH", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -261,7 +261,7 @@ print(response.text)
 var request = require("request");
 
 var options = {
-  method: 'GET',
+  method: 'PATCH',
   url: 'https://api.vidgrid.com/v2/videos/identifier',
   headers: { 
     Authorization: 'Basic {token}',
@@ -269,7 +269,7 @@ var options = {
   },
   body: { 
     properties: [
-      title: "New Video Title"
+      title: "Updated Video Title"
     ]
   },
   json: true 
@@ -282,7 +282,7 @@ request(options, function (error, response, body) {
 });
 ```
 
-> Example get video response. See [Video Resource](#video-resource) for more details.
+> Example update video response. See [Video Resource](#video-resource) for more details.
 
 ```json
 {
@@ -302,19 +302,106 @@ request(options, function (error, response, body) {
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
 | **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required* |
-| **properties** | [Update Video Props Object](#update-video-props-object) | An object used to update properties on a video. | - |
+| **properties** | [Update Video Props Object](#update-video-props-object) | An object used to update properties on a video. | *Required* |
 
 ### Update Video Props Object
 
-An array of properties used to update a video.
+An object used to update properties on a video.
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| **title** | string | Updates the video title |
+| **title** | string | Updates the video title. |
 
 ## Delete Video
 
-TODO: delete videos
+This endpoint deletes a video.
+
+### HTTP Request
+
+> Example delete video request.
+
+```shell
+curl -X DELETE \
+  'https://api.vidgrid.com/v2/videos/identifier' \
+  -H 'Authorization: Basic {token}' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "trash": true
+  }'
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://api.vidgrid.com/v2/videos/identifier")
+
+http = Net::HTTP.new(url.host, url.port)
+
+request = Net::HTTP::Delete.new(url)
+request["Content-Type"] = 'application/json'
+request["Authorization"] = 'Basic {token}'
+request.body = '{
+  "trash": true
+}'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```python
+import requests
+
+url = "https://api.vidgrid.com/v2/videos/identifier"
+
+payload = '{
+  "trash": true
+}'
+headers = {
+  'Content-Type': "application/json",
+  'Authorization': "Basic {token}",
+}
+
+response = requests.request("DELETE", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```javascript
+// NodeJS
+
+var request = require("request");
+
+var options = {
+  method: 'DELETE',
+  url: 'https://api.vidgrid.com/v2/videos/identifier',
+  headers: { 
+    Authorization: 'Basic {token}',
+    'Content-Type': 'application/json' 
+  },
+  body: { 
+    trash: true
+  },
+  json: true 
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> The delete video endpoint returns a 204 No Content response when successful.
+
+`DELETE https://api.vidgrid.com/v2/videos`
+
+### HTTP Parameters
+
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
+| **identifier** | string | The unique identifier of a video.<br>*You may pass this in the body or on the URL: `/v2/videos/identifier`* | *Required* |
+| **trash** | bool | If set to true, videos will be placed in the VidGrid trash for 30 days. If set to false, the trash will be skipped and videos will be deleted immediately. | true |
 
 ## Video Resource
 
