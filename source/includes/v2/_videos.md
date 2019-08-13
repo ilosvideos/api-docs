@@ -149,10 +149,10 @@ An array of properties to be included with a returned [Video Resource](#video-re
 
 | Param | Description |
 | ----- | ----------- |
-| **signed_url** | Request a signed URL that can be used to view the video. |
+| **signed_url** | Request a signed URL that can be used to view the video file directly. |
 | **metadata** | Request metadata about the video. |
 | **thumbnail** | Request signed URLs that can be used to view video thumbnails. |
-| **jwts** | Request JWT tokens that can be used to view and/or edit a video. |
+| **jwts** | Request JWT tokens that can be used to view and/or edit a video on VidGrid. |
 
 ## Update Video
 
@@ -396,12 +396,12 @@ The Video Resource(s) returned in a successful response.
 | **title** | string | Title of the video. |
 | **view_url** | string | URL to view the video. |
 | **embed_url** | string | URL to embed the video. |
-| **signed_url** | **?**string | Signed url that can be used to view the video.<br>*Expires after 6 hours.* |
+| **signed_url** | **?**string | Signed url that can be used to view the video file directly.<br>*Expires after 6 hours.* |
 | **metadata.width** | TODO: **?**int | Width of the video. |
 | **metadata.height** | TODO: **?**int | Height of the video. |
 | **metadata.duration** | TODO: **?**string | Duration of the video in seconds. |
 | **metadata.filesize** | TODO: **?**string | Size of the video in bytes. |
 | **thumbnail.signed_url** | **?**string | Signed URL for the video thumbnail. |
 | **thumbnail.signed_url_small** | **?**string | Signed URL for as smaller version of the video thumbnail. |
-| **jwt.view** | **?**string | An access token that can be used to grant one-time view permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.view}`* |
-| **jwt.edit** | **?**string | An access token that can be used to grant one-time edit permissions on a video. Upon loading the video, a new access token will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{view_url}?auth={jwts.edit}`* |
+| **jwt.view** | **?**string | An access token that can be used to grant one-time view permissions for a video on VidGrid. Upon loading the video, a new access token will be generated behind the scenes that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.view}`* |
+| **jwt.edit** | **?**string | An access token that can be used to grant one-time edit permissions for a video on VidGrid. Upon loading the video, a new access token will be generated behind the scenes that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.edit}`* |
