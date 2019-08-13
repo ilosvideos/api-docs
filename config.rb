@@ -60,5 +60,5 @@ helpers do
 end
 
 # Custom Configuration
-set :latest_version, 2.0
-set :versions, [2.0, 1.0]
+set :latest_version, 2
+set :versions, [2, 1]

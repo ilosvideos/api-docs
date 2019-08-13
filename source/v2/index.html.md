@@ -1,6 +1,6 @@
 ---
 title: VidGrid API Documentation
-version: 1.0
+version: 2
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: Shell
@@ -9,12 +9,20 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript: JavaScript
 
 includes:
-  - 1.0/introduction
-  - 1.0/authentication
-  - 1.0/recording
-  - 1.0/uploading
-  - 1.0/video
-  - 1.0/webhooks
+  - v2/introduction
+  - v2/authentication
+  - v2/responses
+  - v2/webhooks
+  - v2/tokens
+  - v2/videos
+  - v2/folders
+  - v2/logging
+  - v2/embedding
+  - v2/tracking
+  - v2/playerjs
+  - v2/cookies
+  - v2/opensearch
+  - v2/_third_parties
 
 search: true
 
