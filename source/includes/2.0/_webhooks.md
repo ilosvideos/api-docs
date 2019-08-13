@@ -1,6 +1,6 @@
 # Webhooks
 
-You can create webhooks and subscribe to multiple events from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account. 
+You can create webhooks which subscribe to events from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account. 
 
 ## Events
 
