@@ -21,7 +21,6 @@ includes:
   - v2/tracking
   - v2/playerjs
   - v2/cookies
-  - v2/opensearch
   - v2/_third_parties
 
 search: true

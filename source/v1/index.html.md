@@ -15,6 +15,7 @@ includes:
   - v1/uploading
   - v1/video
   - v1/webhooks
+  - v1/opensearch
 
 search: true
 
