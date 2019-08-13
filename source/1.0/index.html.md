@@ -15,9 +15,6 @@ includes:
   - 1.0/uploading
   - 1.0/video
   - 1.0/webhooks
-  - 1.0/cookies
-  - 1.0/opensearch
-  - 1.0/playerjs
 
 search: true
 

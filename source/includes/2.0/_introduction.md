@@ -14,8 +14,10 @@ Code examples can be viewed in the area to the right, and you can switch the lan
  * <a href="https://app.vidgrid.com/demo/api/record" target="_blank">Recording Demo</a>
  * <a href="https://app.vidgrid.com/demo/api/upload" target="_blank">Uploading Demo</a>
 
-## Help and Support
+## Help, Support, & Feedback
 
-If you discover a mistake in the documentation, please <a href="mailto:webmaster@vidgrid.com?subject=API Documentation Issue" target="_blank">report an issue</a> and we'll take a look.
+If you have feedback or feature requests, please <a href="mailto:webmaster@vidgrid.com?subject=API Feedback" target="_blank">send us your feedback or request</a>.
+
+If you discover a mistake in the documentation, please <a href="mailto:webmaster@vidgrid.com?subject=API Documentation Issue" target="_blank">report an issue</a>.
 
 If you need further assistance or have any other questions, please visit our <a href="https://help.vidgrid.com" target="_blank">Help Center</a>.

@@ -6,8 +6,6 @@ The problem occurs when a user has "Prevent cross-site tracking" selected under 
 
 For instance, **foo.com** has an iframe which contains **bar.com**. If the user has not visited **bar.com** outside of an iframe, the **bar.com** iframe will not be able to save a cookie.
 
-**TODO: there may be issues with other browsers now so we need to see if we should extend this functionality**
-
 ## Solution 1 (Dialog)
 
 ```shell
