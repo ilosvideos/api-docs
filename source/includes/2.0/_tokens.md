@@ -10,9 +10,7 @@ A basic implementation of the Recording/Uploading API could be as follows:
 
 1. Request a token from VidGrid and save the returned data.
 2. Display a recording/uploading iframe to the user using the either `recorder.iframe_button` or `uploader.iframe` (we recommend using our iframes since they handle downloading and installing the recorder for first time users).
-3. TODO: Once a user has used the recorder/uploader to upload a video, wait for a response at your [Webook](#webhooks) endpoint and use the video data as you wish (eg. embed the video in a support ticket)
-
-You may also take a look at the [Live Demos](#live-demos) for more examples.
+3. Create a [Webook](#webhooks) and subscribe to one or more events. Once a user has created a video, an event(s) will fire and a [Video Resource](#video-resource) will be sent to the webhook endpoint. You can then use the resource as you wish (eg. embed the video inside a support ticket).
 
 ## Create Token
 
@@ -241,7 +239,6 @@ request(options, function (error, response, body) {
 | **type** | string | Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | *Required* |
 | **video** | [Video Params Object](#video-params-object) | Sets properties on videos created with this token. | - |
 | **recorder** | [Recorder Params Object](#recorder-params-object) | Configures recorder behavior when launched with this token.<br>*Only applies to tokens with a `type` of `record`.* | - |
-| **webhook** | [Webhook Params Object](#webhook-params-object) | Configures webhook behavior for videos recorded with this token. | - |
 
 ### Video Params Object
 
@@ -269,16 +266,6 @@ Configures recorder behavior when launched via a specific token.
 | **on_install.auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
 | **on_install.show_instructions_page** | boolean | Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method. | false |
 
-### Webhook Params Object
-
-Configures webhook behavior for videos recorded with a specific token.
-
-| Param | Type | Description | Default |
-| ----- | ---- | ----------- | ------- |
-| **video_endpoint** | string | TODO | TODO |
-| **video_endpoint_trigger** | string | TODO | TODO |
-| **video_endpoint_extras** | array | TODO | TODO |
-
 ## Record Token Resource
 
 > Example create record token response.
@@ -305,7 +292,7 @@ The Record Token Resource returned in a successful response.
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **recorder.download_url** | string | URL that can be used to download the recorder. |
 | **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
-| **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. |
+| **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. TODO: we removed the video embed iframes, do we want to remove this one or is it a unique case? |
 
 ## Upload Token Resource
 

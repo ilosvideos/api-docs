@@ -1,30 +1,44 @@
 # Webhooks
 
-**TODO: this whole section needs to be updated**
+You can create webhooks and subscribe to multiple events from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account. 
 
-Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will post to once a video is ready on VidGrid.
+## Events
 
-You can set the webhook options (`video_endpoint`, `video_endpoint_trigger`, and `video_endpoint_extras`) in both the [Recording API](#recording-api) and [Uploading API](#uploading-api).
-
-You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations" target="_blank">integration settings</a> in your VidGrid account.
-
-## Webhook Response
-
-> Example webhook response.
+> Example data sent when an event is fired.
 
 ```json
 {
-  "token": "...",
-  "video": {},
-  "video_endpoint_extras": {
-    "extra1": "Something I wanted at my endpoint",
-    "extra2": "Another thing I wanted at my endpoint",
+  "data": {
+    "resource": ...,
+    "token": "..."
   }
 }
 ```
 
+Each webhook created can subscribe to one or more events. When an event is fired, VidGrid will POST data to the endpoint specified in the webhook.
+
+You can view logs for events fired from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account.
+
+### Video Uploaded
+
+Fired when a video is uploaded to VidGrid. The video is embeddable, but not playable. 
+
+Properties of a base [Video Resource](#video-resource) are available at this point.
+
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **token** | string | One-time token that was used to record or upload a video. |
-| **video** | [Video Resource](#video-resource) | The video that was created before firing the webhook. TODO: what includes would be on the Video Resource at this point? |
-| **video_endpoint_extras** | array? | Any `video_endpoint_extras` sent through the [Recording API](#recording-api) or [Uploading API](#uploading-api). |
+| **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
+| **token** | **?**string | Token used if this video was created through the API. |
+
+### Video Ready
+
+Fired when a video is processed and ready for playback on VidGrid. 
+
+Properties of a base [Video Resource](#video-resource) are available at this point as well as properties in the [Get Video Params Array](#get-video-params-array). 
+
+*Note: The video thumbnail may not be ready at this point, but embedded videos will be updated automatically when the thumbnail is generated.*
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
+| **token** | **?**string | Token used if this video was created through the API. |
