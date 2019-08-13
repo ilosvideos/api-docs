@@ -292,7 +292,7 @@ The Record Token Resource returned in a successful response.
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **recorder.download_url** | string | URL that can be used to download the recorder. |
 | **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
-| **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. TODO: we removed the video embed iframes, do we want to remove this one or is it a unique case? |
+| **recorder.iframe_button** | string | Iframe containing a record button. It will handle downloading and launching the recorder. |
 
 ## Upload Token Resource
 

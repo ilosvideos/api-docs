@@ -149,10 +149,10 @@ An array of properties to be included with a returned [Video Resource](#video-re
 
 | Param | Description |
 | ----- | ----------- |
-| **signed_url** | Request a signed URL that can be used to view the video.<br>*Expires after 6 hours.* |
+| **signed_url** | Request a signed URL that can be used to view the video. |
 | **metadata** | Request metadata about the video. |
-| **thumbnail** | Request signed URLs that can be used to view video thumbnails.<br>*TODO: expiration?* |
-| **jwts** | Request JWT tokens that can be used to view or edit a video. |
+| **thumbnail** | Request signed URLs that can be used to view video thumbnails. |
+| **jwts** | Request JWT tokens that can be used to view and/or edit a video. |
 
 ## Update Video
 
@@ -396,7 +396,7 @@ The Video Resource(s) returned in a successful response.
 | **title** | string | Title of the video. |
 | **view_url** | string | URL to view the video. |
 | **embed_url** | string | URL to embed the video. |
-| **signed_url** | **?**string | Signed url that can be used to view the video. |
+| **signed_url** | **?**string | Signed url that can be used to view the video.<br>*Expires after 6 hours.* |
 | **metadata.width** | TODO: **?**int | Width of the video. |
 | **metadata.height** | TODO: **?**int | Height of the video. |
 | **metadata.duration** | TODO: **?**string | Duration of the video in seconds. |
