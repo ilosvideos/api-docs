@@ -38,6 +38,10 @@ curl -X POST \
     		"auto_authenticate": true,
     		"show_instructions_page": true
     	}
+    },
+    "webhook_extras": {
+      "key1": "val1",
+      "key2": "val2"
     }
   }'
 ```
@@ -66,6 +70,10 @@ request.body = '{
       "auto_authenticate": true,
       "show_instructions_page": true
     }
+  },
+  "webhook_extras": {
+    "key1": "val1",
+    "key2": "val2"
   }
 }'
 
@@ -91,6 +99,10 @@ payload = {
       "auto_authenticate": true,
       "show_instructions_page": true
     }
+  },
+  "webhook_extras": {
+    "key1": "val1",
+    "key2": "val2"
   }
 }
 headers = {
@@ -128,6 +140,10 @@ var options = {
     		auto_authenticate: true,
     		show_instructions_page: true
     	}
+    },
+    webhook_extras: {
+      key1: "val1",
+      key2: "val2"
     }
   },
   json: true 
@@ -239,6 +255,7 @@ request(options, function (error, response, body) {
 | **type** | string | Whether this token will be used for recording or uploading.<br>*Possible values: `record`, `upload`.* | *Required* |
 | **video** | [Video Params Object](#video-params-object) | Sets properties on videos created with this token. | - |
 | **recorder** | [Recorder Params Object](#recorder-params-object) | Configures recorder behavior when launched with this token.<br>*Only applies to tokens with a `type` of `record`.* | - |
+| **webhook_extras** | array | Any extra data that you would like to be sent along when [Webhook](#webhooks) events are fired. | - |
 
 ### Video Params Object
 

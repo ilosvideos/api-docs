@@ -10,7 +10,11 @@ You can create webhooks which subscribe to events from the <a href="https://app.
 {
   "data": {
     "resource": ...,
-    "token": "..."
+    "token": "...",
+    "extras": {
+      "key1": "value 1",
+      "key2": "value 2"
+    }
   }
 }
 ```
@@ -29,6 +33,7 @@ Properties of a base [Video Resource](#video-resource) are available at this poi
 | ---- | ---- | ----- |
 | **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
+| **extras** | **?**array | An array of extra data if sent through the API. |
 
 ### Video Ready
 
@@ -42,3 +47,4 @@ Properties of a base [Video Resource](#video-resource) are available at this poi
 | ---- | ---- | ----- |
 | **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
+| **extras** | **?**array | An array of extra data if sent through the API. |
