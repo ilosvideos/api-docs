@@ -280,7 +280,7 @@ The Direct Upload Token Resource returned in a successful response.
 The process for using this method is as follows:
 
 1. Request upload form data from the [Create Token](#create-token) endpoint using the `upload_direct` token type.
-2. Show an upload form with the data from **formAttributes**, **formInputs** and a file picker using the key name from **fileParamName**
+2. Show an upload form with the data from **formAttributes**, **formInputs** and a file picker using the key name from **fileParamName**.<br>*Note: <strong>fileParamName</strong> needs to be the last key/value pair included in the POST to S3.*
 3. Once a user chooses a file for upload, submit the form.
 4. Once the upload is complete, make a POST to **cloudUploadCallbackUrl** letting VidGrid know the file has been uploaded.
 5. Wait as the video goes through the normal upload/processing steps. [Webhook](#webhooks) events will fire as they normally would.
@@ -289,6 +289,6 @@ The process for using this method is as follows:
 | ---- | ---- | ----- |
 | **formAttributes** | array | Form attributes for uploading a file to S3 such as `action`, `method`, and `enctype`. |
 | **formInputs** | array | Key/value pairs of the form data that should be included when posting to S3. Be sure to replace **${filename}** with whatever you would like to name your file. |
-| **fileParamName** | string | The key name that should contain the actual file data for uploading. This needs to be the last key/value pair included in the POST to S3. |
+| **fileParamName** | string | The key name that should contain the actual file data for uploading. |
 | **cloudUploadCallbackUrl** | string | VidGrid URL to POST to once a video has finished uploading to S3. This will tell us to continue the upload process and will also return the video identifier if successful. |
 | **token** | string | One-time token that is used for validation when uploading a video. |
