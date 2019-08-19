@@ -156,7 +156,7 @@ request(options, function (error, response, body) {
 | ----- | ---- | ----------- | ------- |
 | **type** | string | The type of token that will be used. See [Token Types](#token-types) for more info.<br>*Possible values: `record`, `upload`, `direct_upload`.* | *Required* |
 | **video** | [Video Params Object](#video-params-object) | Sets properties on videos created with this token. | - |
-| **recorder** | [Recorder Params Object](#recorder-params-object) | Configures recorder behavior when launched with this token.<br>*Only applies to `record` tokens.* | - |
+| **recorder** | [Recorder Params Object](#recorder-params-object) | Configures recorder behavior when launched with this token.<br>*Only applies to tokens with a `type` of `record`.* | - |
 | **webhook_extras** | array | Any extra data that you would like to be sent along when [Webhook](#webhooks) events are fired. | - |
 
 ### Video Params Object
@@ -165,7 +165,7 @@ Sets properties on videos created with a specific token.
 
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
-| **title** | string | Sets the title for the created video. Note that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder. | - |
+| **title** | string | Sets the title for the created video.<br>*Note: that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder.* | - |
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
 | **folder** | string | Automatically add uploaded videos to a folder. This should be set to a folder **identifier**. | - |
 
@@ -277,9 +277,9 @@ See [Direct Upload Example](#direct-upload-example) for more information on impl
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **formAttributes** | array | Form attributes necessary for the S3 upload. |
-| **formInputs** | array | Key/value pairs necessary for the S3 upload.<br>*Important: <strong>formInputs.key</strong> contains a <strong>${filename}</strong> string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless <strong>video.title</strong> is set in the [Create Token](#create-token) request.* |
+| **formInputs** | array | Key/value pairs necessary for the S3 upload.<br>*Important: <strong>formInputs.key</strong> contains a <strong>${filename}</strong> string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the [Create Token](#create-token) request.* |
 | **fileParamName** | string | The required key name that should contain the file data for uploading.<br>*Important: Amazon requires this to be the last key/value pair included in the POST to S3.<br>e.g. `<input type="file" name="{fileParamName}">`* |
-| **cloudUploadCallbackUrl** | string | URL to **POST** to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier.<br>*Important: you need to include `cloudKey` with the request which is the value of <strong>formInputs.key</strong> after <strong>${filename}</strong> has been replaced.* |
+| **cloudUploadCallbackUrl** | string | URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier.<br>*Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after <strong>${filename}</strong> has been replaced.* |
 | **token** | string | One-time token that is used for validation when uploading a video. It is then mainly used for informational purposes. |
 
 ## Example Usage
@@ -307,6 +307,6 @@ Use an `upload` token to allow users to upload pre-existing videos to VidGrid us
 A `direct_upload` token is used to bypass the VidGrid web uploader and upload videos directly to Amazon S3. It is a little more complex to implement but provides greater flexibility than the normal `upload` token.
 
 1. Request a `direct_upload` token from VidGrid and save the returned data.
-2. Make a **POST** request to S3 using the **formAttributes**, **formInputs**, and file data with the **fileParamName** as its key.<br>*Important: Amazon requires the file data to be the last key/value pair included in the POST to S3.*
-4. Once the upload is complete, make a **POST** to **cloudUploadCallbackUrl** letting VidGrid know the file is ready to be processed.
+2. Make a `POST` request to S3 using the **formAttributes**, **formInputs**, and file data with the **fileParamName** as its key.<br>*Important: Amazon requires the file data to be the last key/value pair included in the POST to S3.*
+4. Once the upload is complete, make a `POST` to **cloudUploadCallbackUrl** letting VidGrid know the file is ready to be processed.
 5. Wait as the video goes through the normal processing steps. [Webhook Events](#events) events will fire as they normally would.

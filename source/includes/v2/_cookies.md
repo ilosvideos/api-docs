@@ -38,7 +38,7 @@ In most cases **we have already implemented this solution** inside of our iframe
 
 `GET https://app.vidgrid.com/cookie/dialog`
 
-*Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
+*Note that we are using <strong>app.vidgrid.com</strong> as opposed to <strong>api.vidgrid.com</strong>*
 
 ## Solution 2 (Redirect)
 
@@ -64,7 +64,7 @@ This will visit app.vidgrid.com, save a cookie, and immediately redirect to the 
 
 `GET https://app.vidgrid.com/cookie/redirect`
 
-*Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
+*Note that we are using <strong>app.vidgrid.com</strong> as opposed to <strong>api.vidgrid.com</strong>*
 
 ### HTTP Parameters
 
