@@ -39,6 +39,6 @@ player.on('ready', () => {
 });
 ```
 
-VidGrid supports auto playing videos when the `autoplay` query parameter is set to `true` on the video url. However, some browsers now block auto playing videos from starting. To get around this, we can use Player.js.
+VidGrid supports auto playing videos when the `autoplay` query parameter is set to `true` on the video URL. However, some browsers now block auto playing videos from starting. To get around this, we can use Player.js.
 
 Simply follow the [Installation](#installation) instructions and then follow the code example to the right.

@@ -58,7 +58,7 @@ In most cases **we have already implemented this solution** inside of our iframe
 window.location = "https://app.vidgrid.com/cookie/redirect?url=https%3A%2F%2Fwww.foo.com";
 ```
 
-This will visit app.vidgrid.com, save a cookie, and immediately redirect to the desired url.
+This will visit app.vidgrid.com, save a cookie, and immediately redirect to the desired URL.
 
 ### Client-Side HTTP Request
 

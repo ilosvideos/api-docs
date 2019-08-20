@@ -1,6 +1,6 @@
 # Video Creation Token API
 
-The Video Creation Token API allows you to requests token that can be used to record or upload videos into your VidGrid account. 
+The Video Creation Token API allows you to request a token that can be used to record or upload videos into your VidGrid account. 
 
 See [Example Usage](#example-usage) for more information.
 
@@ -165,7 +165,7 @@ Sets properties on videos created with a specific token.
 
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
-| **title** | string | Sets the title for the created video.<br>*Note: that if `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder.* | - |
+| **title** | string | Sets the title for the created video.<br>*If `recorder.hide_video_title` is set to `false` the end user will have the option to set their own title from within the recorder.* | - |
 | **public** | boolean | When set to `true`, an uploaded video will be viewable by anyone with a link. If set to `false`, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization default settings will be used. | - |
 | **folder** | string | Automatically add uploaded videos to a folder. This should be set to a folder **identifier**. | - |
 
@@ -179,7 +179,7 @@ Configures recorder behavior when launched via a specific token.
 | ----- | ---- | ----------- | ------- |
 | **auto_show_video_page** | boolean | Whether or not to automatically open the video in the user's browser after recording. | false |
 | **auto_close_recorder** | boolean | Whether or not to close the recorder when it is finished uploading the video. If set to `true`, the user will only be able to record one video with this token. | false |
-| **hide_video_title_input** | boolean | Whether or not to allow the user title the video after recording. | false |
+| **hide_video_title_input** | boolean | Whether or not to allow the user to title the video after recording. | false |
 | **default_fullscreen** | boolean | Whether or not the recorder should launch in fullscreen mode. | false |
 | **force_webcam_only** | boolean | Whether or not the recorder should be restricted to webcam only mode. | false |
 | **on_install.auto_authenticate** | boolean | Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to `false`, the user will need to return to their browser and click record in order to be authenticated. | true |
@@ -209,7 +209,7 @@ The Record Token Resource returned in a successful response.
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **token** | string | One-time token that is used for validation when recording and uploading a video. |
+| **token** | string | One-time token that is used for authentication when recording and uploading a video. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **recorder.download_url** | string | URL that can be used to download the recorder. |
 | **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
@@ -236,7 +236,7 @@ The Upload Token Resource returned in a successful response.
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **token** | string | One-time token that is used for validation when uploading a video. |
+| **token** | string | One-time token that is used for authentication when uploading a video. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **uploader.iframe** | string | Iframe containing a simple upload dropzone. |
 | **recorder.iframe_basic** | string | Iframe containing a simple upload button. |
@@ -280,7 +280,7 @@ See [Direct Upload Example](#direct-upload-example) for more information on impl
 | **formInputs** | array | Key/value pairs necessary for the S3 upload.<br>*Important: <strong>formInputs.key</strong> contains a <strong>${filename}</strong> string that needs to be replaced with a unique file name for each file uploaded. This will also be used for the video title in VidGrid unless `video.title` is set in the [Create Token](#create-token) request.* |
 | **fileParamName** | string | The required key name that should contain the file data for uploading.<br>*Important: Amazon requires this to be the last key/value pair included in the POST to S3.<br>e.g. `<input type="file" name="{fileParamName}">`* |
 | **cloudUploadCallbackUrl** | string | URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier.<br>*Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after <strong>${filename}</strong> has been replaced.* |
-| **token** | string | One-time token that is used for validation when uploading a video. It is then mainly used for informational purposes. |
+| **token** | string | One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes. |
 
 ## Example Usage
 

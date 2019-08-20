@@ -25,7 +25,7 @@ You can view logs for events fired from the <a href="https://app.vidgrid.com/web
 
 ### Video Uploaded
 
-Fired when a video is uploaded to VidGrid. The video is embeddable, but not playable. 
+Fired when a video is uploaded to VidGrid. The video is currently embeddable, but not playable. 
 
 Properties of a base [Video Resource](#video-resource) are available at this point.
 
