@@ -6,14 +6,6 @@ You can use this API to create and manage resources on your VidGrid account. The
 
 Code examples can be viewed in the area to the right, and you can switch the language of the examples with the tabs in the top right.
 
-## Live Demos
-
- If you'd like to see some examples of how this API can work, take a look at the demos below:
-
- * <a href="https://ticketingdemo.azurewebsites.net/#/home" target="_blank">Ticketing Demo (Click "Report An Issue")</a>
- * <a href="https://app.vidgrid.com/demo/api/record" target="_blank">Recording Demo</a>
- * <a href="https://app.vidgrid.com/demo/api/upload" target="_blank">Uploading Demo</a>
-
 ## Help, Support, & Feedback
 
 If you have feedback or feature requests, please <a href="mailto:webmaster@vidgrid.com?subject=API Feedback" target="_blank">send us your feedback or request</a>.
