@@ -2,6 +2,38 @@
 
 The Folder API allows you to interact with folders on your VidGrid account.
 
+## Folder Resource
+
+The Folder Resource(s) returned in a successful response.
+
+*Property types with a <strong>?</strong> are only returned if they are requested with a [Folder Params Array](#folder-params-array).*
+
+> Example Folder Resource Object.
+
+```json
+{
+  "identifier": "...",
+  "title": "Folder Title",
+  "is_in_org_library": false,
+  "view_url": "https://app.vidgrid.com/content/identifier",
+  "playlist": {
+    "enabled": false,
+    "view_url": "https://app.vidgrid.com/playlist/identifier",
+    "embed_url": "https://app.vidgrid.com/playlist/identifier?embedded=1"
+  }
+}
+```
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **identifier** | string | The unique identifier for the folder. |
+| **title** | string | Title of the folder. |
+| **view_url** | string | URL to view the folder. |
+| **is_in_org_library** | bool | Whether or not this folder is in the Organization Library. |
+| **playlist.enabled** | **?**string | Whether this folder can be used as a playlist. |
+| **playlist.view_url** | **?**string | URL to view the playlist for this folder. |
+| **playlist.embed_url** | **?**string | URL to embed the playlist for this folder. |
+
 ## Create Folder
 
 This endpoint creates a folder and then returns it as a [Folder Resource](#folder-resource).
@@ -427,35 +459,3 @@ request(options, function (error, response, body) {
 | Param | Type | Description | Default |
 | ----- | ---- | ----------- | ------- |
 | **identifier** | string | The unique identifier of a folder.<br>*You may pass this in the body or on the URL: `/v2/folders/identifier`* | *Required* |
-
-## Folder Resource
-
-The Folder Resource(s) returned in a successful response.
-
-*Property types with a <strong>?</strong> are only returned if they are requested with a [Folder Params Array](#folder-params-array).*
-
-> Example Folder Resource Object.
-
-```json
-{
-  "identifier": "...",
-  "title": "Folder Title",
-  "is_in_org_library": false,
-  "view_url": "https://app.vidgrid.com/content/identifier",
-  "playlist": {
-    "enabled": false,
-    "view_url": "https://app.vidgrid.com/playlist/identifier",
-    "embed_url": "https://app.vidgrid.com/playlist/identifier?embedded=1"
-  }
-}
-```
-
-| Prop | Type | Value |
-| ---- | ---- | ----- |
-| **identifier** | string | The unique identifier for the folder. |
-| **title** | string | Title of the folder. |
-| **view_url** | string | URL to view the folder. |
-| **is_in_org_library** | bool | Whether or not this folder is in the Organization Library. |
-| **playlist.enabled** | **?**string | Whether this folder can be used as a playlist. |
-| **playlist.view_url** | **?**string | URL to view the playlist for this folder. |
-| **playlist.embed_url** | **?**string | URL to embed the playlist for this folder. |
