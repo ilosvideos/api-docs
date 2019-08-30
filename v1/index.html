@@ -1,0 +1,996 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>VidGrid API Documentation</title>
+
+    <link href="../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all.js"></script>
+  </head>
+
+  <body class="v1 v1_index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        <img src="../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../images/logo.svg" class="logo" alt="Logo" />
+        <div class="version-selector">
+          <span>Version</span>
+          <select>
+                <option>2</option>
+                <option selected="selected">1</option>
+          </select>
+        </div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">Shell</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#help-and-support" class="toc-h2 toc-link" data-title="Help and Support">Help and Support</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-key-types" class="toc-h2 toc-link" data-title="API Key Types">API Key Types</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#recording-api" class="toc-h1 toc-link" data-title="Recording API">Recording API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-record-token" class="toc-h2 toc-link" data-title="Get Record Token">Get Record Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#uploading-api" class="toc-h1 toc-link" data-title="Uploading API">Uploading API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-upload-token" class="toc-h2 toc-link" data-title="Get Upload Token">Get Upload Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#video-api" class="toc-h1 toc-link" data-title="Video API">Video API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-video-metadata" class="toc-h2 toc-link" data-title="Get Video Metadata">Get Video Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#get-video-file" class="toc-h2 toc-link" data-title="Get Video File">Get Video File</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#webhook-response-body" class="toc-h2 toc-link" data-title="Webhook Response Body">Webhook Response Body</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#opensearch" class="toc-h1 toc-link" data-title="OpenSearch">OpenSearch</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#searching-videos" class="toc-h2 toc-link" data-title="Searching Videos">Searching Videos</a>
+                  </li>
+                  <li>
+                    <a href="#office365-sharepoint" class="toc-h2 toc-link" data-title="Office365 SharePoint">Office365 SharePoint</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <aside class="warning aside-top-banner">
+            You are viewing an older version of the API. <a href="/v2/">Click here to view the latest documentation.</a>
+          </aside>
+        <h1 id='api-reference'>API Reference</h1>
+<p>Welcome to the VidGrid API! This is a simple <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API that you can use to <a href="#recording-api">record</a> and/or <a href="#uploading-api">upload</a> videos into your VidGrid account. All requests should be made over SSL and all responses are JSON encoded.</p>
+
+<p>You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.</p>
+<h2 id='help-and-support'>Help and Support</h2>
+<p>If you discover a mistake in the documentation, please <a href="mailto:webmaster@vidgrid.com?subject=API%20Documentation%20Issue">report an issue</a> and we&#39;ll take a look.</p>
+
+<p>If you need further assistance or have any other questions, please visit our <a href="https://help.vidgrid.com">Help Center</a>.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>Authentication by passing <code>api_key</code> as a parameter. Be sure to replace <code>{key}</code> with your API key.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/record'</span> <span class="se">\</span>
+  -d <span class="s1">'api_key={key}'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"api_key={key}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/record"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={key}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"api_key"</span><span class="p">:</span> <span class="s2">"{key}"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Authentication is done via an API key found in your VidGrid account&#39;s <a href="https://app.vidgrid.com/integrations">integration settings</a>.</p>
+
+<p>Under integration settings you can copy your <a href="#api-key-types">API keys</a> or roll new ones if desired.</p>
+
+<p>The API key should be passed as a parameter with all API requests to the server.</p>
+<h3 id='api-key-types'>API Key Types</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>User</strong></td>
+<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with a User API key will be uploaded to that user&#39;s VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>Organization</strong></td>
+<td>Use for the our <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>. Videos uploaded with an Organization API key will be upload to the organization&#39;s VidGrid account. These videos will not have an owner by default.</td>
+</tr>
+</tbody></table>
+<h1 id='recording-api'>Recording API</h1>
+<p>The Recording API allows you to record videos using the VidGrid Screen Recorder. A basic implementation is as follows:</p>
+
+<ol>
+<li>Request a record token from VidGrid</li>
+<li>Display a record button to a user using the either <code>recordButtonIframe</code> or <code>recorderLaunchURI</code> returned in Step 1. (We recommend using the iframe since it handles downloading and installing the recorder for first time users)</li>
+<li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
+</ol>
+<h2 id='get-record-token'>Get Record Token</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/record'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "video_endpoint" : "https://yoursite.com/endpoint",
+    "video_set_public" : true
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  video_endpoint: "https://yoursite.com/endpoint",
+  video_set_public: true
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/record"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'video_endpoint'</span><span class="p">:</span> <span class="s">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+  <span class="s">'video_set_public'</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/record"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">video_endpoint</span><span class="p">:</span> <span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+    <span class="na">video_set_public</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"worked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recorderDownloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/recorder/download/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recorderLaunchURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ilosrecord:record?token=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recordButtonIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/recorder/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p><code>expires</code> is a UNIX Timestamp (UTC) indicating when the temporary token will expire</p>
+</blockquote>
+
+<p>This endpoint returns a one-time record token, ways to display a record button, and some additional data you can see in the sample response to the right.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.vidgrid.com/v1/token/record</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>service_name</strong> optional string</td>
+<td>The name of your service. Mostly used for informational purposes.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint</strong> optional string</td>
+<td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been recorded and uploaded.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_trigger</strong> optional string</td>
+<td>Determines when to trigger the <a href="#webhooks">Webook</a>. The default is <code>ON_UPLOAD_COMPLETE</code> which happens as soon as a video has been uploaded to VidGrid. The other option is <code>ON_PROCESSING_COMPLETE</code> which happens when a video has completed processing and is watchable on VidGrid.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> optional array</td>
+<td>An array of extra data that will be sent to the <a href="#webhooks">Webook</a> endpoint.</td>
+</tr>
+<tr>
+<td><strong>auto_open_video</strong> optional boolean</td>
+<td>Whether or not to automatically open the video in the user&#39;s browser after recording.</td>
+</tr>
+<tr>
+<td><strong>auto_close_recorder</strong> optional boolean</td>
+<td>Whether or not to close the recorder when it is finished uploading the video. If set to <code>true</code>, the user will only be able to record one video with this token.</td>
+</tr>
+<tr>
+<td><strong>request_video_title</strong> optional boolean</td>
+<td>Whether or not to have the user title the video after recording.</td>
+</tr>
+<tr>
+<td><strong>record_single_video</strong> optional boolean</td>
+<td><strong>deprecated</strong> This option has been deprecated and effectively sets <code>auto_open_video = false</code>, <code>auto_close_recorder = true</code>, and <code>request_video_title = false</code>. These three options should be used explicitly in favor of <code>record_single_video</code>.</td>
+</tr>
+<tr>
+<td><strong>video_title</strong> optional string</td>
+<td>Used to give the video a title if <code>request_video_title</code> is set to <code>false</code>.</td>
+</tr>
+<tr>
+<td><strong>video_set_public</strong> optional boolean</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.</td>
+</tr>
+<tr>
+<td><strong>collection</strong> optional string</td>
+<td>Automatically add the uploaded video to a folder. <br> <em>Note: Collections are now called Folders in app.</em></td>
+</tr>
+<tr>
+<td><strong>auto_download_recorder</strong> optional boolean</td>
+<td>Whether or not to download the recorder without redirecting to the install recorder page. This happens the first time a use clicks record when using the iframe method.</td>
+</tr>
+<tr>
+<td><strong>auto_authenticate_on_install</strong> optional boolean</td>
+<td>Whether or not a user should be automatically authenticated the first time the recorder is launched after install. If set to <code>false</code>, the user will need to return to their browser and click record in order to be authenticated.</td>
+</tr>
+<tr>
+<td><strong>auto_launch_fullscreen</strong> optional boolean</td>
+<td>Whether or not the recorder should launch in fullscreen mode by default.</td>
+</tr>
+<tr>
+<td><strong>webcam_only</strong> optional boolean</td>
+<td>Whether or not the recorder should launch in webcam only mode. The user will not be able to turn off webcam only.</td>
+</tr>
+</tbody></table>
+<h1 id='uploading-api'>Uploading API</h1>
+<p>The Uploading API allows you to upload videos using a web uploader in an iframe. A basic implementation is as follows:</p>
+
+<ol>
+<li>Request an upload token from VidGrid</li>
+<li>Display an upload form to a user using the either <code>uploadIframe</code> or <code>uploadIframeBasic</code> returned in Step 1.</li>
+<li>Wait for a response at your <a href="#webhooks">Webook</a> endpoint and use the video data as you wish (eg. embed the video in a support ticket)</li>
+</ol>
+<h2 id='get-upload-token'>Get Upload Token</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/token/upload'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "video_endpoint" : "https://yoursite.com/endpoint",
+    "video_set_public" : true
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/token/upload"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  video_endpoint: "https://yoursite.com/endpoint",
+  video_set_public: true
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/token/upload"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'video_endpoint'</span><span class="p">:</span> <span class="s">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+  <span class="s">'video_set_public'</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/token/upload"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">video_endpoint</span><span class="p">:</span> <span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span>
+    <span class="na">video_set_public</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"worked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yoursite.com/endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_set_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploadIframeBasic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/api/uploader/ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?uploaderType=basic&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527729792</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p><code>expires</code> is a UNIX Timestamp (UTC) indicating when the temporary token will expire</p>
+</blockquote>
+
+<p>This endpoint returns a one-time upload token, ways to display an upload form, and some additional data you can see in the sample response to the right.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.vidgrid.com/v1/token/upload</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>service_name</strong> optional string</td>
+<td>The name of your service. Mostly used for informational purposes.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint</strong> optional string</td>
+<td>The <a href="#webhooks">Webook</a> URL endpoint where a POST will be made after a video has been uploaded.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_trigger</strong> optional string</td>
+<td>Determines when to trigger the <a href="#webhooks">Webook</a>. The default is <code>ON_UPLOAD_COMPLETE</code> which happens as soon as a video has been uploaded to VidGrid. The other option is <code>ON_PROCESSING_COMPLETE</code> which happens when a video has completed processing and is watchable on VidGrid.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> optional array</td>
+<td>An array of extra data that will be sent to the <a href="#webhooks">Webook</a> endpoint.</td>
+</tr>
+<tr>
+<td><strong>video_set_public</strong> optional boolean</td>
+<td>When set to <code>true</code>, an uploaded video will be viewable by anyone with a link. If set to <code>false</code>, a user must be logged in to your VidGrid account to view the video. If not set, your user or organization defaults will be used.</td>
+</tr>
+<tr>
+<td><strong>collection</strong> optional string</td>
+<td>Automatically add the uploaded video to a folder. <br> <em>Note: Collections are now called Folders in app.</em></td>
+</tr>
+</tbody></table>
+<h1 id='video-api'>Video API</h1>
+<p>The Video API allows you to retrieve information about your videos on VidGrid.</p>
+<h2 id='get-video-metadata'>Get Video Metadata</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/video/metadata'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "randtag" : "123456ABCDEF"
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/video/metadata"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  randtag : "123456ABCDEF"
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/video/metadata"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'randtag'</span> <span class="p">:</span> <span class="s">"123456ABCDEF"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/video/metadata"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">randtag</span> <span class="p">:</span> <span class="s2">"123456ABCDEF"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my video title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"380"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">910380</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"videoSignedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.signed-url-i-can-use-to-download-my-video.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thumbnailSignedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.signed-url-i-can-use-to-view-my-video-thumbnail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thumbnailSmallSignedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.signed-url-i-can-use-to-view-my-small-video-thumbnail.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns metadata for a specified video.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.vidgrid.com/v1/video/metadata</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>randtag</strong> string</td>
+<td>The unique ID of your video.</td>
+</tr>
+</tbody></table>
+<h2 id='get-video-file'>Get Video File</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v1/video/file'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "api_key" : "{key}",
+    "randtag" : "123456ABCDEF"
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v1/video/file"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  api_key: "{key}",
+  randtag : "123456ABCDEF"
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v1/video/file"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'api_key'</span><span class="p">:</span> <span class="s">"{key}"</span><span class="p">,</span>
+  <span class="s">'randtag'</span> <span class="p">:</span> <span class="s">"123456ABCDEF"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/v1/video/file"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s2">"{key}"</span><span class="p">,</span>
+    <span class="na">randtag</span> <span class="p">:</span> <span class="s2">"123456ABCDEF"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"signedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.signed-url-i-can-use-to-download-my-video.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a signed url for the video file.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.vidgrid.com/v1/video/file</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong> string</td>
+<td>A <a href="#api-key-types">User</a> or <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>randtag</strong> string</td>
+<td>The unique ID of your video.</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>Webhooks</h1>
+<blockquote>
+<p>The incoming webhook response body will look like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"randtag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"videoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/view/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"embedURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.vidgrid.com/embed/123456ABCDEF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;iframe src='https://app.vidgrid.com/embed/123456ABCDEF'&gt;&lt;/iframe&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_endpoint_extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"extra1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something I wanted at my endpoint"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extra2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another thing I wanted at my endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Since video recording and uploading is an asynchronous task, you can give us a webook URL that we will post to once a video is ready on VidGrid.</p>
+
+<p>You can set the webhook options (<code>video_endpoint</code>, <code>video_endpoint_trigger</code>, and <code>video_endpoint_extras</code>) in both the <a href="#recording-api">Recording API</a> and <a href="#uploading-api">Uploading API</a>.</p>
+
+<p>You can view logs for calls to your endpoint under <a href="https://app.vidgrid.com/integrations">integration settings</a> in your VidGrid account.</p>
+<h3 id='webhook-response-body'>Webhook Response Body</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>token</strong> string</td>
+<td>Token that the video was used to record or upload the video.</td>
+</tr>
+<tr>
+<td><strong>randtag</strong> string</td>
+<td>The unique ID for your video.</td>
+</tr>
+<tr>
+<td><strong>videoURL</strong> string</td>
+<td>URL to view your video.</td>
+</tr>
+<tr>
+<td><strong>embedURL</strong> string</td>
+<td>URL you can use as the source of an iframe.</td>
+</tr>
+<tr>
+<td><strong>iframe</strong> string</td>
+<td>An iframe containing the video.</td>
+</tr>
+<tr>
+<td><strong>video_endpoint_extras</strong> array or null</td>
+<td>Any <code>video_endpoint_extras</code> sent through the <a href="#recording-api">Recording API</a> or <a href="#uploading-api">Uploading API</a>.</td>
+</tr>
+</tbody></table>
+<h1 id='opensearch'>OpenSearch</h1>
+<p><a href="http://www.opensearch.org/Home">OpenSearch</a> is a collection of technologies that allow publishing of search results in a format suitable for syndication and aggregation. It is a way for websites and search engines to publish search results in a standard and accessible format.</p>
+<h2 id='searching-videos'>Searching Videos</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/opensearch/"</span>
+
+<span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"q"</span><span class="p">:</span><span class="s">"example</span><span class="si">%20</span><span class="s">search"</span><span class="p">,</span><span class="s">"api_key"</span><span class="p">:</span><span class="s">"{key}"</span><span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://api.vidgrid.com/opensearch/?q=testing&amp;api_key={key}"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>This endpoint returns a list of video items from VidGrid.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.vidgrid.com/opensearch</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>q</strong> string</td>
+<td>Your search query.</td>
+</tr>
+<tr>
+<td><strong>api_key</strong> string</td>
+<td>An <a href="#api-key-types">Organization</a> API key from your VidGrid account.</td>
+</tr>
+<tr>
+<td><strong>ptilos</strong> optional boolean</td>
+<td>Whether or not to prefix returned video titles with <em>VidGrid:</em></td>
+</tr>
+</tbody></table>
+
+<p>Please visit the <a href="http://www.opensearch.org/Home">OpenSearch Documentation</a> for more options and examples.</p>
+<h2 id='office365-sharepoint'>Office365 SharePoint</h2>
+<p>Here is a short demo of how to use OpenSearch in Office365 SharePoint.</p>
+
+<iframe title="Sharepoint OpenSearch VidGrid" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.vidgrid.com/embed/kqxqAfbhDtlp"></iframe>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">Shell</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
+          </div>
+      </div>
+    </div>
+
+      <script>
+          let segmentKey = "aAtzfcjUDlgNu2VP9XhcNXZkcLZlH5Fl";
+
+        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(n,o);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+          analytics.load(segmentKey);
+          analytics.page();
+        }}();
+      </script>
+
+  </body>
+</html>
