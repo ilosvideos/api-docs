@@ -73,6 +73,14 @@ html, body {
     }
   }
 
+  .version-selector {
+    color: $nav-text;
+    padding: $nav-v-padding $nav-padding 0 $nav-padding;
+    span {
+      margin-right: 5px;
+    }
+  }
+
   // This is the logo at the top of the ToC
   .logo {
     display: block;
@@ -381,7 +389,7 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: $h3-margin-top;
     margin-bottom: 0.8em;
   }
@@ -416,16 +424,17 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid $main-border-color;
+      border: 1px solid $table-border-color;
       vertical-align: bottom;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      background-color: rgba(0,0,0,0.05);
     }
 
     td {
+      border-right: 1px solid $table-border-color;
       padding: 10px;
-    }
-
-    tr:last-child {
-      border-bottom: 1px solid $main-border-color;
+      vertical-align: middle;
     }
 
     tr:nth-child(odd)>td {
@@ -437,9 +446,11 @@ html, body {
     }
 
     tr {
+      border-bottom: 1px solid $table-border-color;
+      border-left: 1px solid $table-border-color;
+
       td:first-child {
         color: lighten($main-text, 20%);
-        text-align: right;
         strong {
           display: block;
           color: $main-text;
@@ -484,8 +495,31 @@ html, body {
     max-width: 100%;
   }
 
-  iframe {
+  .video-frame-container {
+    position:relative;
+    max-width: 960px;
     padding: 0.5em $main-padding;
+    box-sizing: border-box;
+
+    @media (min-width: $phone-width) {
+      margin-right: 50%;
+    }
+
+    .video-frame-content {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      padding-top:56.25%;
+
+      iframe {
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
   code {
@@ -513,10 +547,19 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-top: 1.5em;
+    :not(.aside-top-banner) {
+      margin-top: 1.5em;
+    }
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    color: $aside-color;
+    font-weight: 500;
+
+    a {
+      color: $aside-color;
+      text-decoration: underline;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -527,23 +570,23 @@ html, body {
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
+  // aside:before {
+  //   vertical-align: middle;
+  //   padding-right: 0.5em;
+  //   font-size: 14px;
+  // }
 
-  aside.notice:before {
-    @extend %icon-info-sign;
-  }
+  // aside.notice:before {
+  //   @extend %icon-info-sign;
+  // }
 
-  aside.warning:before {
-    @extend %icon-exclamation-sign;
-  }
+  // aside.warning:before {
+  //   @extend %icon-exclamation-sign;
+  // }
 
-  aside.success:before {
-    @extend %icon-ok-sign;
-  }
+  // aside.success:before {
+  //   @extend %icon-ok-sign;
+  // }
 
   .search-highlight {
     padding: 2px;

@@ -1,6 +1,6 @@
-# Cookies
+# Third-Party Cookies
 
-With certain VidGrid integrations (such as LTI integrations using SSO) you may run into a problem with saving cookies in Safari & iOS.
+With certain integrations that utilize embedding VidGrid videos/pages (such as LTI integrations using SSO) you may run into a problem with saving cookies in Safari & iOS.
 
 The problem occurs when a user has "Prevent cross-site tracking" selected under Privacy in Safari (the default option) and is loading content within an iframe. Safari will prevent cookies saved from the host within the iframe unless the user has previously visited that host as the root document and had a cookie saved at that point.
 
@@ -38,7 +38,7 @@ In most cases **we have already implemented this solution** inside of our iframe
 
 `GET https://app.vidgrid.com/cookie/dialog`
 
-*Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
+*Note that we are using <strong>app.vidgrid.com</strong> as opposed to <strong>api.vidgrid.com</strong>*
 
 ## Solution 2 (Redirect)
 
@@ -58,16 +58,16 @@ In most cases **we have already implemented this solution** inside of our iframe
 window.location = "https://app.vidgrid.com/cookie/redirect?url=https%3A%2F%2Fwww.foo.com";
 ```
 
-This will visit app.vidgrid.com, save a cookie, and immediately redirect to the desired url.
+This will visit app.vidgrid.com, save a cookie, and immediately redirect to the desired URL.
 
 ### Client-Side HTTP Request
 
 `GET https://app.vidgrid.com/cookie/redirect`
 
-*Note that we are using `app.vidgrid.com` as opposed to `api.vidgrid.com`*
+*Note that we are using <strong>app.vidgrid.com</strong> as opposed to <strong>api.vidgrid.com</strong>*
 
-### Parameters
+### HTTP Parameters
 
-          |             |
---------- | ----------- |
-**url** string | Url for VidGrid to redirect to after saving the cookie. This should be url encoded.
+| Param | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
+| **url** | string | URL encoded string for VidGrid to redirect to after saving the cookie. | *Required* |

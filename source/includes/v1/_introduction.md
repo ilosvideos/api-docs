@@ -4,14 +4,6 @@ Welcome to the VidGrid API! This is a simple [REST](https://en.wikipedia.org/wik
 
 You can view code examples in the area to the right, and you can switch the language of the examples with the tabs in the top right.
 
-## Live Demos
-
- If you'd like to see some examples of how this API can work, take a look at the demos below:
-
- * [Ticketing Demo (Click "Report An Issue")](https://ticketingdemo.azurewebsites.net/#/home)
- * [Recording Demo](https://app.vidgrid.com/demo/api/record)
- * [Uploading Demo](https://app.vidgrid.com/demo/api/upload)
-
 ## Help and Support
 
 If you discover a mistake in the documentation, please [report an issue](mailto:webmaster@vidgrid.com?subject=API Documentation Issue) and we'll take a look.

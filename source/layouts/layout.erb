@@ -14,6 +14,9 @@ License for the specific language governing permissions and limitations
 under the License.
 %>
 <% language_tabs = current_page.data.language_tabs || [] %>
+<% version = current_page.data.version %>
+<% versions = config[:versions] || [] %>
+<% latest_version = config[:latest_version] %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
@@ -31,7 +34,6 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,600,600i,700,700i" rel="stylesheet">
     <%= favicon_tag 'images/favicon.ico' %>
 
     <style>
@@ -54,6 +56,20 @@ under the License.
     </a>
     <div class="toc-wrapper">
       <%= image_tag "logo.svg", class: 'logo' %>
+      <% if versions.any? %>
+        <div class="version-selector">
+          <span>Version</span>
+          <select>
+            <% versions.each do |ver| %>
+              <% if version == ver %>
+                <option selected="selected"><%= ver %></option>
+              <% else %>
+                <option><%= ver %></option>
+              <% end %>
+            <% end %>
+          </select>
+        </div>
+      <% end %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -98,6 +114,11 @@ under the License.
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        <% if version != latest_version %>
+          <aside class="warning aside-top-banner">
+            You are viewing an older version of the API. <a href="/v<%= latest_version %>/">Click here to view the latest documentation.</a>
+          </aside>
+        <% end %>
         <%= page_content %>
       </div>
       <div class="dark-box">
