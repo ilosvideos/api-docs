@@ -103,13 +103,13 @@ request(options, function (error, response, body) {
 | **title** | string | Sets the folder title. | *Required* |
 | **is_in_org_library** | bool | Whether or not to place this folder into the Organization Library. | false |
 
-## Get Folder
+## Retrieve Folder
 
 This endpoint returns an array of [Folder Resources](#folder-resource).
 
 ### HTTP Request
 
-> Example get folder request.
+> Example retrieve folder request.
 
 ```shell
 curl -X GET \
@@ -209,7 +209,7 @@ request(options, function (error, response, body) {
 
 `GET https://api.vidgrid.com/v2/folders`
 
-> Example get folder response. See [Folder Resource](#folder-resource) for more details.
+> Example retrieve folder response. See [Folder Resource](#folder-resource) for more details.
 
 ```json
 {
