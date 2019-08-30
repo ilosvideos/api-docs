@@ -5,7 +5,7 @@
 
   $(function() {
     $(".version-selector select").on("change", function() {
-      window.location = '/v' + this.value + '/';
+      window.location = '/docs/v' + this.value + '/';
     });
   });
 })();
