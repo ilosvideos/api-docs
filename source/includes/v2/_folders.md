@@ -351,7 +351,7 @@ An object used to update properties on a folder.
 
 ## Delete Folder
 
-This endpoint deletes a folder.
+This endpoint is used to delete a folder. The contents of the folder (videos and other folders) are not deleted and will still be accessible from your VidGrid account.
 
 ### HTTP Request
 

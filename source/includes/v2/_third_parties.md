@@ -16,12 +16,6 @@ You can find API keys for Zoom integrations on your VidGrid <a href="https://app
 
 Check our help articles for more <a href="https://help.vidgrid.com/?q=zoom" target="_blank">information about Zoom integrations</a>.
 
-## Timekit
-
-You can find API keys for Timekit integrations on your VidGrid <a href="https://app.vidgrid.com/integrations" target="_blank">integration settings</a> page.
-
-Check our help articles for more <a href="https://help.vidgrid.com/?q=timekit" target="_blank">information about Zoom integrations</a>.
-
 ## Email Clients
 
 VidGrid has integrations with email clients such as <a href="https://help.vidgrid.com/?q=gmail" target="_blank">Gmail</a>, <a href="https://help.vidgrid.com/?q=outlook" target="_blank">Outlook</a>, and <a href="https://help.vidgrid.com/?q=salesloft" target="_blank">SalesLoft</a>.
