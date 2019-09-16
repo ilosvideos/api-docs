@@ -21,14 +21,15 @@ The Caption Resource(s) returned in a successful response.
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **identifier** | string | The unique identifier for the caption on VidGrid. |
-| **file_url** | string | URL to the VTT file of a `COMPLETED` caption resource. |
+| **caption_url** | string | URL to the VTT file of a `COMPLETED` caption resource. |
+| **transcript_url** | string | URL to the `COMPLETED` transcript for a caption resource. |
 | **language** | string | The language of the caption file. |
 | **status** | string | The current status of this caption resource.<br>*Possible values: `QUEUED`,`PENDING`,`IN_PROGRESS`,`CANCELED`,`FAILED`,`COMPLETED`*|
 | **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`upload`*|
 
 ## Create Caption
 
-This endpoint creates a caption request for a [Video Resource](#video-resource) and returns a [Caption Resource](#caption-resource).
+This endpoint makes a caption request for a [Video Resource](#video-resource). It returns a [Caption Resource](#caption-resource) with a status but the caption will not be ready immediately.
 
 ### HTTP Request
 
