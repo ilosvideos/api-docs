@@ -13,10 +13,11 @@ The Caption Resource(s) returned in a successful response.
 ```json
 {
   "identifier": "...",
-  "file_url": "...",
-  "language": "...",
-  "status": "...",
   "type": "...",
+  "status": "...",
+  "language": "...",
+  "caption_url": "...",
+  "transcript_url": "..."
 }
 ```
 
