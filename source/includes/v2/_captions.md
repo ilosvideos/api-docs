@@ -25,7 +25,7 @@ The Caption Resource(s) returned in a successful response.
 | **transcript_url** | string | URL to the `COMPLETED` transcript for a caption resource. |
 | **language** | string | The language of the caption file. |
 | **status** | string | The current status of this caption resource.<br>*Possible values: `QUEUED`,`PENDING`,`IN_PROGRESS`,`CANCELED`,`FAILED`,`COMPLETED`*|
-| **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`upload`*|
+| **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`manual`*|
 
 ## Create Caption
 
