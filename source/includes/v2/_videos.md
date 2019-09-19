@@ -30,7 +30,11 @@ The Video Resource(s) returned in a successful response.
   "jwts": {
     "view": "...",
     "edit": "..."
-  }
+  },
+  "captions": [
+    Caption Resource Object,
+    Caption Resource Object
+  ]
 }
 ```
 
@@ -49,6 +53,7 @@ The Video Resource(s) returned in a successful response.
 | **thumbnail.signed_url_small** | **?**string | Signed URL for a smaller version of the video thumbnail. |
 | **jwt.view** | **?**string | A single-use access token that can be used to grant view permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.view}`* |
 | **jwt.edit** | **?**string | A single-use access token that can be used to grant edit permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.edit}`* |
+| **captions** | **?**array | An array of [Caption Resources](#caption-resource) attached to this video. |
 
 ## Create Video
 
@@ -76,7 +81,8 @@ curl -X GET \
       "signed_url",
       "metadata",
       "thumbnail",
-      "jwts"
+      "jwts",
+      "captions"
     ]
   }'
 ```
@@ -201,6 +207,7 @@ An array of properties to be included with a returned [Video Resource](#video-re
 | **metadata** | Request metadata about the video. |
 | **thumbnail** | Request signed URLs that can be used to view video thumbnails. |
 | **jwts** | Request JWT tokens that can be used to view and/or edit a video on VidGrid. |
+| **captions** | Request all of the [Caption Resources](#caption-resource) attached to this video. |
 
 ## Update Video
 

@@ -14,6 +14,7 @@ includes:
   - v2/responses
   - v2/tokens
   - v2/videos
+  - v2/captions
   - v2/folders
   - v2/webhooks
   - v2/logging
