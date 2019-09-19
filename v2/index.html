@@ -294,6 +294,23 @@
               </ul>
           </li>
           <li>
+            <a href="#caption-api" class="toc-h1 toc-link" data-title="Caption API">Caption API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#caption-resource" class="toc-h2 toc-link" data-title="Caption Resource">Caption Resource</a>
+                  </li>
+                  <li>
+                    <a href="#create-caption" class="toc-h2 toc-link" data-title="Create Caption">Create Caption</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-caption" class="toc-h2 toc-link" data-title="Retrieve Caption">Retrieve Caption</a>
+                  </li>
+                  <li>
+                    <a href="#delete-caption" class="toc-h2 toc-link" data-title="Delete Caption">Delete Caption</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#folder-api" class="toc-h1 toc-link" data-title="Folder API">Folder API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1031,7 +1048,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
   </span><span class="s2">"jwts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"view"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"edit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+    </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -1106,6 +1127,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>?</strong>string</td>
 <td>A single-use access token that can be used to grant edit permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br><em>You can use the token with view or embed URLs as follows: <code>{embed_url}?auth={jwts.edit}</code></em></td>
 </tr>
+<tr>
+<td><strong>captions</strong></td>
+<td><strong>?</strong>array</td>
+<td>An array of <a href="#caption-resource">Caption Resources</a> attached to this video.</td>
+</tr>
 </tbody></table>
 <h2 id='create-video'>Create Video</h2>
 <p>To create videos you will need to make use of the <a href="#video-creation-token-api">Video Creation Token Api</a>.</p>
@@ -1128,7 +1154,8 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
       "signed_url",
       "metadata",
       "thumbnail",
-      "jwts"
+      "jwts",
+      "captions"
     ]
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
@@ -1275,6 +1302,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <tr>
 <td><strong>jwts</strong></td>
 <td>Request JWT tokens that can be used to view and/or edit a video on VidGrid.</td>
+</tr>
+<tr>
+<td><strong>captions</strong></td>
+<td>Request all of the <a href="#caption-resource">Caption Resources</a> attached to this video.</td>
 </tr>
 </tbody></table>
 <h2 id='update-video'>Update Video</h2>
@@ -1490,6 +1521,339 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td>bool</td>
 <td>If set to true, the video will be placed in the VidGrid trash for 30 days. If set to false, the trash will be skipped and the video will be deleted immediately.</td>
 <td>true</td>
+</tr>
+</tbody></table>
+<h1 id='caption-api'>Caption API</h1>
+<p>The Caption API allows you to request and manage closed captioning on your Videos.</p>
+<h2 id='caption-resource'>Caption Resource</h2>
+<p>The Caption Resource(s) returned in a successful response.</p>
+
+<blockquote>
+<p>Example Caption Resource Object.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier for the caption on VidGrid.</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>string</td>
+<td>The type of caption resource.<br><em>Possible values: <code>machine</code>,<code>professional</code>,<code>manual</code></em></td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td>string</td>
+<td>The current status of this caption resource.<br><em>Possible values: <code>QUEUED</code>,<code>PENDING</code>,<code>IN_PROGRESS</code>,<code>CANCELED</code>,<code>FAILED</code>,<code>COMPLETED</code></em></td>
+</tr>
+<tr>
+<td><strong>language</strong></td>
+<td><strong>?</strong>string</td>
+<td>The language of the caption file.</td>
+</tr>
+</tbody></table>
+<h2 id='create-caption'>Create Caption</h2>
+<p>This endpoint makes a caption request for a <a href="#video-resource">Video Resource</a>. It returns a <a href="#caption-resource">Caption Resource</a> with a status but the caption will not be ready immediately.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<blockquote>
+<p>Example create caption request.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v2/captions'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "video_identifier": "...",
+    "type": "machine"
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v2/captions"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "video_identifier": "...",
+  "type": "machine"
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/captions"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
+</span><span class="s">  "video_identifier": "...",</span><span class="err">
+</span><span class="s">  "type": "machine"</span><span class="err">
+</span><span class="s">}'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"Basic {token}"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// NodeJS</span>
+
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.vidgrid.com/v2/captions'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">Authorization</span><span class="p">:</span> <span class="s1">'Basic {token}'</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">video_identifier</span><span class="p">:</span> <span class="s2">"..."</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"machine"</span>
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example create caption response. See <a href="#caption-resource">Caption Resource</a> for more details.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST https://api.vidgrid.com/v2/captions</code></p>
+<h3 id='http-parameters'>HTTP Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>video_identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of the video you are requesting a caption for.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>string</td>
+<td>The type of caption you would like to request.<br><em>Possible values: <code>machine</code>, <code>professional</code></em></td>
+<td><em>Required</em></td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-caption'>Retrieve Caption</h2>
+<p>This endpoint returns an array of <a href="#caption-resource">Caption Resources</a>.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<blockquote>
+<p>Example retrieve caption request.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v2/captions'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "identifiers": [
+      "...",
+      "..."
+    ]
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v2/captions"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "identifiers": [
+    "...",
+    "..."
+  ]
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/captions"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
+</span><span class="s">  "identifiers": [</span><span class="err">
+</span><span class="s">    "...",</span><span class="err">
+</span><span class="s">    "..."</span><span class="err">
+</span><span class="s">  ]</span><span class="err">
+</span><span class="s">}'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"Basic {token}"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// NodeJS</span>
+
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.vidgrid.com/v2/captions'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">Authorization</span><span class="p">:</span> <span class="s1">'Basic {token}'</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">identifiers</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s1">'...'</span><span class="p">,</span>
+      <span class="s1">'...'</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example retrieve caption response. See <a href="#caption-resource">Caption Resource</a> for more details.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+    </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET https://api.vidgrid.com/v2/captions</code></p>
+<h3 id='http-parameters-2'>HTTP Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of a caption.<br><em>You may pass this in the body or on the URL: <code>/v2/captions/identifier</code></em></td>
+<td><em>Required unless <strong>identifiers</strong> is set</em></td>
+</tr>
+<tr>
+<td><strong>identifiers</strong></td>
+<td>array</td>
+<td>The unique identifiers of the desired captions. When set, this takes priority over <strong>identifier</strong>.</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2 id='delete-caption'>Delete Caption</h2>
+<p>This endpoint deletes a caption.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<blockquote>
+<p>Example delete caption request.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v2/captions/identifier'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v2/captions/identifier"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Delete</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/captions/identifier"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"Basic {token}"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// NodeJS</span>
+
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.vidgrid.com/v2/captions/identifier'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">Authorization</span><span class="p">:</span> <span class="s1">'Basic {token}'</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The delete caption endpoint returns a 204 No Content response when successful.</p>
+</blockquote>
+
+<p><code>DELETE https://api.vidgrid.com/v2/captions</code></p>
+<h3 id='http-parameters-3'>HTTP Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of a caption.<br><em>You may pass this in the body or on the URL: <code>/v2/captions/identifier</code></em></td>
+<td><em>Required</em></td>
 </tr>
 </tbody></table>
 <h1 id='folder-api'>Folder API</h1>
