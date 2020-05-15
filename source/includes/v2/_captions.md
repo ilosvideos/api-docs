@@ -13,6 +13,7 @@ The Caption Resource(s) returned in a successful response.
   "identifier": "...",
   "type": "...",
   "status": "...",
+  "video_identifier": "...",
   "language": "..."
 }
 ```
@@ -22,6 +23,7 @@ The Caption Resource(s) returned in a successful response.
 | **identifier** | string | The unique identifier for the caption on VidGrid. |
 | **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`manual`*|
 | **status** | string | The current status of this caption resource.<br>*Possible values: `QUEUED`,`PENDING`,`IN_PROGRESS`,`CANCELED`,`FAILED`,`COMPLETED`*|
+| **video_identifier** | string | The unique identifier of the video this caption belongs to. |
 | **language** | **?**string | The language of the caption file. |
 
 ## Create Caption
