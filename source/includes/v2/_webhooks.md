@@ -14,13 +14,12 @@ You can view logs for events fired from the <a href="https://app.vidgrid.com/web
 
 ```json
 {
-  "data": {
-    "resource": ...,
-    "token": "...",
-    "extras": {
-      "key1": "value 1",
-      "key2": "value 2"
-    }
+  "event_type": "VIDEO_UPLOADED",
+  "data": Video Resource Object,
+  "token": "...",
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
   }
 }
 ```
@@ -33,7 +32,8 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
+| **event_type** | string | String used to identify the incoming event. |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
 | **extras** | **?**array | An array of extra data if sent through the API. |
 
@@ -43,13 +43,12 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 
 ```json
 {
-  "data": {
-    "resource": ...,
-    "token": "...",
-    "extras": {
-      "key1": "value 1",
-      "key2": "value 2"
-    }
+  "event_type": "VIDEO_READY",
+  "data": Video Resource Object,
+  "token": "...",
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
   }
 }
 ```
@@ -62,6 +61,7 @@ Properties of a base [Video Resource](#video-resource) as well as **signed_url**
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **resource** | [Video Resource](#video-resource) | The video resource tied to this event. |
+| **event_type** | string | String used to identify the incoming event. |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
 | **extras** | **?**array | An array of extra data if sent through the API. |
