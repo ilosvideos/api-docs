@@ -2,11 +2,11 @@
 
 You can create webhooks which subscribe to events from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account. 
 
-## Events
-
 Each webhook created can subscribe to one or more events. When an event is fired, VidGrid will POST data to the endpoint specified in the webhook.
 
 You can view logs for events fired from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account.
+
+## Video Events
 
 ### Video Uploaded
 
@@ -32,10 +32,10 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **event_type** | string | String used to identify the incoming event. |
+| **event_type** | string | `VIDEO_UPLOADED` |
 | **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
-| **extras** | **?**array | An array of extra data if sent through the API. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
 
 ### Video Ready
 
@@ -61,7 +61,59 @@ Properties of a base [Video Resource](#video-resource) as well as **signed_url**
 
 | Prop | Type | Value |
 | ---- | ---- | ----- |
-| **event_type** | string | String used to identify the incoming event. |
+| **event_type** | string | `VIDEO_READY` |
 | **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
 | **token** | **?**string | Token used if this video was created through the API. |
-| **extras** | **?**array | An array of extra data if sent through the API. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
+
+## Caption Events
+
+### Caption Requested
+
+> Example data sent with Caption Requested event.
+
+```json
+{
+  "event_type": "CAPTION_REQUESTED",
+  "data": Caption Resource Object,
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
+  }
+}
+```
+
+Fired when a caption has been requested for a video.
+
+All properties of a [Caption Resource](#caption-resource) are available at this point.
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **event_type** | string | `CAPTION_REQUESTED` |
+| **data** | [Caption Resource](#caption-resource) | The caption resource tied to this event. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
+
+### Caption Ready
+
+> Example data sent with Caption Ready event.
+
+```json
+{
+  "event_type": "CAPTION_READY",
+  "data": Caption Resource Object,
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
+  }
+}
+```
+
+Fired when a caption has been generated and is attached to the video.
+
+All properties of a [Caption Resource](#caption-resource) are available at this point.
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **event_type** | string | `CAPTION_READY` |
+| **data** | [Caption Resource](#caption-resource) | The caption resource tied to this event. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
