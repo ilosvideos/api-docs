@@ -334,7 +334,10 @@
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                    <a href="#video-events" class="toc-h2 toc-link" data-title="Video Events">Video Events</a>
+                  </li>
+                  <li>
+                    <a href="#caption-events" class="toc-h2 toc-link" data-title="Caption Events">Caption Events</a>
                   </li>
               </ul>
           </li>
@@ -1535,6 +1538,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"video_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1559,6 +1563,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>status</strong></td>
 <td>string</td>
 <td>The current status of this caption resource.<br><em>Possible values: <code>QUEUED</code>,<code>PENDING</code>,<code>IN_PROGRESS</code>,<code>CANCELED</code>,<code>FAILED</code>,<code>COMPLETED</code></em></td>
+</tr>
+<tr>
+<td><strong>video_identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of the video this caption belongs to.</td>
 </tr>
 <tr>
 <td><strong>language</strong></td>
@@ -2366,22 +2375,21 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
 <p>You can create webhooks which subscribe to events from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account. </p>
-<h2 id='events'>Events</h2>
+
 <p>Each webhook created can subscribe to one or more events. When an event is fired, VidGrid will POST data to the endpoint specified in the webhook.</p>
 
 <p>You can view logs for events fired from the <a href="https://app.vidgrid.com/webhooks" target="_blank">Webhook Settings</a> page in your VidGrid account.</p>
-<h3 id='video-uploaded'>Video Uploaded</h3>
+<h2 id='video-events'>Video Events</h2><h3 id='video-uploaded'>Video Uploaded</h3>
 <blockquote>
 <p>Example data sent with Video Uploaded event.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIDEO_UPLOADED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Video</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2399,7 +2407,12 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>resource</strong></td>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>VIDEO_UPLOADED</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
 <td><a href="#video-resource">Video Resource</a></td>
 <td>The video resource tied to this event.</td>
 </tr>
@@ -2411,7 +2424,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <tr>
 <td><strong>extras</strong></td>
 <td><strong>?</strong>array</td>
-<td>An array of extra data if sent through the API.</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
 </tr>
 </tbody></table>
 <h3 id='video-ready'>Video Ready</h3>
@@ -2419,13 +2432,12 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <p>Example data sent with Video Ready event.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIDEO_READY"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Video</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2443,7 +2455,12 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>resource</strong></td>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>VIDEO_READY</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
 <td><a href="#video-resource">Video Resource</a></td>
 <td>The video resource tied to this event.</td>
 </tr>
@@ -2455,7 +2472,87 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <tr>
 <td><strong>extras</strong></td>
 <td><strong>?</strong>array</td>
-<td>An array of extra data if sent through the API.</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
+</tr>
+</tbody></table>
+<h2 id='caption-events'>Caption Events</h2><h3 id='caption-requested'>Caption Requested</h3>
+<blockquote>
+<p>Example data sent with Caption Requested event.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAPTION_REQUESTED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Fired when a caption has been requested for a video.</p>
+
+<p>All properties of a <a href="#caption-resource">Caption Resource</a> are available at this point.</p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>CAPTION_REQUESTED</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#caption-resource">Caption Resource</a></td>
+<td>The caption resource tied to this event.</td>
+</tr>
+<tr>
+<td><strong>extras</strong></td>
+<td><strong>?</strong>array</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
+</tr>
+</tbody></table>
+<h3 id='caption-ready'>Caption Ready</h3>
+<blockquote>
+<p>Example data sent with Caption Ready event.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAPTION_READY"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Fired when a caption has been generated and is attached to the video.</p>
+
+<p>All properties of a <a href="#caption-resource">Caption Resource</a> are available at this point.</p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>CAPTION_READY</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#caption-resource">Caption Resource</a></td>
+<td>The caption resource tied to this event.</td>
+</tr>
+<tr>
+<td><strong>extras</strong></td>
+<td><strong>?</strong>array</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
 </tr>
 </tbody></table>
 <h1 id='logging'>Logging</h1>
