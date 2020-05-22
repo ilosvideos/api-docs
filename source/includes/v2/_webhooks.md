@@ -37,6 +37,35 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 | **token** | **?**string | Token used if this video was created through the API. |
 | **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
 
+### Video Failed
+
+> Example data sent with Video Failed event.
+
+```json
+{
+  "event_type": "VIDEO_FAILED",
+  "data": Video Resource Object,
+  "token": "...",
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
+  }
+}
+```
+
+Fired when a video fails during processing. The video is currently embeddable, but not playable. 
+
+Properties of a base [Video Resource](#video-resource) as well as **metadata** are available at this point.
+
+*Note: A video cannot progress beyond this state without manual intervention.<br/>Some <strong>metadata</strong> values could change if a video is manually re-processed. See [Video Resource](#video-resource) for more details.*
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **event_type** | string | `VIDEO_FAILED` |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
+| **token** | **?**string | Token used if this video was created through the API. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
+
 ### Video Ready
 
 > Example data sent with Video Ready event.
