@@ -2427,6 +2427,54 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
 </tr>
 </tbody></table>
+<h3 id='video-failed'>Video Failed</h3>
+<blockquote>
+<p>Example data sent with Video Failed event.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIDEO_FAILED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Video</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Fired when a video fails during processing. The video is currently embeddable, but not playable. </p>
+
+<p>Properties of a base <a href="#video-resource">Video Resource</a> as well as <strong>metadata</strong> are available at this point.</p>
+
+<p><em>Note: A video cannot progress beyond this state without manual intervention.<br/>Some <strong>metadata</strong> values could change if a video is manually re-processed. See <a href="#video-resource">Video Resource</a> for more details.</em></p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>VIDEO_FAILED</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#video-resource">Video Resource</a></td>
+<td>The video resource tied to this event.</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td><strong>?</strong>string</td>
+<td>Token used if this video was created through the API.</td>
+</tr>
+<tr>
+<td><strong>extras</strong></td>
+<td><strong>?</strong>array</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
+</tr>
+</tbody></table>
 <h3 id='video-ready'>Video Ready</h3>
 <blockquote>
 <p>Example data sent with Video Ready event.</p>
