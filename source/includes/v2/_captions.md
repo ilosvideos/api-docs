@@ -6,6 +6,8 @@ The Caption API allows you to request and manage closed captioning on your Video
 
 The Caption Resource(s) returned in a successful response.
 
+*Property types with a <strong>?</strong> are only returned if they are requested with a [Retrieve Caption Params Array](#retrieve-caption-params-array).*
+
 > Example Caption Resource Object.
 
 ```json
@@ -21,10 +23,11 @@ The Caption Resource(s) returned in a successful response.
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **identifier** | string | The unique identifier for the caption on VidGrid. |
-| **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`manual`*|
+| **type** | string | The type of caption resource.<br>*Possible values: `machine`,`professional`,`manual`,`machine_translation`*|
 | **status** | string | The current status of this caption resource.<br>*Possible values: `QUEUED`,`PENDING`,`IN_PROGRESS`,`CANCELED`,`FAILED`,`COMPLETED`*|
 | **video_identifier** | string | The unique identifier of the video this caption belongs to. |
-| **language** | **?**string | The language of the caption file. |
+| **language** | string | The language of the caption file. |
+| **transcript** | **?**string | Caption transcript in plain text. |
 
 ## Create Caption
 
