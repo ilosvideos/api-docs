@@ -144,7 +144,10 @@ curl -X GET \
     "identifiers": [
       "...",
       "..."
-    ]
+    ],
+    "include": [ 
+      "transcript", 
+    ] 
   }'
 ```
 
@@ -163,7 +166,10 @@ request.body = '{
   "identifiers": [
     "...",
     "..."
-  ]
+  ],
+  "include": [ 
+    "transcript", 
+  ] 
 }'
 
 response = http.request(request)
@@ -179,7 +185,10 @@ payload = '{
   "identifiers": [
     "...",
     "..."
-  ]
+  ],
+  include: [ 
+    "transcript", 
+  ] 
 }'
 headers = {
   'Content-Type': "application/json",
@@ -207,7 +216,10 @@ var options = {
     identifiers: [
       '...',
       '...'
-    ]
+    ],
+    include: [ 
+      'transcript', 
+    ] 
   },
   json: true 
 };
@@ -238,6 +250,15 @@ request(options, function (error, response, body) {
 | ----- | ---- | ----------- | ------- |
 | **identifier** | string | The unique identifier of a caption.<br>*You may pass this in the body or on the URL: `/v2/captions/identifier`* | *Required unless <strong>identifiers</strong> is set* |
 | **identifiers** | array | The unique identifiers of the desired captions. When set, this takes priority over **identifier**. | - |
+| **include** | [Retrieve Caption Params Array](#retrieve-caption-params-array) | An array of properties to be included with the returned [Caption Resources](#caption-resource). | - |
+
+### Retrieve Caption Params Array
+
+An array of properties to be included with a returned [Caption Resource](#caption-resource).
+
+| Param | Description |
+| ----- | ----------- |
+| **transcript** | Request the caption transcript in plain text. |
 
 ## Delete Caption
 
