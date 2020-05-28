@@ -1531,6 +1531,8 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <h2 id='caption-resource'>Caption Resource</h2>
 <p>The Caption Resource(s) returned in a successful response.</p>
 
+<p><em>Property types with a <strong>?</strong> are only returned if they are requested with a <a href="#retrieve-caption-params-array">Retrieve Caption Params Array</a>.</em></p>
+
 <blockquote>
 <p>Example Caption Resource Object.</p>
 </blockquote>
@@ -1557,7 +1559,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <tr>
 <td><strong>type</strong></td>
 <td>string</td>
-<td>The type of caption resource.<br><em>Possible values: <code>machine</code>,<code>professional</code>,<code>manual</code></em></td>
+<td>The type of caption resource.<br><em>Possible values: <code>machine</code>,<code>professional</code>,<code>manual</code>,<code>machine_translation</code></em></td>
 </tr>
 <tr>
 <td><strong>status</strong></td>
@@ -1571,8 +1573,13 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 </tr>
 <tr>
 <td><strong>language</strong></td>
-<td><strong>?</strong>string</td>
+<td>string</td>
 <td>The language of the caption file.</td>
+</tr>
+<tr>
+<td><strong>transcript</strong></td>
+<td><strong>?</strong>string</td>
+<td>Caption transcript in plain text.</td>
 </tr>
 </tbody></table>
 <h2 id='create-caption'>Create Caption</h2>
@@ -1690,7 +1697,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     "identifiers": [
       "...",
       "..."
-    ]
+    ],
+    "include": [ 
+      "transcript", 
+    ] 
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
@@ -1706,7 +1716,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
   "identifiers": [
     "...",
     "..."
-  ]
+  ],
+  "include": [ 
+    "transcript", 
+  ] 
 }'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
@@ -1719,7 +1732,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 </span><span class="s">  "identifiers": [</span><span class="err">
 </span><span class="s">    "...",</span><span class="err">
 </span><span class="s">    "..."</span><span class="err">
-</span><span class="s">  ]</span><span class="err">
+</span><span class="s">  ],</span><span class="err">
+</span><span class="s">  include: [ </span><span class="err">
+</span><span class="s">    "transcript", </span><span class="err">
+</span><span class="s">  ] </span><span class="err">
 </span><span class="s">}'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -1744,7 +1760,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     <span class="na">identifiers</span><span class="p">:</span> <span class="p">[</span>
       <span class="s1">'...'</span><span class="p">,</span>
       <span class="s1">'...'</span>
-    <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="na">include</span><span class="p">:</span> <span class="p">[</span> 
+      <span class="s1">'transcript'</span><span class="p">,</span> 
+    <span class="p">]</span> 
   <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
 <span class="p">};</span>
@@ -1786,6 +1805,26 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td>array</td>
 <td>The unique identifiers of the desired captions. When set, this takes priority over <strong>identifier</strong>.</td>
 <td>-</td>
+</tr>
+<tr>
+<td><strong>include</strong></td>
+<td><a href="#retrieve-caption-params-array">Retrieve Caption Params Array</a></td>
+<td>An array of properties to be included with the returned <a href="#caption-resource">Caption Resources</a>.</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id='retrieve-caption-params-array'>Retrieve Caption Params Array</h3>
+<p>An array of properties to be included with a returned <a href="#caption-resource">Caption Resource</a>.</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>transcript</strong></td>
+<td>Request the caption transcript in plain text.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-caption'>Delete Caption</h2>
