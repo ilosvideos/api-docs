@@ -16,6 +16,7 @@ includes:
   - v2/videos
   - v2/captions
   - v2/folders
+  - v2/users
   - v2/webhooks
   - v2/logging
   - v2/embedding
