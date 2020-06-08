@@ -331,6 +331,20 @@
               </ul>
           </li>
           <li>
+            <a href="#user-api" class="toc-h1 toc-link" data-title="User API">User API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#user-resource" class="toc-h2 toc-link" data-title="User Resource">User Resource</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-user" class="toc-h2 toc-link" data-title="Retrieve User">Retrieve User</a>
+                  </li>
+                  <li>
+                    <a href="#delete-user" class="toc-h2 toc-link" data-title="Delete User">Delete User</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2409,6 +2423,259 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>identifier</strong></td>
 <td>string</td>
 <td>The unique identifier of a folder.<br><em>You may pass this in the body or on the URL: <code>/v2/folders/identifier</code></em></td>
+<td><em>Required</em></td>
+</tr>
+</tbody></table>
+<h1 id='user-api'>User API</h1>
+<p>The User API allows you to interact with users on your VidGrid account.</p>
+<h2 id='user-resource'>User Resource</h2>
+<p>The User Resource(s) returned in a successful response.</p>
+
+<blockquote>
+<p>Example User Resource Object.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier for the user.</td>
+</tr>
+<tr>
+<td><strong>email</strong></td>
+<td>string</td>
+<td>The user&#39;s email.</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>string</td>
+<td>The user&#39;s name.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-user'>Retrieve User</h2>
+<p>This endpoint returns an array of <a href="#user-resource">User Resources</a>.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<blockquote>
+<p>Example retrieve user request.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v2/users'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "identifiers": [
+      "...",
+      "..."
+    ]
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v2/users"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "identifiers": [
+    "...",
+    "..."
+  ]
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/users"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
+</span><span class="s">  "identifiers": [</span><span class="err">
+</span><span class="s">    "...",</span><span class="err">
+</span><span class="s">    "..."</span><span class="err">
+</span><span class="s">  ]</span><span class="err">
+</span><span class="s">}'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"Basic {token}"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// NodeJS</span>
+
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.vidgrid.com/v2/users'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">Authorization</span><span class="p">:</span> <span class="s1">'Basic {token}'</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">identifiers</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s1">'...'</span><span class="p">,</span>
+      <span class="s1">'...'</span>
+    <span class="p">]</span> 
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example retrieve user response. See <a href="#user-resource">User Resource</a> for more details.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">User</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+    </span><span class="err">User</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET https://api.vidgrid.com/v2/users</code></p>
+<h3 id='http-parameters'>HTTP Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of a user or <code>all</code> if you wish to retrieve all users in the organization.<br><em>You may pass this in the body or on the URL: <code>/v2/users/identifier</code></em><br><em>Possible values: <code>{user_identifier}</code>,<code>all</code></em></td>
+<td><em>Required unless <strong>identifiers</strong> is set</em></td>
+</tr>
+<tr>
+<td><strong>identifiers</strong></td>
+<td>array</td>
+<td>The unique identifiers of the desired users. When set, this takes priority over <strong>identifier</strong>.</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2 id='delete-user'>Delete User</h2>
+<p>This endpoint deletes a user.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<blockquote>
+<p>Example delete user request.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  <span class="s1">'https://api.vidgrid.com/v2/users/identifier'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "transfer_videos_to": "...",
+    "transfer_shared_folders_to": "..."
+  }'</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.vidgrid.com/v2/users/identifier"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Delete</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "transfer_videos_to": "...",
+  "transfer_shared_folders_to": "..."
+}'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/users/identifier"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
+</span><span class="s">  "transfer_videos_to": "...",</span><span class="err">
+</span><span class="s">  "transfer_shared_folders_to": "..."</span><span class="err">
+</span><span class="s">}'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"Basic {token}"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// NodeJS</span>
+
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.vidgrid.com/v2/users/identifier'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">Authorization</span><span class="p">:</span> <span class="s1">'Basic {token}'</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="s2">"transfer_videos_to"</span><span class="p">:</span> <span class="s2">"..."</span><span class="p">,</span>
+    <span class="s2">"transfer_shared_folders_to"</span><span class="p">:</span> <span class="s2">"..."</span>
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The delete user endpoint returns a 204 No Content response when successful.</p>
+</blockquote>
+
+<p><code>DELETE https://api.vidgrid.com/v2/users</code></p>
+<h3 id='http-parameters-2'>HTTP Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>identifier</strong></td>
+<td>string</td>
+<td>The unique identifier of a user.<br><em>You may pass this in the body or on the URL: <code>/v2/users/identifier</code></em></td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><strong>transfer_videos_to</strong></td>
+<td>string</td>
+<td>Specifies whether to transfer this user&#39;s videos to another user, the organization&#39;s guest user, or to delete them permanently.<br><em>Possible values: <code>{user_identifier}</code>,<code>ORGANIZATION</code>,<code>DELETE</code></em></td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><strong>transfer_shared_folders_to</strong></td>
+<td>string</td>
+<td>Specifies whether to transfer this user&#39;s shared folders to another user or to delete them permanently.<br><em>Possible values: <code>{user_identifier}</code>,<code>DELETE</code></em></td>
 <td><em>Required</em></td>
 </tr>
 </tbody></table>
