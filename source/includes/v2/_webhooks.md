@@ -146,3 +146,28 @@ All properties of a [Caption Resource](#caption-resource) are available at this 
 | **event_type** | string | `CAPTION_READY` |
 | **data** | [Caption Resource](#caption-resource) | The caption resource tied to this event. |
 | **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
+
+### Caption Failed
+
+> Example data sent with Caption Failed event.
+
+```json
+{
+  "event_type": "CAPTION_FAILED",
+  "data": Caption Resource Object,
+  "extras": {
+    "key1": "value 1",
+    "key2": "value 2"
+  }
+}
+```
+
+Fired when a caption request has failed.
+
+All properties of a [Caption Resource](#caption-resource) are available at this point.
+
+| Prop | Type | Value |
+| ---- | ---- | ----- |
+| **event_type** | string | `CAPTION_FAILED` |
+| **data** | [Caption Resource](#caption-resource) | The caption resource tied to this event. |
+| **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
