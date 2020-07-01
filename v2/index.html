@@ -2909,6 +2909,46 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
 </tr>
 </tbody></table>
+<h3 id='caption-failed'>Caption Failed</h3>
+<blockquote>
+<p>Example data sent with Caption Failed event.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAPTION_FAILED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Fired when a caption request has failed.</p>
+
+<p>All properties of a <a href="#caption-resource">Caption Resource</a> are available at this point.</p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>event_type</strong></td>
+<td>string</td>
+<td><code>CAPTION_FAILED</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#caption-resource">Caption Resource</a></td>
+<td>The caption resource tied to this event.</td>
+</tr>
+<tr>
+<td><strong>extras</strong></td>
+<td><strong>?</strong>array</td>
+<td>An array of extra data if sent through the API.<br><em>See <a href="#create-token">Create Token</a> for more details about <code>webhook_extras</code></em></td>
+</tr>
+</tbody></table>
 <h1 id='logging'>Logging</h1>
 <p>You can find a log of all recent API activity on the <a href="https://app.vidgrid.com/api/dashboard" target="_blank">API Dashboard</a> within VidGrid.</p>
 
