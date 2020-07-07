@@ -14,6 +14,7 @@ See [Example Usage](#example-usage) for more information.
 {
   "data": {
     "token": "...",
+    "token_key": "...",
     "expires": 1563328704,
     "recorder": {
       "download_url": "...",
@@ -29,6 +30,7 @@ The Record Token Resource returned in a successful response.
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **token** | string | One-time token that is used for authentication when recording and uploading a video. |
+| **token_key** | string | Public identifier corresponding to the token. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **recorder.download_url** | string | URL that can be used to download the recorder. |
 | **recorder.launch_uri** | string | URI that can be used to launch the recorder. |
@@ -42,6 +44,7 @@ The Record Token Resource returned in a successful response.
 {
   "data": {
     "token": "...",
+    "token_key": "...",
     "expires": 1563328704,
     "uploader": {
       "iframe": "...",
@@ -56,6 +59,7 @@ The Upload Token Resource returned in a successful response.
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **token** | string | One-time token that is used for authentication when uploading a video. |
+| **token_key** | string | Public identifier corresponding to the token. |
 | **expires** | Timestamp | UNIX Timestamp (UTC) indicating when the temporary token will expire. |
 | **uploader.iframe** | string | Iframe containing a simple upload dropzone. |
 | **recorder.iframe_basic** | string | Iframe containing a simple upload button. |
@@ -84,7 +88,8 @@ The Upload Token Resource returned in a successful response.
     },
     "fileParamName": "...",
     "cloudUploadCallbackUrl": "...",
-    "token": "..."
+    "token": "...",
+    "token_key": "..."
   }
 }
 ```
@@ -100,6 +105,7 @@ See [Direct Upload Example](#direct-upload-example) for more information on impl
 | **fileParamName** | string | The required key name that should contain the file data for uploading.<br>*Important: Amazon requires this to be the last key/value pair included in the POST to S3.<br>e.g. `<input type="file" name="{fileParamName}">`* |
 | **cloudUploadCallbackUrl** | string | URL to `POST` to once a video has finished uploading to S3 and is ready for processing. Returns a video identifier.<br>*Important: you need to include `cloudKey` with the request which is the value of `formInputs.key` after <strong>${filename}</strong> has been replaced.* |
 | **token** | string | One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes. |
+| **token_key** | string | Public identifier corresponding to the token. |
 
 ## Create Token
 

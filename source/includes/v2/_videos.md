@@ -36,6 +36,7 @@ The Video Resource(s) returned in a successful response.
     Caption Resource Object
   ]
 }
+
 ```
 
 | Prop | Type | Value |
@@ -54,6 +55,7 @@ The Video Resource(s) returned in a successful response.
 | **jwt.view** | **?**string | A single-use access token that can be used to grant view permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to view the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.view}`* |
 | **jwt.edit** | **?**string | A single-use access token that can be used to grant edit permissions for a video on VidGrid. On page load a new access token will be generated that allows the user to edit the video for 6 hours, but the token in the URL will have expired.<br>*You can use the token with view or embed URLs as follows: `{embed_url}?auth={jwts.edit}`* |
 | **captions** | **?**array | An array of [Caption Resources](#caption-resource) attached to this video. |
+| **token_key** | **?**string | The public identifier corresponding to the [Token Resource](#token-resources) used when creating this video through the API. |
 
 ## Create Video
 
@@ -208,6 +210,7 @@ An array of properties to be included with a returned [Video Resource](#video-re
 | **thumbnail** | Request signed URLs that can be used to view video thumbnails. |
 | **jwts** | Request JWT tokens that can be used to view and/or edit a video on VidGrid. |
 | **captions** | Request all of the [Caption Resources](#caption-resource) attached to this video. |
+| **token_key** | Request the public identifier corresponding to the [Token Resource](#token-resources) used when creating this video through the API. |
 
 ## Update Video
 
