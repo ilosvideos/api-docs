@@ -604,6 +604,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1563328704</span><span class="p">,</span><span class="w">
     </span><span class="s2">"recorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
@@ -626,6 +627,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>token</strong></td>
 <td>string</td>
 <td>One-time token that is used for authentication when recording and uploading a video.</td>
+</tr>
+<tr>
+<td><strong>token_key</strong></td>
+<td>string</td>
+<td>Public identifier corresponding to the token.</td>
 </tr>
 <tr>
 <td><strong>expires</strong></td>
@@ -655,6 +661,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1563328704</span><span class="p">,</span><span class="w">
     </span><span class="s2">"uploader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
@@ -676,6 +683,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>token</strong></td>
 <td>string</td>
 <td>One-time token that is used for authentication when uploading a video.</td>
+</tr>
+<tr>
+<td><strong>token_key</strong></td>
+<td>string</td>
+<td>Public identifier corresponding to the token.</td>
 </tr>
 <tr>
 <td><strong>expires</strong></td>
@@ -716,7 +728,8 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"fileParamName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cloudUploadCallbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -755,6 +768,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>token</strong></td>
 <td>string</td>
 <td>One-time token that is used for authentication when uploading a video. It is then mainly used for informational purposes.</td>
+</tr>
+<tr>
+<td><strong>token_key</strong></td>
+<td>string</td>
+<td>Public identifier corresponding to the token.</td>
 </tr>
 </tbody></table>
 <h2 id='create-token'>Create Token</h2>
@@ -1071,6 +1089,7 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     </span><span class="err">Caption</span><span class="w"> </span><span class="err">Resource</span><span class="w"> </span><span class="err">Object</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <table><thead>
 <tr>
@@ -1148,6 +1167,11 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <td><strong>captions</strong></td>
 <td><strong>?</strong>array</td>
 <td>An array of <a href="#caption-resource">Caption Resources</a> attached to this video.</td>
+</tr>
+<tr>
+<td><strong>token_key</strong></td>
+<td><strong>?</strong>string</td>
+<td>The public identifier corresponding to the <a href="#token-resources">Token Resource</a> used when creating this video through the API.</td>
 </tr>
 </tbody></table>
 <h2 id='create-video'>Create Video</h2>
@@ -1323,6 +1347,10 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <tr>
 <td><strong>captions</strong></td>
 <td>Request all of the <a href="#caption-resource">Caption Resources</a> attached to this video.</td>
+</tr>
+<tr>
+<td><strong>token_key</strong></td>
+<td>Request the public identifier corresponding to the <a href="#token-resources">Token Resource</a> used when creating this video through the API.</td>
 </tr>
 </tbody></table>
 <h2 id='update-video'>Update Video</h2>
