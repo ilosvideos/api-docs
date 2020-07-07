@@ -33,8 +33,8 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **event_type** | string | `VIDEO_UPLOADED` |
-| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
-| **token** | **?**string | Token used if this video was created through the API. |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event.<br>This will include `token_key` so you can match the video to an API recording session. |
+| **token** (deprecated) | **?**string | Token used if this video was created through the API.<br>**(deprecated)** - reference `data.token_key` instead. |
 | **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
 
 ### Video Failed
@@ -62,8 +62,8 @@ Properties of a base [Video Resource](#video-resource) as well as **metadata** a
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **event_type** | string | `VIDEO_FAILED` |
-| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
-| **token** | **?**string | Token used if this video was created through the API. |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event.<br>This will include `token_key` so you can match the video to an API recording session. |
+| **token** (deprecated) | **?**string | Token used if this video was created through the API.<br>**(deprecated)** - reference `data.token_key` instead. |
 | **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
 
 ### Video Ready
@@ -91,8 +91,8 @@ Properties of a base [Video Resource](#video-resource) as well as **signed_url**
 | Prop | Type | Value |
 | ---- | ---- | ----- |
 | **event_type** | string | `VIDEO_READY` |
-| **data** | [Video Resource](#video-resource) | The video resource tied to this event. |
-| **token** | **?**string | Token used if this video was created through the API. |
+| **data** | [Video Resource](#video-resource) | The video resource tied to this event.<br>This will include `token_key` so you can match the video to an API recording session. |
+| **token** (deprecated) | **?**string | Token used if this video was created through the API.<br>**(deprecated)** - reference `data.token_key` instead. |
 | **extras** | **?**array | An array of extra data if sent through the API.<br>*See [Create Token](#create-token) for more details about `webhook_extras`* |
 
 ## Caption Events
