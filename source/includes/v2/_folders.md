@@ -282,9 +282,9 @@ curl -X PATCH \
   -H 'Authorization: Basic {token}' \
   -H 'Content-Type: application/json' \
   -d '{
-    "properties": [
+    "properties": {
         "title": "Updated Folder Title"
-    ]
+    }
   }'
 ```
 
@@ -300,9 +300,9 @@ request = Net::HTTP::Patch.new(url)
 request["Content-Type"] = 'application/json'
 request["Authorization"] = 'Basic {token}'
 request.body = '{
-  "properties": [
+  "properties": {
       "title": "Updated Folder Title"
-  ]
+  }
 }'
 
 response = http.request(request)
@@ -315,9 +315,9 @@ import requests
 url = "https://api.vidgrid.com/v2/folders/identifier"
 
 payload = '{
-  "properties": [
+  "properties": {
       "title": "Updated Folder Title"
-  ]
+  }
 }'
 headers = {
   'Content-Type': "application/json",
@@ -342,9 +342,9 @@ var options = {
     'Content-Type': 'application/json' 
   },
   body: { 
-    properties: [
+    properties: {
       title: "Updated Folder Title"
-    ]
+    }
   },
   json: true 
 };
