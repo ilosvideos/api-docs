@@ -1364,9 +1364,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
   -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
-    "properties": [
+    "properties": {
       "title": "Updated Video Title"
-    ]
+    }
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
@@ -1379,9 +1379,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
-  "properties": [
+  "properties": {
     "title": "Updated Video Title"
-  ]
+  }
 }'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
@@ -1391,9 +1391,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/videos/identifier"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
-</span><span class="s">  "properties": [</span><span class="err">
+</span><span class="s">  "properties": {</span><span class="err">
 </span><span class="s">    "title": "Updated Video Title"</span><span class="err">
-</span><span class="s">  ]</span><span class="err">
+</span><span class="s">  }</span><span class="err">
 </span><span class="s">}'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -1415,9 +1415,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
-    <span class="na">properties</span><span class="p">:</span> <span class="p">[</span>
+    <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">title</span><span class="p">:</span> <span class="s2">"Updated Video Title"</span>
-    <span class="p">]</span>
+    <span class="p">}</span>
   <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
 <span class="p">};</span>
@@ -2267,9 +2267,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
   -H <span class="s1">'Authorization: Basic {token}'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
-    "properties": [
+    "properties": {
         "title": "Updated Folder Title"
-    ]
+    }
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
@@ -2282,9 +2282,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Basic {token}'</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
-  "properties": [
+  "properties": {
       "title": "Updated Folder Title"
-  ]
+  }
 }'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
@@ -2294,9 +2294,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.vidgrid.com/v2/folders/identifier"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">'{</span><span class="err">
-</span><span class="s">  "properties": [</span><span class="err">
+</span><span class="s">  "properties": {</span><span class="err">
 </span><span class="s">      "title": "Updated Folder Title"</span><span class="err">
-</span><span class="s">  ]</span><span class="err">
+</span><span class="s">  }</span><span class="err">
 </span><span class="s">}'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -2318,9 +2318,9 @@ curl <span class="s1">'https://api.vidgrid.com/v2/videos/identifier'</span> <spa
     <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> 
   <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
-    <span class="na">properties</span><span class="p">:</span> <span class="p">[</span>
+    <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">title</span><span class="p">:</span> <span class="s2">"Updated Folder Title"</span>
-    <span class="p">]</span>
+    <span class="p">}</span>
   <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> 
 <span class="p">};</span>
